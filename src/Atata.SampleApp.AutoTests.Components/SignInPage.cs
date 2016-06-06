@@ -9,6 +9,6 @@ namespace Atata.SampleApp.AutoTests
         public TextInput<_> Email { get; private set; }
         public TextInput<_> Password { get; private set; }
 
-        public Button<UserListPage, _> SignIn { get; private set; }
+        public Button<UsersPage, _> SignIn { get; private set; }
     }
 }

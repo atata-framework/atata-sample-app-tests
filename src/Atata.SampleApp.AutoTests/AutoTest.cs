@@ -35,7 +35,7 @@ namespace Atata.SampleApp.AutoTests
             ATContext.CleanUp();
         }
 
-        protected UserListPage Login()
+        protected UsersPage Login()
         {
             return Go.To<SignInPage>().
                 Email.Set(Config.Account.Email).
