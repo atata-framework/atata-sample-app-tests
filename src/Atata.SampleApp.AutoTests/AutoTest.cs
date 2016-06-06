@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.Text;
+using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium.Firefox;
 
 namespace Atata.SampleApp.AutoTests
@@ -14,13 +16,11 @@ namespace Atata.SampleApp.AutoTests
                     TestContext.WriteLine(message);
                 });
 
-            string startUrl = Config.Url;
-
             ATContext.SetUp(
                 () => new FirefoxDriver().Maximize(),
                 log,
                 TestContext.CurrentContext.Test.Name,
-                startUrl);
+                Config.Url);
 
             OnSetUp();
         }
@@ -32,7 +32,21 @@ namespace Atata.SampleApp.AutoTests
         [TearDown]
         public void TearDown()
         {
+            var testResult = TestContext.CurrentContext.Result;
+            if (testResult.Outcome.Status == TestStatus.Failed)
+                ATContext.Current.Log.Error(FormatErrorMessage(testResult.Message, testResult.StackTrace), null);
+
             ATContext.CleanUp();
+        }
+
+        private static string FormatErrorMessage(string message, string stackTrace)
+        {
+            StringBuilder builder = new StringBuilder(message);
+            builder.AppendLine();
+
+            builder.Append(stackTrace);
+
+            return builder.ToString();
         }
 
         protected UsersPage Login()
