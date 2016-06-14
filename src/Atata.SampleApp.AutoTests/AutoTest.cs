@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
-using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Chrome;
 
 namespace Atata.SampleApp.AutoTests
 {
@@ -17,7 +17,7 @@ namespace Atata.SampleApp.AutoTests
                 });
 
             ATContext.SetUp(
-                () => new FirefoxDriver().Maximize(),
+                () => new ChromeDriver().Maximize(),
                 log,
                 TestContext.CurrentContext.Test.Name,
                 Config.Url);

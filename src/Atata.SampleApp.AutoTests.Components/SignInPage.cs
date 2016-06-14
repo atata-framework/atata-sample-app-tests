@@ -3,6 +3,7 @@
 namespace Atata.SampleApp.AutoTests
 {
     [VerifyTitle]
+    [VerifyH1]
     [NavigateTo("signin")]
     public class SignInPage : Page<_>
     {
