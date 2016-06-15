@@ -8,14 +8,25 @@ namespace Atata.SampleApp.AutoTests
         [Test]
         public void User_Create()
         {
+            string firstName, lastName, email;
+            Office office = Office.NewYork;
+            Sex sex = Sex.Male;
+
             Login().
                 New().
-                    FirstName.SetRandom().
-                    LastName.SetRandom().
-                    Email.SetRandom().
-                    Office.Set(Office.NewYork).
-                    Sex.Set(Sex.Male).
-                    Save();
+                    FirstName.SetRandom(out firstName).
+                    LastName.SetRandom(out lastName).
+                    Email.SetRandom(out email).
+                    Office.Set(office).
+                    Sex.Set(sex).
+                    Save().
+                Users.Row(x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office).View().
+                    Header.VerifyEquals(firstName + " " + lastName).
+                    Email.VerifyEquals(email).
+                    Office.VerifyEquals(office).
+                    Sex.VerifyEquals(sex).
+                    Birthday.VerifyMissing().
+                    Notes.VerifyMissing();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Atata.SampleApp.AutoTests
     {
         public Button<UserEditWindow, _> New { get; private set; }
 
-        public Table<_> Users { get; private set; }
+        public Table<UserTableRow, _> Users { get; private set; }
 
         public class UserTableRow : TableRow<_>
         {
@@ -18,7 +18,7 @@ namespace Atata.SampleApp.AutoTests
 
             public Text<_> Email { get; private set; }
 
-            public Text<_> Office { get; private set; }
+            public Content<Office, _> Office { get; private set; }
 
             public Link<UserDetailsPage, _> View { get; private set; }
 

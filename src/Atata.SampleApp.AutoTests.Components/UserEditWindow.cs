@@ -17,11 +17,12 @@ namespace Atata.SampleApp.AutoTests
 
         public Select<Office?, _> Office { get; private set; }
 
+        [FindByName]
         public RadioButtonList<Sex?, _> Sex { get; private set; }
 
         public DateInput<_> Birthday { get; private set; }
 
         [Term("Save", "Create")]
-        public Button<_> Save { get; private set; }
+        public Button<UsersPage, _> Save { get; private set; }
     }
 }

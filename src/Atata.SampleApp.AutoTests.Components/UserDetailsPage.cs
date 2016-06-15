@@ -9,11 +9,14 @@ namespace Atata.SampleApp.AutoTests
         {
         }
 
+        [FindFirst]
+        public H1<_> Header { get; private set; }
+
         [FindByDescriptionTerm]
         public Text<_> Email { get; private set; }
 
         [FindByDescriptionTerm]
-        public Text<_> Office { get; private set; }
+        public Content<Office, _> Office { get; private set; }
 
         [FindByDescriptionTerm]
         public Content<Sex, _> Sex { get; private set; }
