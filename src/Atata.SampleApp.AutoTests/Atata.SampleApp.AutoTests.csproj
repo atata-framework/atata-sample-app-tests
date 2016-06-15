@@ -67,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignInTest.cs" />
     <Compile Include="AutoTest.cs" />
+    <Compile Include="UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Atata.SampleApp.AutoTests.Components\Atata.SampleApp.AutoTests.Components.csproj">

@@ -12,6 +12,7 @@ namespace Atata.SampleApp.AutoTests
 
         public TextInput<_> LastName { get; private set; }
 
+        [RandomizeStringSettings("{0}@mail.com")]
         public TextInput<_> Email { get; private set; }
 
         public Select<Office?, _> Office { get; private set; }
@@ -19,5 +20,8 @@ namespace Atata.SampleApp.AutoTests
         public RadioButtonList<Sex?, _> Sex { get; private set; }
 
         public DateInput<_> Birthday { get; private set; }
+
+        [Term("Save", "Create")]
+        public Button<_> Save { get; private set; }
     }
 }
