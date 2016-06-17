@@ -58,6 +58,9 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="BS\BSClickTabAttribute.cs" />
+    <Compile Include="BS\BSTabPane`1.cs" />
+    <Compile Include="BS\BSTab`1.cs" />
     <Compile Include="Properties\AtataSettings.cs" />
     <Compile Include="Data\Office.cs" />
     <Compile Include="Data\Sex.cs" />
@@ -71,6 +74,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

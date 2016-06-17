@@ -8,6 +8,8 @@ namespace Atata.SampleApp.AutoTests
         {
         }
 
+        public GeneralTab General { get; private set; }
+
         public TextInput<_> FirstName { get; private set; }
 
         public TextInput<_> LastName { get; private set; }
@@ -24,5 +26,12 @@ namespace Atata.SampleApp.AutoTests
 
         [Term("Save", "Create")]
         public Button<UsersPage, _> Save { get; private set; }
+
+        public class GeneralTab : BSTab<_>
+        {
+            public TextInput<_> FirstName { get; private set; }
+
+            public TextInput<_> LastName { get; private set; }
+        }
     }
 }
