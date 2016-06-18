@@ -14,11 +14,11 @@ namespace Atata.SampleApp.AutoTests
 
             Login().
                 New().
-                    FirstName.SetRandom(out firstName).
-                    LastName.SetRandom(out lastName).
-                    Email.SetRandom(out email).
-                    Office.Set(office).
-                    Sex.Set(sex).
+                    General.FirstName.SetRandom(out firstName).
+                    General.LastName.SetRandom(out lastName).
+                    General.Email.SetRandom(out email).
+                    General.Office.Set(office).
+                    General.Sex.Set(sex).
                     Save().
                 Users.Row(x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office).View().
                     Header.VerifyEquals(firstName + " " + lastName).

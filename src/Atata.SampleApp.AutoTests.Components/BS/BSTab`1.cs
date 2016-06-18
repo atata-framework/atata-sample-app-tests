@@ -4,9 +4,7 @@
     public class BSTab<_> : Control<_>
         where _ : PageObject<_>
     {
-        [FindFirst]
-        public Link<_> Link { get; private set; }
-
+        // Use Atata's HasClass method.
         public bool IsActive
         {
             get { return Scope.GetAttribute("class").Contains("active"); }
