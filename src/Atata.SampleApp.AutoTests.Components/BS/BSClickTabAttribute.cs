@@ -15,7 +15,7 @@ namespace Atata.SampleApp.AutoTests
             if (tabPanelControl == null)
                 throw new InvalidOperationException("Cannot find tab pane.");
 
-            string tabPaneId = tabPanelControl.ScopeLocator.GetElement().GetAttribute("id");
+            string tabPaneId = tabPanelControl.ScopeLocator.GetElement(SearchOptions.OfAnyVisibility()).GetAttribute("id");
             var findAttribute = new FindByTabPaneIdAttribute("#" + tabPaneId.ToString(TermFormat.Kebab));
 
             // TODO: CreateControl in Owner.
