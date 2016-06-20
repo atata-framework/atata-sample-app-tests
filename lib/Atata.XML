@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Atata</name>
+    </assembly>
+    <members>
+        <member name="T:Atata.TermVerificationTriggerAttribute">
+            <summary>
+            The base trigger attribute class that can be used in the verification process when the page object is initialized.
+            </summary>
+        </member>
+        <member name="T:Atata.VerifyH1Attribute">
+            <summary>
+            Indicates the verification of the content of the &lt;h1&gt; tag when the page object is initialized.
+            </summary>
+        </member>
+        <member name="T:Atata.VerifyH2Attribute">
+            <summary>
+            Indicates the verification of the content of the &lt;h2&gt; tag when the page object is initialized.
+            </summary>
+        </member>
+        <member name="T:Atata.VerifyH3Attribute">
+            <summary>
+            Indicates the verification of the content of the &lt;h3&gt; tag when the page object is initialized.
+            </summary>
+        </member>
+        <member name="T:Atata.VerifyH4Attribute">
+            <summary>
+            Indicates the verification of the content of the &lt;h4&gt; tag when the page object is initialized.
+            </summary>
+        </member>
+        <member name="T:Atata.VerifyH5Attribute">
+            <summary>
+            Indicates the verification of the content of the &lt;h5&gt; tag when the page object is initialized.
+            </summary>
+        </member>
+        <member name="T:Atata.VerifyH6Attribute">
+            <summary>
+            Indicates the verification of the content of the &lt;h6&gt; tag when the page object is initialized.
+            </summary>
+        </member>
+        <member name="T:Atata.VerifyTitleAttribute">
+            <summary>
+            Indicates the verification of the page title when the page object is initialized.
+            </summary>
+        </member>
+        <member name="T:Atata.Content`2">
+            <summary>
+            Represents any element containing content.
+            </summary>
+            <typeparam name="T">The type of the content.</typeparam>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.H1`1">
+            <summary>
+            Represents the &lt;h1&gt; heading tag.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.H2`1">
+            <summary>
+            Represents the &lt;h2&gt; heading tag.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.H3`1">
+            <summary>
+            Represents the &lt;h3&gt; heading tag.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.H4`1">
+            <summary>
+            Represents the &lt;h4&gt; heading tag.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.H5`1">
+            <summary>
+            Represents the &lt;h5&gt; heading tag.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.H6`1">
+            <summary>
+            Represents the &lt;h6&gt; heading tag.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.Text`1">
+            <summary>
+            Represents any element containing text content.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.TriggerPriority">
+            <summary>
+            Specifies the priority of trigger execution.
+            </summary>
+        </member>
+        <member name="T:Atata.TriggerScope">
+            <summary>
+            Specifies the scope of trigger application.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerScope.Self">
+            <summary>
+            Indicates that the trigger applies to the class/member declared.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerScope.Children">
+            <summary>
+            Indicates that the trigger applies to the child control properties.
+            </summary>
+        </member>
+        <member name="T:Atata.TermFormat">
+            <summary>
+            Specifies the term format.
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.Inherit">
+            <summary>
+            Uses inherited format or none if missing.
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.None">
+            <summary>
+            Doesn't apply format.
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.Title">
+            <summary>
+            Uses title case (e.g. "Some Term").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.TitleWithColon">
+            <summary>
+            Uses title case with colon (':') ending (e.g. "Some Term:").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.Sentence">
+            <summary>
+            Uses sentence case (e.g. "Some term").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.SentenceWithColon">
+            <summary>
+            Uses sententce case with colon (':') ending (e.g. "Some term:").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.LowerCase">
+            <summary>
+            Uses lower case (e.g. "someterm").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.UpperCase">
+            <summary>
+            Uses upper case (e.g. "SOMETERM").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.Camel">
+            <summary>
+            Uses camel case (e.g. "someTerm").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.Pascal">
+            <summary>
+            Uses pascal case (e.g. "SomeTerm").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.Kebab">
+            <summary>
+            Uses dash ('-') and lower case (e.g. "some-term").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.HyphenKebab">
+            <summary>
+            Uses hyphen ('‐') and lower case (e.g. "some‐term").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.PascalKebab">
+            <summary>
+            Uses dash ('-') and pascal case (e.g. "Some-Term").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.PascalHyphenKebab">
+            <summary>
+            Uses hyphen ('‐') and pascal case (e.g. "Some‐Term").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.XKebab">
+            <summary>
+            Uses dash ('-'), lower case and "x-" prefix (e.g. "x-some-term").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.Snake">
+            <summary>
+            Uses undersore ('_') and lower case (e.g. "some_term").
+            </summary>
+        </member>
+        <member name="T:Atata.TermMatch">
+            <summary>
+            Specifies the match approach for the term finding.
+            </summary>
+        </member>
+        <member name="F:Atata.TermMatch.Inherit">
+            <summary>
+            Uses inherited match or none if missing.
+            </summary>
+        </member>
+    </members>
+</doc>
