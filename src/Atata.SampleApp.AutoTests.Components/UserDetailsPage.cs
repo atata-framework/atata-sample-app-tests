@@ -3,7 +3,7 @@ using _ = Atata.SampleApp.AutoTests.UserDetailsPage;
 
 namespace Atata.SampleApp.AutoTests
 {
-    public class UserDetailsPage : Page<_>
+    public class UserDetailsPage : AppPage<_>
     {
         public UserDetailsPage(string userName = null)
         {

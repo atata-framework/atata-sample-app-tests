@@ -4,7 +4,7 @@ namespace Atata.SampleApp.AutoTests
 {
     [VerifyTitle]
     [VerifyContent("Should contain some settings")]
-    public class SettingsPage : Page<_>
+    public class SettingsPage : AppPage<_>
     {
     }
 }

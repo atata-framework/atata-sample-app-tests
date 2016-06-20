@@ -4,7 +4,7 @@ namespace Atata.SampleApp.AutoTests
 {
     [VerifyTitle]
     [VerifyH1]
-    public class UsersPage : Page<_>
+    public class UsersPage : AppPage<_>
     {
         public Button<UserEditWindow, _> New { get; private set; }
 

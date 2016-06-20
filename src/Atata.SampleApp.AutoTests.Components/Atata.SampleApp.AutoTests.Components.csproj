@@ -58,6 +58,7 @@
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AppPage`1.cs" />
     <Compile Include="BS\BSClickTabAttribute.cs" />
     <Compile Include="BS\BSTabPane`1.cs" />
     <Compile Include="BS\BSTab`1.cs" />
