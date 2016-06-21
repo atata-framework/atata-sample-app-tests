@@ -8,7 +8,8 @@ namespace Atata.SampleApp.AutoTests
         [Test]
         public void Settings()
         {
-            Login();
+            Login().
+                Menu.Account.Settings();
         }
     }
 }
