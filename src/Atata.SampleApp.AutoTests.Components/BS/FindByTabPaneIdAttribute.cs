@@ -4,18 +4,18 @@ namespace Atata.SampleApp.AutoTests
 {
     public class FindByTabPaneIdAttribute : TermFindAttribute
     {
-        public FindByTabPaneIdAttribute(TermMatch match)
-            : base(match)
+        public FindByTabPaneIdAttribute(TermFormat format)
+            : base(format)
         {
         }
 
-        public FindByTabPaneIdAttribute(TermFormat format, TermMatch match = TermMatch.Inherit)
-            : base(format, match)
+        public FindByTabPaneIdAttribute(TermMatch match, TermFormat format = TermFormat.Inherit)
+            : base(match, format)
         {
         }
 
-        public FindByTabPaneIdAttribute(string value, TermMatch match)
-            : base(value, match)
+        public FindByTabPaneIdAttribute(TermMatch match, params string[] values)
+            : base(match, values)
         {
         }
 
