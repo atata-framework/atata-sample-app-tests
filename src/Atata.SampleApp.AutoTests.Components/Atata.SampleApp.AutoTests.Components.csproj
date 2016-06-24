@@ -65,6 +65,7 @@
     <Compile Include="BS\BSTabPane`1.cs" />
     <Compile Include="BS\BSTab`1.cs" />
     <Compile Include="BS\FindByTabPaneIdAttribute.cs" />
+    <Compile Include="NotFoundPage.cs" />
     <Compile Include="Properties\AtataSettings.cs" />
     <Compile Include="Data\Office.cs" />
     <Compile Include="Data\Sex.cs" />
