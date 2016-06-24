@@ -9,7 +9,6 @@
         {
             public Link<UsersPage, _> Users { get; private set; }
 
-            [FindByContent(TermMatch.StartsWith)]
             public AccountDropdown Account { get; private set; }
 
             public class AccountDropdown : BSDropdown<_>
