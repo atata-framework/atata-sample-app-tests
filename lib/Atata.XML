@@ -143,19 +143,34 @@
             Uses sentence case (e.g. "Some term").
             </summary>
         </member>
+        <member name="F:Atata.TermFormat.SentenceLower">
+            <summary>
+            Uses sentence case starting with first letter in lower case (e.g. "some term").
+            </summary>
+        </member>
         <member name="F:Atata.TermFormat.SentenceWithColon">
             <summary>
             Uses sententce case with colon (':') ending (e.g. "Some term:").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.LowerCase">
+        <member name="F:Atata.TermFormat.Lower">
             <summary>
-            Uses lower case (e.g. "someterm").
+            Uses lower case (e.g. "some term").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.UpperCase">
+        <member name="F:Atata.TermFormat.LowerMerged">
             <summary>
-            Uses upper case (e.g. "SOMETERM").
+            Uses lower case with words merging (e.g. "someterm").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.Upper">
+            <summary>
+            Uses upper case (e.g. "SOME TERM").
+            </summary>
+        </member>
+        <member name="F:Atata.TermFormat.UpperMerged">
+            <summary>
+            Uses upper case with words merging (e.g. "SOMETERM").
             </summary>
         </member>
         <member name="F:Atata.TermFormat.Camel">

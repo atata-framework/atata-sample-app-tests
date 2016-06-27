@@ -9,10 +9,10 @@ namespace Atata.SampleApp.AutoTests
         {
         }
 
-        [FindById(TermFormat.LowerCase)]
+        [FindById(TermFormat.Lower)]
         public GeneralTabPane General { get; private set; }
 
-        [FindById(TermFormat.LowerCase)]
+        [FindById(TermFormat.Lower)]
         public AdditionalTabPane Additional { get; private set; }
 
         [Term("Save", "Create")]
