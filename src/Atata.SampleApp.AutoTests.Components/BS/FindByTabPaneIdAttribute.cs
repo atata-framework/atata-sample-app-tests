@@ -4,13 +4,13 @@ namespace Atata.SampleApp.AutoTests
 {
     public class FindByTabPaneIdAttribute : TermFindAttribute
     {
-        public FindByTabPaneIdAttribute(TermFormat format)
-            : base(format)
+        public FindByTabPaneIdAttribute(TermCase termCase)
+            : base(termCase)
         {
         }
 
-        public FindByTabPaneIdAttribute(TermMatch match, TermFormat format = TermFormat.Inherit)
-            : base(match, format)
+        public FindByTabPaneIdAttribute(TermMatch match, TermCase termCase = TermCase.Inherit)
+            : base(match, termCase)
         {
         }
 
@@ -24,9 +24,9 @@ namespace Atata.SampleApp.AutoTests
         {
         }
 
-        protected override TermFormat DefaultFormat
+        protected override TermCase DefaultCase
         {
-            get { return TermFormat.Kebab; }
+            get { return TermCase.Kebab; }
         }
 
         public override IComponentScopeLocateStrategy CreateStrategy(UIComponentMetadata metadata)

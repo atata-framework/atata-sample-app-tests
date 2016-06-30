@@ -44,6 +44,51 @@
             Indicates the verification of the page title when the page object is initialized.
             </summary>
         </member>
+        <member name="T:Atata.CheckBoxList`2">
+            <summary>
+            Represents the checkbox list control (a set of &lt;input type="checkbox"&gt;).
+            </summary>
+            <typeparam name="T">The type of the control's data. Supports only enum types currently.</typeparam>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="M:Atata.CheckBoxList`2.#ctor">
+            <summary>
+            Initializes a new instance of the Atata.CheckBoxList`2 class.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">generic 'T'  parameter is not a Enum type.</exception>
+        </member>
+        <member name="M:Atata.CheckBoxList`2.Check(`0)">
+            <summary>
+            Checks the checkbox by specifed value.
+            </summary>
+            <param name="value">The value of the checkbox.</param>
+            <returns>The owner page object.</returns>
+        </member>
+        <member name="M:Atata.CheckBoxList`2.Uncheck(`0)">
+            <summary>
+            Unchecks the checkbox by specifed value.
+            </summary>
+            <param name="value">The value of the checkbox.</param>
+            <returns>The owner page object.</returns>
+        </member>
+        <member name="T:Atata.CheckBox`1">
+            <summary>
+            Represents the checkbox control (&lt;input type="checkbox"&gt;).
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="M:Atata.CheckBox`1.Check">
+            <summary>
+            Checks the control.
+            </summary>
+            <returns>The owner page object.</returns>
+        </member>
+        <member name="M:Atata.CheckBox`1.Uncheck">
+            <summary>
+            Unchecks the control.
+            </summary>
+            <returns>The owner page object.</returns>
+        </member>
         <member name="T:Atata.Content`2">
             <summary>
             Represents any element containing content.
@@ -87,10 +132,56 @@
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
+        <member name="T:Atata.DateInput`1">
+            <summary>
+            Represents the date input control.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.EditableField`2">
+            <summary>
+            Represents the base class for the editable field controls.
+            </summary>
+            <typeparam name="T">The type of the control's data.</typeparam>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.Input`2">
+            <summary>
+            Represents the input control.
+            </summary>
+            <typeparam name="T">The type of the control's data.</typeparam>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="M:Atata.Input`2.Append(System.String)">
+            <summary>
+            Appends the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The owner page object.</returns>
+        </member>
+        <member name="T:Atata.TimeInput`1">
+            <summary>
+            Represents the time input control.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
         <member name="T:Atata.Text`1">
             <summary>
             Represents any element containing text content.
             </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.NumberInput`1">
+            <summary>
+            Represents the number input control.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.Field`2">
+            <summary>
+            Represents the base class for the field controls.
+            </summary>
+            <typeparam name="T">The type of the control's data.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.TriggerPriority">
@@ -113,102 +204,102 @@
             Indicates that the trigger applies to the child control properties.
             </summary>
         </member>
-        <member name="T:Atata.TermFormat">
+        <member name="T:Atata.TermCase">
             <summary>
-            Specifies the term format.
+            Specifies the term case.
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.Inherit">
+        <member name="F:Atata.TermCase.Inherit">
             <summary>
-            Uses inherited format or none if missing.
+            Uses inherited case or none if missing.
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.None">
+        <member name="F:Atata.TermCase.None">
             <summary>
-            Doesn't apply format.
+            Doesn't apply case.
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.Title">
+        <member name="F:Atata.TermCase.Title">
             <summary>
             Uses title case (e.g. "Some Term").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.TitleWithColon">
+        <member name="F:Atata.TermCase.TitleWithColon">
             <summary>
             Uses title case with colon (':') ending (e.g. "Some Term:").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.Sentence">
+        <member name="F:Atata.TermCase.Sentence">
             <summary>
             Uses sentence case (e.g. "Some term").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.SentenceLower">
+        <member name="F:Atata.TermCase.MidSentence">
             <summary>
-            Uses sentence case starting with first letter in lower case (e.g. "some term").
+            Uses mid-sentence case where first word not capitalised (e.g. "some term").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.SentenceWithColon">
+        <member name="F:Atata.TermCase.SentenceWithColon">
             <summary>
-            Uses sententce case with colon (':') ending (e.g. "Some term:").
+            Uses sentence case with colon (':') ending (e.g. "Some term:").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.Lower">
+        <member name="F:Atata.TermCase.Lower">
             <summary>
             Uses lower case (e.g. "some term").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.LowerMerged">
+        <member name="F:Atata.TermCase.LowerMerged">
             <summary>
             Uses lower case with words merging (e.g. "someterm").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.Upper">
+        <member name="F:Atata.TermCase.Upper">
             <summary>
             Uses upper case (e.g. "SOME TERM").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.UpperMerged">
+        <member name="F:Atata.TermCase.UpperMerged">
             <summary>
             Uses upper case with words merging (e.g. "SOMETERM").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.Camel">
+        <member name="F:Atata.TermCase.Camel">
             <summary>
             Uses camel case (e.g. "someTerm").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.Pascal">
+        <member name="F:Atata.TermCase.Pascal">
             <summary>
             Uses pascal case (e.g. "SomeTerm").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.Kebab">
+        <member name="F:Atata.TermCase.Kebab">
             <summary>
             Uses dash ('-') and lower case (e.g. "some-term").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.HyphenKebab">
+        <member name="F:Atata.TermCase.HyphenKebab">
             <summary>
             Uses hyphen ('‐') and lower case (e.g. "some‐term").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.PascalKebab">
+        <member name="F:Atata.TermCase.PascalKebab">
             <summary>
             Uses dash ('-') and pascal case (e.g. "Some-Term").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.PascalHyphenKebab">
+        <member name="F:Atata.TermCase.PascalHyphenKebab">
             <summary>
             Uses hyphen ('‐') and pascal case (e.g. "Some‐Term").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.XKebab">
+        <member name="F:Atata.TermCase.XKebab">
             <summary>
             Uses dash ('-'), lower case and "x-" prefix (e.g. "x-some-term").
             </summary>
         </member>
-        <member name="F:Atata.TermFormat.Snake">
+        <member name="F:Atata.TermCase.Snake">
             <summary>
             Uses undersore ('_') and lower case (e.g. "some_term").
             </summary>

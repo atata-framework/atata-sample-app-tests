@@ -16,7 +16,7 @@ namespace Atata.SampleApp.AutoTests
                 throw new InvalidOperationException("Cannot find tab pane.");
 
             string tabPaneId = tabPanelControl.ScopeLocator.GetElement(SearchOptions.OfAnyVisibility()).GetAttribute("id");
-            var findAttribute = new FindByTabPaneIdAttribute("#" + tabPaneId.ToString(TermFormat.Kebab));
+            var findAttribute = new FindByTabPaneIdAttribute("#" + tabPaneId.ToString(TermCase.Kebab));
 
             // TODO: CreateControl in Owner.
             var tab = tabPanelControl.Parent.CreateControl<BSTab<TOwner>>(context.Component.ComponentName, findAttribute);
