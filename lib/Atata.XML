@@ -4,6 +4,12 @@
         <name>Atata</name>
     </assembly>
     <members>
+        <member name="T:Atata.PasswordInput`1">
+            <summary>
+            Represents the password input control (&lt;input type="password"&gt;).
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
         <member name="T:Atata.TermVerificationTriggerAttribute">
             <summary>
             The base trigger attribute class that can be used in the verification process when the page object is initialized.
@@ -313,6 +319,12 @@
             <summary>
             Uses inherited match or none if missing.
             </summary>
+        </member>
+        <member name="T:Atata.TextInput`1">
+            <summary>
+            Represents the text input control (&lt;input type="text"&gt;).
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
     </members>
 </doc>
