@@ -22,12 +22,12 @@ namespace Atata.SampleApp.AutoTests
                     General.Sex.Set(sex).
                     Save().
                 Users.Row(x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office).View().
-                    Header.VerifyEquals(firstName + " " + lastName).
-                    Email.VerifyEquals(email).
-                    Office.VerifyEquals(office).
-                    Sex.VerifyEquals(sex).
-                    Birthday.VerifyMissing().
-                    Notes.VerifyMissing();
+                    Header.Should.Equal(firstName + " " + lastName).
+                    Email.Should.Equal(email).
+                    Office.Should.Equal(office).
+                    Sex.Should.Equal(sex).
+                    Birthday.Should.Not.Exist().
+                    Notes.Should.Not.Exist();
         }
 
         [Test]
@@ -53,12 +53,12 @@ namespace Atata.SampleApp.AutoTests
                     Additional.Notes.SetRandom(out notes).
                     Save().
                 Users.Row(x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office).View().
-                    Header.VerifyEquals(firstName + " " + lastName).
-                    Email.VerifyEquals(email).
-                    Office.VerifyEquals(office).
-                    Sex.VerifyEquals(sex).
-                    Birthday.VerifyEquals(birthday).
-                    Notes.VerifyEquals(notes);
+                    Header.Should.Equal(firstName + " " + lastName).
+                    Email.Should.Equal(email).
+                    Office.Should.Equal(office).
+                    Sex.Should.Equal(sex).
+                    Birthday.Should.Equal(birthday).
+                    Notes.Should.Equal(notes);
         }
 
         [Test]
@@ -77,7 +77,7 @@ namespace Atata.SampleApp.AutoTests
                     General.Sex.Set(sex).
                     Save().
                 Users.Row(x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office).Delete().
-                Users.Row(x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office).VerifyMissing();
+                Users.Row(x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office).Should.Not.Exist();
         }
     }
 }
