@@ -64,7 +64,7 @@
     <Compile Include="BS\BSNavbar`1.cs" />
     <Compile Include="BS\BSTabPane`1.cs" />
     <Compile Include="BS\BSTab`1.cs" />
-    <Compile Include="BS\FindByTabPaneIdAttribute.cs" />
+    <Compile Include="BS\FindByBSTabPaneIdAttribute.cs" />
     <Compile Include="ForbiddenPage.cs" />
     <Compile Include="NotFoundPage.cs" />
     <Compile Include="Properties\AtataSettings.cs" />

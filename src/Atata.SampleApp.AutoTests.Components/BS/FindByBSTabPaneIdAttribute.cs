@@ -2,24 +2,24 @@
 
 namespace Atata.SampleApp.AutoTests
 {
-    public class FindByTabPaneIdAttribute : TermFindAttribute
+    public class FindByBSTabPaneIdAttribute : TermFindAttribute
     {
-        public FindByTabPaneIdAttribute(TermCase termCase)
+        public FindByBSTabPaneIdAttribute(TermCase termCase)
             : base(termCase)
         {
         }
 
-        public FindByTabPaneIdAttribute(TermMatch match, TermCase termCase = TermCase.Inherit)
+        public FindByBSTabPaneIdAttribute(TermMatch match, TermCase termCase = TermCase.Inherit)
             : base(match, termCase)
         {
         }
 
-        public FindByTabPaneIdAttribute(TermMatch match, params string[] values)
+        public FindByBSTabPaneIdAttribute(TermMatch match, params string[] values)
             : base(match, values)
         {
         }
 
-        public FindByTabPaneIdAttribute(params string[] values)
+        public FindByBSTabPaneIdAttribute(params string[] values)
             : base(values)
         {
         }
