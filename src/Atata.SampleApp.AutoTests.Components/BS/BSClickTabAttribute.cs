@@ -19,7 +19,7 @@ namespace Atata.SampleApp.AutoTests
             var findAttribute = new FindByBSTabPaneIdAttribute("#" + tabPaneId.ToString(TermCase.Kebab));
 
             // TODO: CreateControl in Owner.
-            var tab = tabPanelControl.Parent.CreateControl<BSTab<TOwner>>(context.Component.ComponentName, findAttribute);
+            var tab = tabPanelControl.Parent.Controls.Create<BSTab<TOwner>>(context.Component.ComponentName, findAttribute);
 
             if (!tab.IsActive)
                 tab.Click();

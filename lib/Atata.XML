@@ -4,11 +4,42 @@
         <name>Atata</name>
     </assembly>
     <members>
+        <member name="T:Atata.ItemsControl`2">
+            <summary>
+            Represents the items control (a set of any control of TItem type).
+            </summary>
+            <typeparam name="TItem">The type of the item control.</typeparam>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="P:Atata.ItemsControl`2.Items">
+            <summary>
+            Gets the items' ControlList.
+            </summary>
+            <value>
+            The items.
+            </value>
+        </member>
+        <member name="T:Atata.TableHeader`1">
+            <summary>
+            Represents the table header cell control (&lt;th&gt;).
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
         <member name="T:Atata.PasswordInput`1">
             <summary>
             Represents the password input control (&lt;input type="password"&gt;).
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="M:Atata.ControlNameExpressionStringBuilder.ExpressionToString(System.Linq.Expressions.Expression)">
+            <summary>
+            Output a given expression tree to a string.
+            </summary>
+        </member>
+        <member name="M:Atata.ExpressionStringBuilder.ExpressionToString(System.Linq.Expressions.Expression)">
+            <summary>
+            Output a given expression tree to a string.
+            </summary>
         </member>
         <member name="T:Atata.TermVerificationTriggerAttribute">
             <summary>
@@ -149,6 +180,19 @@
             Represents the base class for the editable field controls.
             </summary>
             <typeparam name="T">The type of the control's data.</typeparam>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.RadioButtonList`2">
+            <summary>
+            Represents the radio button list control (a set of &lt;input type="radio"&gt;).
+            </summary>
+            <typeparam name="T">The type of the control's data. Supports string, enum types, numeric types and others.</typeparam>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.RadioButton`1">
+            <summary>
+            Represents the radio button control (&lt;input type="radio"&gt;).
+            </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.Input`2">
