@@ -11,5 +11,7 @@ namespace Atata.SampleApp.AutoTests
         public PasswordInput<_> Password { get; private set; }
 
         public Button<UsersPage, _> SignIn { get; private set; }
+
+        public ValidationMessageList<_> ValidationMessages { get; private set; }
     }
 }
