@@ -65,6 +65,8 @@
     <Compile Include="BS\BSTabPane`1.cs" />
     <Compile Include="BS\BSTab`1.cs" />
     <Compile Include="BS\FindByBSTabPaneIdAttribute.cs" />
+    <Compile Include="Controls\ValidationMessageList`1.cs" />
+    <Compile Include="Controls\ValidationMessage`1.cs" />
     <Compile Include="ForbiddenPage.cs" />
     <Compile Include="NotFoundPage.cs" />
     <Compile Include="Properties\AtataSettings.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="UserDetailsPage.cs" />
     <Compile Include="UserEditWindow.cs" />
     <Compile Include="UsersPage.cs" />
+    <Compile Include="ValidationMessages.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
