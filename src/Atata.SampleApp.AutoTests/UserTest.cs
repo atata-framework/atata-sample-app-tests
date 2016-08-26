@@ -90,7 +90,8 @@ namespace Atata.SampleApp.AutoTests
                     ValidationMessages[x => x.General.LastName].Should.BeRequired().
                     ValidationMessages[x => x.General.Email].Should.BeRequired().
                     ValidationMessages[x => x.General.Office].Should.BeRequired().
-                    ValidationMessages[x => x.General.Sex].Should.BeRequired();
+                    ValidationMessages[x => x.General.Sex].Should.BeRequired().
+                    ValidationMessages.Should.HaveCount(5);
         }
 
         [Test]
@@ -102,10 +103,35 @@ namespace Atata.SampleApp.AutoTests
                     General.LastName.Set("a").
                     Save.Click().
                     ValidationMessages[x => x.General.FirstName].Should.HaveMinLength(2).
+                    ValidationMessages[x => x.General.LastName].Should.HaveMinLength(2);
+        }
+
+        [Test]
+        public void User_Validation_RealTime()
+        {
+            Login().
+                New().
+                    ValidationMessages.Should.BeEmpty().
+
+                    General.FirstName.Click().
+                    General.LastName.Click().
+                    ValidationMessages.Should.HaveCount(1).
+                    ValidationMessages[x => x.General.FirstName].Should.BeRequired().
+                    General.FirstName.Set("a").
+                    General.LastName.Set("a").
+                    General.FirstName.Click().
+                    ValidationMessages.Should.HaveCount(2).
+                    ValidationMessages[x => x.General.FirstName].Should.HaveMinLength(2).
                     ValidationMessages[x => x.General.LastName].Should.HaveMinLength(2).
 
                     General.FirstName.Append("b").
+                    General.LastName.Click().
+                    ValidationMessages[x => x.General.FirstName].Should.Not.Exist().
                     General.LastName.Append("b").
+                    General.FirstName.Click().
+                    ValidationMessages[x => x.General.LastName].Should.Not.Exist().
+                    ValidationMessages.Should.BeEmpty().
+
                     General.Email.SetRandom().
                     General.Office.Set(Office.Rome).
                     General.Sex.Set(Sex.Female).
