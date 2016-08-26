@@ -12,16 +12,27 @@ namespace Atata.SampleApp.AutoTests
         }
 
         [Test]
-        public void SignIn_Validation()
+        public void SignIn_Validation_Required()
         {
             Go.To<SignInPage>().
                 SignIn.Click().
-                ValidationMessages[x => x.Email].Should.Equal(ValidationMessages.Required).
-                ValidationMessages[x => x.Password].Should.Equal(ValidationMessages.Required).
+                ValidationMessages[x => x.Email].Should.BeRequired().
+                ValidationMessages[x => x.Password].Should.BeRequired().
+                Email.Set(Config.Account.Email).
+                Password.Set(Config.Account.Password).
+                SignIn();
+        }
+
+        [Test]
+        public void SignIn_Validation_InvalidPassword()
+        {
+            Go.To<SignInPage>().
                 Email.Set(Config.Account.Email).
                 Password.Set(Config.Account.Password + "!").
                 SignIn.Click().
-                ValidationMessages[x => x.Password].Should.Equal("or Email is invalid");
+                ValidationMessages.Should.Contain(TermMatch.Contains, "invalid").
+                Password.Set(Config.Account.Password).
+                SignIn();
         }
     }
 }

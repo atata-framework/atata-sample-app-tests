@@ -67,6 +67,7 @@
     <Compile Include="BS\FindByBSTabPaneIdAttribute.cs" />
     <Compile Include="Controls\ValidationMessageList`1.cs" />
     <Compile Include="Controls\ValidationMessage`1.cs" />
+    <Compile Include="Extensions\IDataVerificationProviderExtensions.cs" />
     <Compile Include="ForbiddenPage.cs" />
     <Compile Include="NotFoundPage.cs" />
     <Compile Include="Properties\AtataSettings.cs" />
