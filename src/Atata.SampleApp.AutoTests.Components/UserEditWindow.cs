@@ -18,6 +18,8 @@ namespace Atata.SampleApp.AutoTests
         [Term("Save", "Create")]
         public Button<UsersPage, _> Save { get; private set; }
 
+        public ValidationMessageList<_> ValidationMessages { get; private set; }
+
         public class GeneralTabPane : BSTabPane<_>
         {
             public TextInput<_> FirstName { get; private set; }

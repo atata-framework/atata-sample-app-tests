@@ -81,7 +81,6 @@
     <Compile Include="UserDetailsPage.cs" />
     <Compile Include="UserEditWindow.cs" />
     <Compile Include="UsersPage.cs" />
-    <Compile Include="ValidationMessages.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -79,5 +79,37 @@ namespace Atata.SampleApp.AutoTests
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].Delete().
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].Should.Not.Exist();
         }
+
+        [Test]
+        public void User_Validation_Required()
+        {
+            Login().
+                New().
+                    Save.Click().
+                    ValidationMessages[x => x.General.FirstName].Should.BeRequired().
+                    ValidationMessages[x => x.General.LastName].Should.BeRequired().
+                    ValidationMessages[x => x.General.Email].Should.BeRequired().
+                    ValidationMessages[x => x.General.Office].Should.BeRequired().
+                    ValidationMessages[x => x.General.Sex].Should.BeRequired();
+        }
+
+        [Test]
+        public void User_Validation_MinLength()
+        {
+            Login().
+                New().
+                    General.FirstName.Set("a").
+                    General.LastName.Set("a").
+                    Save.Click().
+                    ValidationMessages[x => x.General.FirstName].Should.HaveMinLength(2).
+                    ValidationMessages[x => x.General.LastName].Should.HaveMinLength(2).
+
+                    General.FirstName.Append("b").
+                    General.LastName.Append("b").
+                    General.Email.SetRandom().
+                    General.Office.Set(Office.Rome).
+                    General.Sex.Set(Sex.Female).
+                    Save();
+        }
     }
 }
