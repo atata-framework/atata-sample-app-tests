@@ -4,6 +4,26 @@
         <name>Atata.WebDriverExtras</name>
     </assembly>
     <members>
+        <member name="T:Atata.ElementVisibility">
+            <summary>
+            Specifies the visibility of element.
+            </summary>
+        </member>
+        <member name="F:Atata.ElementVisibility.Visible">
+            <summary>
+            Finds only visible elements.
+            </summary>
+        </member>
+        <member name="F:Atata.ElementVisibility.Invisible">
+            <summary>
+            Finds only invisible elements.
+            </summary>
+        </member>
+        <member name="F:Atata.ElementVisibility.Any">
+            <summary>
+            Finds elements with any visibility.
+            </summary>
+        </member>
         <member name="M:Atata.SafeWait`1.#ctor(`0)">
             <summary>
             Initializes a new instance of the <see cref="T:OpenQA.Selenium.Support.UI.DefaultWait`1"/> class.
@@ -49,6 +69,22 @@
             <typeparam name="TResult">The delegate's expected return type.</typeparam>
             <param name="condition">A delegate taking an object of type T as its parameter, and returning a TResult.</param>
             <returns>The delegate's return value.</returns>
+        </member>
+        <member name="P:Atata.RetrySettings.Timeout">
+            <summary>
+            Gets the timeout.
+            </summary>
+            <value>
+            The timeout. The default is 10 seconds.
+            </value>
+        </member>
+        <member name="P:Atata.RetrySettings.RetryInterval">
+            <summary>
+            Gets the retry interval.
+            </summary>
+            <value>
+            The retry interval. The default is 500 milliseconds.
+            </value>
         </member>
     </members>
 </doc>

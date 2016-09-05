@@ -4,6 +4,46 @@
         <name>Atata</name>
     </assembly>
     <members>
+        <member name="T:Atata.LogEventInfo">
+            <summary>
+            Represents the logging event.
+            </summary>
+        </member>
+        <member name="P:Atata.LogEventInfo.Timestamp">
+            <summary>
+            Gets the timestamp of the logging event.
+            </summary>
+        </member>
+        <member name="P:Atata.LogEventInfo.Level">
+            <summary>
+            Gets the level of the logging event.
+            </summary>
+        </member>
+        <member name="P:Atata.LogEventInfo.Message">
+            <summary>
+            Gets the log message.
+            </summary>
+        </member>
+        <member name="P:Atata.LogEventInfo.Exception">
+            <summary>
+            Gets the exception information.
+            </summary>
+        </member>
+        <member name="P:Atata.LogEventInfo.SectionStart">
+            <summary>
+            Gets the section start information.
+            </summary>
+        </member>
+        <member name="P:Atata.LogEventInfo.SectionEnd">
+            <summary>
+            Gets the section end information.
+            </summary>
+        </member>
+        <member name="T:Atata.LogLevel">
+            <summary>
+            Specifies the level of log event.
+            </summary>
+        </member>
         <member name="T:Atata.ItemsControl`2">
             <summary>
             Represents the items control (a set of any control of TItem type).
@@ -76,10 +116,26 @@
             Indicates the verification of the content of the &lt;h6&gt; tag when the page object is initialized.
             </summary>
         </member>
+        <member name="P:Atata.VerifyHeadingTriggerAttribute.Index">
+            <summary>
+            Gets or sets the index of header.
+            </summary>
+            <value>
+            The index. The default is -1, meaning that the index is not used.
+            </value>
+        </member>
         <member name="T:Atata.VerifyTitleAttribute">
             <summary>
             Indicates the verification of the page title when the page object is initialized.
             </summary>
+        </member>
+        <member name="P:Atata.FindAttribute.Index">
+            <summary>
+            Gets or sets the index of header.
+            </summary>
+            <value>
+            The index. The default is -1, meaning that the index is not used.
+            </value>
         </member>
         <member name="T:Atata.CheckBoxList`2">
             <summary>
