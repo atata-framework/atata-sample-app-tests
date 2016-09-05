@@ -10,7 +10,8 @@ namespace Atata.SampleApp.AutoTests
         public void SetUp()
         {
             var log = new LogManager().
-                Use(new NUnitTestContextLogConsumer());
+                Use(new NUnitTestContextLogConsumer()).
+                Use(new NLogConsumer());
 
             ATContext.SetUp(
                 () => new ChromeDriver().Maximize(),
