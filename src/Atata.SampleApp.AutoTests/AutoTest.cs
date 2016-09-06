@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 
 namespace Atata.SampleApp.AutoTests
 {
@@ -15,12 +16,20 @@ namespace Atata.SampleApp.AutoTests
                 Use(new FileScreenshotConsumer(() => $@"Logs\{ATContext.BuildStart:yyyy_MM_dd HH_mm_ss}\{ATContext.Current.TestName}"));
 
             ATContext.SetUp(
-                () => new ChromeDriver().Maximize(),
+                CreateChromeDriver,
                 log,
                 TestContext.CurrentContext.Test.Name,
                 Config.Url);
 
             OnSetUp();
+        }
+
+        private RemoteWebDriver CreateChromeDriver()
+        {
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("disable-extensions", "no-sandbox", "start-maximized");
+
+            return new ChromeDriver(options);
         }
 
         protected virtual void OnSetUp()
