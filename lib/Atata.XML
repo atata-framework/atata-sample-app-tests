@@ -6,7 +6,7 @@
     <members>
         <member name="T:Atata.LogEventInfo">
             <summary>
-            Represents the logging event.
+            Represents the logging event information raised by Atata framework.
             </summary>
         </member>
         <member name="P:Atata.LogEventInfo.Timestamp">
@@ -39,9 +39,72 @@
             Gets the section end information.
             </summary>
         </member>
+        <member name="P:Atata.LogEventInfo.BuildStart">
+            <summary>
+            Gets the build start date and time.
+            </summary>
+            <value>
+            The build start. Contains the same value for all the tests being executed within one build.
+            </value>
+        </member>
+        <member name="P:Atata.LogEventInfo.TestName">
+            <summary>
+            Gets the name of the test.
+            </summary>
+            <value>
+            The name of the test.
+            </value>
+        </member>
+        <member name="P:Atata.LogEventInfo.TestStart">
+            <summary>
+            Gets the test start date and time.
+            </summary>
+            <value>
+            The test start.
+            </value>
+        </member>
         <member name="T:Atata.LogLevel">
             <summary>
             Specifies the level of log event.
+            </summary>
+        </member>
+        <member name="T:Atata.LogManager">
+            <summary>
+            Represents the log manager, the entry point for the Atata logging functionality.
+            </summary>
+            <seealso cref="T:Atata.ILogManager" />
+        </member>
+        <member name="M:Atata.LogManager.Use(Atata.ILogConsumer)">
+            <summary>
+            Use the specified consumer for logging.
+            </summary>
+            <param name="consumer">The log consumer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Atata.LogManager.Use(Atata.IScreenshotConsumer)">
+            <summary>
+            Use the specified screenshot consumer.
+            </summary>
+            <param name="consumer">The screenshot consumer.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Atata.LogManager.Start(Atata.LogSection)">
+            <summary>
+            Starts the specified log section.
+            </summary>
+            <param name="section">The log section.</param>
+            <example> This sample shows how to log the data insertion to some control in the scope of the control.
+            <code>
+            string value = "new_value";
+            Log.Start(new DataAdditionLogSection(this, value));
+            // TODO: Add a value to the control.
+            Log.EndSection();
+            </code>
+            </example>
+        </member>
+        <member name="M:Atata.LogManager.EndSection">
+            <summary>
+            Ends the latest log section.
             </summary>
         </member>
         <member name="T:Atata.ItemsControl`2">
@@ -270,6 +333,64 @@
             Represents the time input control.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.ATContext">
+            <summary>
+            Represents the Atata context, the entry point for the test set-up.
+            </summary>
+        </member>
+        <member name="P:Atata.ATContext.BuildStart">
+            <summary>
+            Gets the build start date and time.
+            </summary>
+            <value>
+            The build start. Contains the same value for all the tests being executed within one build.
+            </value>
+        </member>
+        <member name="P:Atata.ATContext.Driver">
+            <summary>
+            Gets the driver.
+            </summary>
+            <value>
+            The driver.
+            </value>
+        </member>
+        <member name="P:Atata.ATContext.Log">
+            <summary>
+            Gets the log manager.
+            </summary>
+            <value>
+            The instance of the log manager.
+            </value>
+        </member>
+        <member name="P:Atata.ATContext.TestName">
+            <summary>
+            Gets the name of the test.
+            </summary>
+            <value>
+            The name of the test.
+            </value>
+        </member>
+        <member name="P:Atata.ATContext.TestStart">
+            <summary>
+            Gets the test start date and time.
+            </summary>
+            <value>
+            The test start.
+            </value>
+        </member>
+        <member name="P:Atata.ATContext.Current">
+            <summary>
+            Gets the current test context.
+            </summary>
+            <value>
+            The test context.
+            </value>
+        </member>
+        <member name="M:Atata.ATContext.CleanUp">
+            <summary>
+            Cleans up current test context.
+            </summary>
         </member>
         <member name="T:Atata.Text`1">
             <summary>
