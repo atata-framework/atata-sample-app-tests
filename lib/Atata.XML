@@ -4,6 +4,38 @@
         <name>Atata</name>
     </assembly>
     <members>
+        <member name="T:Atata.FileScreenshotConsumer">
+            <summary>
+            Represents the screenshot consumer that saves the screenshot to the file.
+            </summary>
+            <seealso cref="T:Atata.IScreenshotConsumer" />
+        </member>
+        <member name="P:Atata.FileScreenshotConsumer.ImageFormat">
+            <summary>
+            Gets or sets the image format. The default format is Png.
+            </summary>
+        </member>
+        <member name="M:Atata.FileScreenshotConsumer.Take(OpenQA.Selenium.Screenshot,System.Int32,System.String)">
+            <summary>
+            Takes the specified screenshot.
+            </summary>
+            <param name="screenshot">The screenshot.</param>
+            <param name="number">The number of the screenshot.</param>
+            <param name="title">The title. Can be null.</param>
+        </member>
+        <member name="T:Atata.IScreenshotConsumer">
+            <summary>
+            Defines the interface for the screenshot consumer.
+            </summary>
+        </member>
+        <member name="M:Atata.IScreenshotConsumer.Take(OpenQA.Selenium.Screenshot,System.Int32,System.String)">
+            <summary>
+            Takes the specified screenshot.
+            </summary>
+            <param name="screenshot">The screenshot.</param>
+            <param name="number">The number of the screenshot.</param>
+            <param name="title">The title. Can be null.</param>
+        </member>
         <member name="T:Atata.LogEventInfo">
             <summary>
             Represents the logging event information raised by Atata framework.
@@ -41,27 +73,18 @@
         </member>
         <member name="P:Atata.LogEventInfo.BuildStart">
             <summary>
-            Gets the build start date and time.
+            Gets the build start date and time. Contains the same value for all the tests being executed within one build.
             </summary>
-            <value>
-            The build start. Contains the same value for all the tests being executed within one build.
-            </value>
         </member>
         <member name="P:Atata.LogEventInfo.TestName">
             <summary>
             Gets the name of the test.
             </summary>
-            <value>
-            The name of the test.
-            </value>
         </member>
         <member name="P:Atata.LogEventInfo.TestStart">
             <summary>
             Gets the test start date and time.
             </summary>
-            <value>
-            The test start.
-            </value>
         </member>
         <member name="T:Atata.LogLevel">
             <summary>
@@ -93,7 +116,7 @@
             Starts the specified log section.
             </summary>
             <param name="section">The log section.</param>
-            <example> This sample shows how to log the data insertion to some control in the scope of the control.
+            <example>This sample shows how to log the data insertion to some control in the scope of the control.
             <code>
             string value = "new_value";
             Log.Start(new DataAdditionLogSection(this, value));
@@ -118,9 +141,6 @@
             <summary>
             Gets the items' ControlList.
             </summary>
-            <value>
-            The items.
-            </value>
         </member>
         <member name="T:Atata.TableHeader`1">
             <summary>
@@ -181,11 +201,8 @@
         </member>
         <member name="P:Atata.VerifyHeadingTriggerAttribute.Index">
             <summary>
-            Gets or sets the index of header.
+            Gets or sets the index of header. The default value is -1, meaning that the index is not used.
             </summary>
-            <value>
-            The index. The default is -1, meaning that the index is not used.
-            </value>
         </member>
         <member name="T:Atata.VerifyTitleAttribute">
             <summary>
@@ -194,11 +211,8 @@
         </member>
         <member name="P:Atata.FindAttribute.Index">
             <summary>
-            Gets or sets the index of header.
+            Gets or sets the index of the control. The default value is -1, meaning that the index is not used.
             </summary>
-            <value>
-            The index. The default is -1, meaning that the index is not used.
-            </value>
         </member>
         <member name="T:Atata.CheckBoxList`2">
             <summary>
@@ -341,51 +355,33 @@
         </member>
         <member name="P:Atata.ATContext.BuildStart">
             <summary>
-            Gets the build start date and time.
+            Gets the build start date and time. Contains the same value for all the tests being executed within one build.
             </summary>
-            <value>
-            The build start. Contains the same value for all the tests being executed within one build.
-            </value>
         </member>
         <member name="P:Atata.ATContext.Driver">
             <summary>
             Gets the driver.
             </summary>
-            <value>
-            The driver.
-            </value>
         </member>
         <member name="P:Atata.ATContext.Log">
             <summary>
-            Gets the log manager.
+            Gets the instance of the log manager.
             </summary>
-            <value>
-            The instance of the log manager.
-            </value>
         </member>
         <member name="P:Atata.ATContext.TestName">
             <summary>
             Gets the name of the test.
             </summary>
-            <value>
-            The name of the test.
-            </value>
         </member>
         <member name="P:Atata.ATContext.TestStart">
             <summary>
             Gets the test start date and time.
             </summary>
-            <value>
-            The test start.
-            </value>
         </member>
         <member name="P:Atata.ATContext.Current">
             <summary>
             Gets the current test context.
             </summary>
-            <value>
-            The test context.
-            </value>
         </member>
         <member name="M:Atata.ATContext.CleanUp">
             <summary>

@@ -11,7 +11,8 @@ namespace Atata.SampleApp.AutoTests
         {
             var log = new LogManager().
                 Use(new NUnitTestContextLogConsumer()).
-                Use(new NLogConsumer());
+                Use(new NLogConsumer()).
+                Use(new FileScreenshotConsumer(() => $@"Logs\{ATContext.BuildStart:yyyy_MM_dd HH_mm_ss}\{ATContext.Current.TestName}"));
 
             ATContext.SetUp(
                 () => new ChromeDriver().Maximize(),
