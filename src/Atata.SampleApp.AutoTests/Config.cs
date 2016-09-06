@@ -4,12 +4,12 @@ namespace Atata.SampleApp.AutoTests
 {
     public static class Config
     {
-        public static string Url { get; } = ConfigurationManager.AppSettings["Url"];
+        public static string Url { get; } = ConfigurationManager.AppSettings[nameof(Url)];
 
         public static class Account
         {
-            public static string Email { get; } = ConfigurationManager.AppSettings["Email"];
-            public static string Password { get; } = ConfigurationManager.AppSettings["Password"];
+            public static string Email { get; } = ConfigurationManager.AppSettings[nameof(Email)];
+            public static string Password { get; } = ConfigurationManager.AppSettings[nameof(Password)];
         }
     }
 }
