@@ -13,7 +13,7 @@ namespace Atata.SampleApp.AutoTests
             var log = new LogManager().
                 Use(new NUnitTestContextLogConsumer()).
                 Use(new NLogConsumer()).
-                Use(new FileScreenshotConsumer(() => $@"Logs\{ATContext.BuildStart:yyyy_MM_dd HH_mm_ss}\{ATContext.Current.TestName}"));
+                Use(new FileScreenshotConsumer(() => $@"Logs\{ATContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{ATContext.Current.TestName}"));
 
             ATContext.SetUp(
                 CreateChromeDriver,
@@ -39,7 +39,10 @@ namespace Atata.SampleApp.AutoTests
         [TearDown]
         public void TearDown()
         {
+            ATContext.Current.Log.Screenshot();
+
             var testResult = TestContext.CurrentContext.Result;
+
             if (testResult.Outcome.Status == TestStatus.Failed)
                 ATContext.Current.Log.Error(testResult.Message, testResult.StackTrace);
 
