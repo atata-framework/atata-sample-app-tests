@@ -4,6 +4,30 @@
         <name>Atata</name>
     </assembly>
     <members>
+        <member name="T:Atata.UIComponentAttributeProvider">
+            <summary>
+            Allows to access the component scope element attribute values.
+            </summary>
+        </member>
+        <member name="P:Atata.UIComponentAttributeProvider.Item(System.String)">
+            <summary>
+            Gets the value of the specified attribute for the control's scope element.
+            </summary>
+            <param name="attributeName">The name of the attribute.</param>
+            <returns>The attribute's current value. Returns a null if the value is not set.</returns>
+        </member>
+        <member name="T:Atata.UIComponentCssProvider">
+            <summary>
+            Allows to access the component scope element CSS property values.
+            </summary>
+        </member>
+        <member name="P:Atata.UIComponentCssProvider.Item(System.String)">
+            <summary>
+            Gets the value of the specified CSS property for the control's scope element.
+            </summary>
+            <param name="propertyName">The name of the CSS property.</param>
+            <returns>The value of the specified CSS property.</returns>
+        </member>
         <member name="T:Atata.FileScreenshotConsumer">
             <summary>
             Represents the screenshot consumer that saves the screenshot to the file.
@@ -15,26 +39,59 @@
             Gets or sets the image format. The default format is Png.
             </summary>
         </member>
-        <member name="M:Atata.FileScreenshotConsumer.Take(OpenQA.Selenium.Screenshot,System.Int32,System.String)">
+        <member name="M:Atata.FileScreenshotConsumer.Take(Atata.ScreenshotInfo)">
             <summary>
             Takes the specified screenshot.
             </summary>
-            <param name="screenshot">The screenshot.</param>
-            <param name="number">The number of the screenshot.</param>
-            <param name="title">The title. Can be null.</param>
+            <param name="screenshotInfo">The screenshot information.</param>
+        </member>
+        <member name="M:Atata.FileScreenshotConsumer.BuildFileName(Atata.ScreenshotInfo)">
+            <summary>
+            Builds the name of the file without extension.
+            </summary>
+            <param name="screenshotInfo">The screenshot information.</param>
+            <returns></returns>
         </member>
         <member name="T:Atata.IScreenshotConsumer">
             <summary>
             Defines the interface for the screenshot consumer.
             </summary>
         </member>
-        <member name="M:Atata.IScreenshotConsumer.Take(OpenQA.Selenium.Screenshot,System.Int32,System.String)">
+        <member name="M:Atata.IScreenshotConsumer.Take(Atata.ScreenshotInfo)">
             <summary>
             Takes the specified screenshot.
             </summary>
-            <param name="screenshot">The screenshot.</param>
-            <param name="number">The number of the screenshot.</param>
-            <param name="title">The title. Can be null.</param>
+            <param name="screenshotInfo">The screenshot information object.</param>
+        </member>
+        <member name="T:Atata.ScreenshotInfo">
+            <summary>
+            Represents the screenshot information. Is used by the classes that implement <see cref="T:Atata.IScreenshotConsumer"/>.
+            </summary>
+        </member>
+        <member name="P:Atata.ScreenshotInfo.Screenshot">
+            <summary>
+            Gets the screenshot.
+            </summary>
+        </member>
+        <member name="P:Atata.ScreenshotInfo.Number">
+            <summary>
+            Gets the number.
+            </summary>
+        </member>
+        <member name="P:Atata.ScreenshotInfo.Title">
+            <summary>
+            Gets the title. Can be null.
+            </summary>
+        </member>
+        <member name="P:Atata.ScreenshotInfo.PageObjectName">
+            <summary>
+            Gets the name of the page object that was shot.
+            </summary>
+        </member>
+        <member name="P:Atata.ScreenshotInfo.PageObjectFullName">
+            <summary>
+            Gets the full name of the page object that was shot.
+            </summary>
         </member>
         <member name="T:Atata.LogEventInfo">
             <summary>
@@ -393,6 +450,16 @@
             Represents any element containing text content.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="P:Atata.UIComponent.Attributes">
+            <summary>
+            Gets the scope element's attributes.
+            </summary>
+        </member>
+        <member name="P:Atata.UIComponent.Css">
+            <summary>
+            Gets the scope element's CSS properties.
+            </summary>
         </member>
         <member name="T:Atata.NumberInput`1">
             <summary>

@@ -1,4 +1,5 @@
-﻿using _ = Atata.SampleApp.AutoTests.UserEditWindow;
+﻿using OpenQA.Selenium;
+using _ = Atata.SampleApp.AutoTests.UserEditWindow;
 
 namespace Atata.SampleApp.AutoTests
 {
@@ -19,6 +20,11 @@ namespace Atata.SampleApp.AutoTests
         public Button<UsersPage, _> Save { get; private set; }
 
         public ValidationMessageList<_> ValidationMessages { get; private set; }
+
+        protected override By CreateScopeBy()
+        {
+            return By.TagName("body");
+        }
 
         public class GeneralTabPane : BSTabPane<_>
         {
