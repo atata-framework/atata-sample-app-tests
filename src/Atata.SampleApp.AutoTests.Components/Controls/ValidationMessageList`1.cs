@@ -17,8 +17,10 @@ namespace Atata.SampleApp.AutoTests
 
             IControl<TOwner> boundControl = controlSelector(Component.Owner);
 
-            DynamicScopeLocator scopeLocator = new DynamicScopeLocator(
-                so => boundControl.ScopeLocator.GetElement(so)?.Get(By.XPath("ancestor::" + validationMessageDefinition.ScopeXPath).With(so)));
+            PlainScopeLocator scopeLocator = new PlainScopeLocator(By.XPath("ancestor::" + validationMessageDefinition.ScopeXPath))
+            {
+                SearchContext = boundControl.Scope
+            };
 
             return Component.Controls.Create<ValidationMessage<TOwner>>(boundControl.ComponentName, scopeLocator);
         }
