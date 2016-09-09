@@ -47,10 +47,10 @@
         </member>
         <member name="M:Atata.FileScreenshotConsumer.BuildFileName(Atata.ScreenshotInfo)">
             <summary>
-            Builds the name of the file without extension.
+            Builds the name of the file without the extension.
             </summary>
             <param name="screenshotInfo">The screenshot information.</param>
-            <returns></returns>
+            <returns>The file name without the extension.</returns>
         </member>
         <member name="T:Atata.IScreenshotConsumer">
             <summary>
@@ -159,14 +159,14 @@
             Use the specified consumer for logging.
             </summary>
             <param name="consumer">The log consumer.</param>
-            <returns></returns>
+            <returns>The same <see cref="T:Atata.LogManager"/> instance.</returns>
         </member>
         <member name="M:Atata.LogManager.Use(Atata.IScreenshotConsumer)">
             <summary>
             Use the specified screenshot consumer.
             </summary>
             <param name="consumer">The screenshot consumer.</param>
-            <returns></returns>
+            <returns>The same <see cref="T:Atata.LogManager"/> instance.</returns>
         </member>
         <member name="M:Atata.LogManager.Start(Atata.LogSection)">
             <summary>
@@ -215,11 +215,15 @@
             <summary>
             Output a given expression tree to a string.
             </summary>
+            <param name="node">The expression node.</param>
+            <returns>The string representing the expression.</returns>
         </member>
         <member name="M:Atata.ExpressionStringBuilder.ExpressionToString(System.Linq.Expressions.Expression)">
             <summary>
             Output a given expression tree to a string.
             </summary>
+            <param name="node">The expession node.</param>
+            <returns>The string representing the expression.</returns>
         </member>
         <member name="T:Atata.TermVerificationTriggerAttribute">
             <summary>
@@ -280,9 +284,9 @@
         </member>
         <member name="M:Atata.CheckBoxList`2.#ctor">
             <summary>
-            Initializes a new instance of the Atata.CheckBoxList`2 class.
+            Initializes a new instance of the <see cref="T:Atata.CheckBoxList`2"/> class.
             </summary>
-            <exception cref="T:System.InvalidOperationException">generic 'T'  parameter is not a Enum type.</exception>
+            <exception cref="T:System.InvalidOperationException">generic 'T'  parameter is not an Enum type.</exception>
         </member>
         <member name="M:Atata.CheckBoxList`2.Check(`0)">
             <summary>
@@ -405,42 +409,42 @@
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
-        <member name="T:Atata.ATContext">
+        <member name="T:Atata.AtataContext">
             <summary>
             Represents the Atata context, the entry point for the test set-up.
             </summary>
         </member>
-        <member name="P:Atata.ATContext.BuildStart">
+        <member name="P:Atata.AtataContext.Current">
+            <summary>
+            Gets the current context.
+            </summary>
+        </member>
+        <member name="P:Atata.AtataContext.BuildStart">
             <summary>
             Gets the build start date and time. Contains the same value for all the tests being executed within one build.
             </summary>
         </member>
-        <member name="P:Atata.ATContext.Driver">
+        <member name="P:Atata.AtataContext.Driver">
             <summary>
             Gets the driver.
             </summary>
         </member>
-        <member name="P:Atata.ATContext.Log">
+        <member name="P:Atata.AtataContext.Log">
             <summary>
             Gets the instance of the log manager.
             </summary>
         </member>
-        <member name="P:Atata.ATContext.TestName">
+        <member name="P:Atata.AtataContext.TestName">
             <summary>
             Gets the name of the test.
             </summary>
         </member>
-        <member name="P:Atata.ATContext.TestStart">
+        <member name="P:Atata.AtataContext.TestStart">
             <summary>
             Gets the test start date and time.
             </summary>
         </member>
-        <member name="P:Atata.ATContext.Current">
-            <summary>
-            Gets the current test context.
-            </summary>
-        </member>
-        <member name="M:Atata.ATContext.CleanUp">
+        <member name="M:Atata.AtataContext.CleanUp">
             <summary>
             Cleans up current test context.
             </summary>
@@ -450,6 +454,11 @@
             Represents any element containing text content.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="P:Atata.UIComponent.Parent">
+            <summary>
+            Gets the parent componenent.
+            </summary>
         </member>
         <member name="P:Atata.UIComponent.Attributes">
             <summary>

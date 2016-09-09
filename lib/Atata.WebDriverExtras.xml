@@ -26,13 +26,13 @@
         </member>
         <member name="M:Atata.SafeWait`1.#ctor(`0)">
             <summary>
-            Initializes a new instance of the <see cref="T:OpenQA.Selenium.Support.UI.DefaultWait`1"/> class.
+            Initializes a new instance of the <see cref="T:Atata.SafeWait`1"/> class.
             </summary>
             <param name="input">The input value to pass to the evaluated conditions.</param>
         </member>
         <member name="M:Atata.SafeWait`1.#ctor(`0,OpenQA.Selenium.Support.UI.IClock)">
             <summary>
-            Initializes a new instance of the <see cref="T:OpenQA.Selenium.Support.UI.DefaultWait`1"/> class.
+            Initializes a new instance of the <see cref="T:Atata.SafeWait`1"/> class.
             </summary>
             <param name="input">The input value to pass to the evaluated conditions.</param>
             <param name="clock">The clock to use when measuring the timeout.</param>
