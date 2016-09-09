@@ -12,6 +12,9 @@ namespace Atata.SampleApp.AutoTests
         {
         }
 
+        [FindByClass("modal-title")]
+        public Text<TOwner> ModalTitle { get; private set; }
+
         protected override By CreateScopeBy()
         {
             StringBuilder xPathBuilder = new StringBuilder(

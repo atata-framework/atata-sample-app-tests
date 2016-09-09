@@ -15,6 +15,7 @@ namespace Atata.SampleApp.AutoTests
 
             Login().
                 New().
+                    ModalTitle.Should.Equal("New User").
                     General.FirstName.SetRandom(out firstName).
                     General.LastName.SetRandom(out lastName).
                     General.Email.SetRandom(out email).
@@ -22,7 +23,7 @@ namespace Atata.SampleApp.AutoTests
                     General.Sex.Set(sex).
                     Save().
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].View().
-                    Header.Should.Equal(firstName + " " + lastName).
+                    Header.Should.Equal($"{firstName} {lastName}").
                     Email.Should.Equal(email).
                     Office.Should.Equal(office).
                     Sex.Should.Equal(sex).
@@ -47,13 +48,15 @@ namespace Atata.SampleApp.AutoTests
                     General.Sex.Set(sex).
                     Save().
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].Edit().
+                    ModalTitle.Should.Equal($"{firstName} {lastName}").
                     General.Office.Set(office = Office.Tokio).
                     General.Sex.Set(sex = Sex.Female).
                     Additional.Birthday.Set(birthday).
                     Additional.Notes.SetRandom(out notes).
                     Save().
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].View().
-                    Header.Should.Equal(firstName + " " + lastName).
+                    PageTitle.Should.StartWith($"{firstName} {lastName}").
+                    Header.Should.Equal($"{firstName} {lastName}").
                     Email.Should.Equal(email).
                     Office.Should.Equal(office).
                     Sex.Should.Equal(sex).

@@ -5,10 +5,6 @@ namespace Atata.SampleApp.AutoTests
 {
     public class UserDetailsPage : AppPage<_>
     {
-        public UserDetailsPage(string userName = null)
-        {
-        }
-
         [FindFirst]
         public H1<_> Header { get; private set; }
 

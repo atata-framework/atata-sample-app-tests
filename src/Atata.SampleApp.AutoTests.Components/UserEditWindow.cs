@@ -4,11 +4,6 @@ namespace Atata.SampleApp.AutoTests
 {
     public class UserEditWindow : BSModal<_>
     {
-        // TODO: Review constructor.
-        public UserEditWindow(string userName = null)
-        {
-        }
-
         [FindById(TermCase.Lower)]
         public GeneralTabPane General { get; private set; }
 
