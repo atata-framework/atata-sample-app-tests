@@ -9,6 +9,7 @@ namespace Atata.SampleApp.AutoTests
         public static class Account
         {
             public static string Email { get; } = ConfigurationManager.AppSettings[nameof(Email)];
+
             public static string Password { get; } = ConfigurationManager.AppSettings[nameof(Password)];
         }
     }
