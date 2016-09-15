@@ -1,7 +1,5 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
 
 namespace Atata.SampleApp.AutoTests
 {
@@ -10,26 +8,19 @@ namespace Atata.SampleApp.AutoTests
         [SetUp]
         public void SetUp()
         {
-            var log = new LogManager().
-                Use(new NUnitTestContextLogConsumer()).
-                Use(new NLogConsumer()).
-                Use(new FileScreenshotConsumer(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}"));
-
-            AtataContext.SetUp(
-                CreateChromeDriver,
-                log,
-                TestContext.CurrentContext.Test.Name,
-                Config.Url);
+            AtataContext.Build().
+                UseChrome().
+                    WithArguments("disable-extensions", "no-sandbox", "start-maximized").
+                UseBaseUrl(Config.Url).
+                UseNUnitTestName().
+                UseNUnitTestContextLogging().
+                    WithMinLevel(LogLevel.Info).
+                    WithoutSectionFinish().
+                UseNLogLogging().
+                UseScreenshotFileSaving(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
+                SetUp();
 
             OnSetUp();
-        }
-
-        private RemoteWebDriver CreateChromeDriver()
-        {
-            ChromeOptions options = new ChromeOptions();
-            options.AddArguments("disable-extensions", "no-sandbox", "start-maximized");
-
-            return new ChromeDriver(options);
         }
 
         protected virtual void OnSetUp()
@@ -46,7 +37,7 @@ namespace Atata.SampleApp.AutoTests
             if (testResult.Outcome.Status == TestStatus.Failed)
                 AtataContext.Current.Log.Error(testResult.Message, testResult.StackTrace);
 
-            AtataContext.CleanUp();
+            AtataContext.Current.CleanUp();
         }
 
         protected UsersPage Login()

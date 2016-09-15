@@ -154,12 +154,16 @@
             </summary>
             <seealso cref="T:Atata.ILogManager" />
         </member>
-        <member name="M:Atata.LogManager.Use(Atata.ILogConsumer)">
+        <member name="M:Atata.LogManager.Use(Atata.ILogConsumer,Atata.LogLevel,System.Boolean)">
             <summary>
             Use the specified consumer for logging.
             </summary>
             <param name="consumer">The log consumer.</param>
-            <returns>The same <see cref="T:Atata.LogManager"/> instance.</returns>
+            <param name="minLevel">The minimum level of the log message.</param>
+            <param name="logSectionFinish">If set to <c>true</c> logs the section finish messages with elapsed time span.</param>
+            <returns>
+            The same <see cref="T:Atata.LogManager" /> instance.
+            </returns>
         </member>
         <member name="M:Atata.LogManager.Use(Atata.IScreenshotConsumer)">
             <summary>
@@ -290,14 +294,14 @@
         </member>
         <member name="M:Atata.CheckBoxList`2.Check(`0)">
             <summary>
-            Checks the checkbox by specifed value.
+            Checks the checkbox by specified value.
             </summary>
             <param name="value">The value of the checkbox.</param>
             <returns>The owner page object.</returns>
         </member>
         <member name="M:Atata.CheckBoxList`2.Uncheck(`0)">
             <summary>
-            Unchecks the checkbox by specifed value.
+            Unchecks the checkbox by specified value.
             </summary>
             <param name="value">The value of the checkbox.</param>
             <returns>The owner page object.</returns>
@@ -444,9 +448,15 @@
             Gets the test start date and time.
             </summary>
         </member>
-        <member name="M:Atata.AtataContext.CleanUp">
+        <member name="M:Atata.AtataContext.CleanUp(System.Boolean)">
             <summary>
-            Cleans up current test context.
+            Cleans up the test context.
+            </summary>
+            <param name="quitDriver">if set to <c>true</c> quits WebDriver.</param>
+        </member>
+        <member name="M:Atata.AtataContext.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
             </summary>
         </member>
         <member name="T:Atata.Text`1">
@@ -457,7 +467,7 @@
         </member>
         <member name="P:Atata.UIComponent.Parent">
             <summary>
-            Gets the parent componenent.
+            Gets the parent component.
             </summary>
         </member>
         <member name="P:Atata.UIComponent.Attributes">
