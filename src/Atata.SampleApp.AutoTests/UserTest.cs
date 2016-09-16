@@ -116,22 +116,22 @@ namespace Atata.SampleApp.AutoTests
                 New().
                     ValidationMessages.Should.BeEmpty().
 
-                    General.FirstName.Click().
-                    General.LastName.Click().
+                    General.FirstName.Focus().
+                    General.LastName.Focus().
                     ValidationMessages.Should.HaveCount(1).
                     ValidationMessages[x => x.General.FirstName].Should.BeRequired().
                     General.FirstName.Set("a").
                     General.LastName.Set("a").
-                    General.FirstName.Click().
+                    General.FirstName.Focus().
                     ValidationMessages.Should.HaveCount(2).
                     ValidationMessages[x => x.General.FirstName].Should.HaveMinLength(2).
                     ValidationMessages[x => x.General.LastName].Should.HaveMinLength(2).
 
                     General.FirstName.Append("b").
-                    General.LastName.Click().
+                    General.LastName.Focus().
                     ValidationMessages[x => x.General.FirstName].Should.Not.Exist().
                     General.LastName.Append("b").
-                    General.FirstName.Click().
+                    General.FirstName.Focus().
                     ValidationMessages[x => x.General.LastName].Should.Not.Exist().
                     ValidationMessages.Should.BeEmpty().
 
