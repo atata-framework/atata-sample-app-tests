@@ -27,7 +27,7 @@ namespace Atata.SampleApp.AutoTests
             public Select<Office?, _> Office { get; private set; }
 
             [FindByName]
-            public RadioButtonList<Sex?, _> Sex { get; private set; }
+            public RadioButtonList<Gender?, _> Gender { get; private set; }
         }
 
         public class AdditionalTabPane : BSTabPane<_>

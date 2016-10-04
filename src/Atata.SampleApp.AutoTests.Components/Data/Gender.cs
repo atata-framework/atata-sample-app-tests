@@ -1,6 +1,6 @@
 ﻿namespace Atata.SampleApp.AutoTests
 {
-    public enum Sex
+    public enum Gender
     {
         Male,
         Female

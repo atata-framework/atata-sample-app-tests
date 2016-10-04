@@ -15,7 +15,7 @@ namespace Atata.SampleApp.AutoTests
         public Content<Office, _> Office { get; private set; }
 
         [FindByDescriptionTerm]
-        public Content<Sex, _> Sex { get; private set; }
+        public Content<Gender, _> Gender { get; private set; }
 
         [FindByDescriptionTerm]
         public Content<DateTime?, _> Birthday { get; private set; }
