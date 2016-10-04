@@ -1,33 +1,13 @@
-﻿using System.Text;
-using OpenQA.Selenium;
-
-namespace Atata.SampleApp.AutoTests
+﻿namespace Atata.SampleApp.AutoTests
 {
-    [PageObjectDefinition(ComponentTypeName = "modal", IgnoreNameEndings = "PopupWindow,Window,Popup,Modal")]
+    [PageObjectDefinition("div", ContainingClass = "modal", ComponentTypeName = "modal", IgnoreNameEndings = "PopupWindow,Window,Popup,Modal")]
+    [WindowTitleElementDefinition(ContainingClass = TitleClassName)]
     public abstract class BSModal<TOwner> : PopupWindow<TOwner>
         where TOwner : BSModal<TOwner>
     {
-        protected BSModal(params string[] windowTitleValues)
-            : base(windowTitleValues)
-        {
-        }
+        private const string TitleClassName = "modal-title";
 
-        [FindByClass("modal-title")]
+        [FindByClass(TitleClassName)]
         public Text<TOwner> ModalTitle { get; private set; }
-
-        protected override By CreateScopeBy()
-        {
-            StringBuilder xPathBuilder = new StringBuilder(
-                "//div[contains(concat(' ', normalize-space(@class), ' '), ' modal ')]");
-
-            if (CanFindByWindowTitle)
-            {
-                xPathBuilder.AppendFormat(
-                    "[.//*[contains(concat(' ', normalize-space(@class), ' '), ' modal-title ')][{0}]]",
-                    WindowTitleMatch.CreateXPathCondition(WindowTitleValues));
-            }
-
-            return By.XPath(xPathBuilder.ToString()).PopupWindow(TermResolver.ToDisplayString(WindowTitleValues));
-        }
     }
 }
