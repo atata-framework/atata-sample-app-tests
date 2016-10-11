@@ -4,6 +4,12 @@
         <name>Atata</name>
     </assembly>
     <members>
+        <member name="T:Atata.Number`1">
+            <summary>
+            Represents any element containing number content. Default search is performed by the label (if is declared in the class inherited from `TableRow`, then by column header).
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
         <member name="T:Atata.UIComponentAttributeProvider">
             <summary>
             Allows to access the component scope element attribute values.
@@ -191,6 +197,16 @@
             Ends the latest log section.
             </summary>
         </member>
+        <member name="T:Atata.FindByClassAttribute">
+            <summary>
+            Specifies that a control should be found by class attribute. Finds the descendant or self control in the scope of the element having the specified class. Uses <c>Kebab</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByNameAttribute">
+            <summary>
+            Specifies that a control should be found by name attribute. Finds the descendant or self control in the scope of the element having the specified name. Uses <c>Kebab</c> as the default term case.
+            </summary>
+        </member>
         <member name="T:Atata.ItemsControl`2">
             <summary>
             Represents the items control (a set of any control of TItem type).
@@ -209,9 +225,27 @@
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
+        <member name="T:Atata.Table`3">
+            <summary>
+            Represents the table control (&lt;table&gt;). Default search finds the first occuring table.
+            </summary>
+            <typeparam name="THeader">The type of the table header control.</typeparam>
+            <typeparam name="TRow">The type of the table row control.</typeparam>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="P:Atata.Table`3.Rows">
+            <summary>
+            Gets the rows list.
+            </summary>
+        </member>
+        <member name="P:Atata.Table`3.Headers">
+            <summary>
+            Gets the headers list.
+            </summary>
+        </member>
         <member name="T:Atata.PasswordInput`1">
             <summary>
-            Represents the password input control (&lt;input type="password"&gt;).
+            Represents the password input control (&lt;input type="password"&gt;). Default search is performed by the label.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
@@ -238,9 +272,44 @@
             <param name="navigableControl">The navigable control.</param>
             <returns>The instance of <typeparamref name="TNavigateTo"/>.</returns>
         </member>
+        <member name="T:Atata.TermFindSettingsAttribute">
+            <summary>
+            Defines the settings to apply for the specified finding strategy of control. Applies to the class (inheritor of <see cref="T:Atata.UIComponent`1"/>) and assembly.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByIdAttribute">
+            <summary>
+            Specifies that a control should be found by id attribute. Finds the descendant or self control in the scope of the element having the specified id. Uses <c>Kebab</c> as the default term case.
+            </summary>
+        </member>
+        <member name="P:Atata.FindByIdAttribute.DefaultCase">
+            <summary>
+            Gets the default case. The default value is <c>TermCase.Kebab</c>.
+            </summary>
+        </member>
+        <member name="T:Atata.LogInfoAttribute">
+            <summary>
+            Defines the information message to be logged on the specified event.
+            </summary>
+        </member>
+        <member name="T:Atata.PressEnterAttribute">
+            <summary>
+            Specifies the information message to be logged on the defined event. By default occurs after the set.
+            </summary>
+        </member>
         <member name="T:Atata.TermVerificationTriggerAttribute">
             <summary>
             The base trigger attribute class that can be used in the verification process when the page object is initialized.
+            </summary>
+        </member>
+        <member name="T:Atata.VerifyContentMatchesAttribute">
+            <summary>
+            Specifies the verification of the page content. Verifies whether the component content matches any of the specified values. By default occurs upon the page object initialization.
+            </summary>
+        </member>
+        <member name="T:Atata.VerifyContentAttribute">
+            <summary>
+            Specifies the verification of the page content. Verifies whether the component contains the specified content values. By default occurs upon the page object initialization.
             </summary>
         </member>
         <member name="T:Atata.VerifyH1Attribute">
@@ -280,7 +349,12 @@
         </member>
         <member name="T:Atata.VerifyTitleAttribute">
             <summary>
-            Indicates the verification of the page title when the page object is initialized.
+            Specifies the verification of the page title. By default occurs upon the page object initialization. If no value is specified, it uses the class name as the expected value with the <c>TermCase.Title</c> casing applied.
+            </summary>
+        </member>
+        <member name="T:Atata.WaitAttribute">
+            <summary>
+            Specifies the waiting period in seconds. By default occurs after any action.
             </summary>
         </member>
         <member name="P:Atata.FindAttribute.Index">
@@ -290,13 +364,13 @@
         </member>
         <member name="T:Atata.ButtonControl`1">
             <summary>
-            Represents the button control. By default is being searched by the content and value (button by content text and input by value attribute). Handles any input element with type="button", type="submit", type="reset" or button element.
+            Represents the button control. Default search is performed by the content and value (button by content text and input by value attribute). Handles any input element with type="button", type="submit", type="reset" or button element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.ButtonControl`2">
             <summary>
-            Represents the button control. By default is being searched by the content and value (button by content text and input by value attribute). Handles any input element with type="button", type="submit", type="reset" or button element.
+            Represents the button control. Default search is performed by the content and value (button by content text and input by value attribute). Handles any input element with type="button", type="submit", type="reset" or button element.
             </summary>
             <typeparam name="TNavigateTo">The type of the page object to navigate to.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
@@ -305,7 +379,7 @@
         </member>
         <member name="T:Atata.ClickableControl`2">
             <summary>
-            Represents any HTML element. By default is being searched by the id attribute.
+            Represents any HTML element. Default search is performed by the id attribute.
             </summary>
             <typeparam name="TNavigateTo">The type of the page object to navigate to.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
@@ -405,7 +479,7 @@
         </member>
         <member name="T:Atata.CheckBoxList`2">
             <summary>
-            Represents the checkbox list control (a set of &lt;input type="checkbox"&gt;). By default is being searched by the name. Concrete checkbox items can be found by label or value. By default finds the items by the label. Use <see cref="T:Atata.FindItemByValueAttribute"/> to find the items by the value.
+            Represents the checkbox list control (a set of &lt;input type="checkbox"&gt;). Default search is performed by the name. Specified checkbox items can be found by label or value. By default finds the items by the label. Use <see cref="T:Atata.FindItemByValueAttribute"/> to find the items by the value.
             </summary>
             <typeparam name="T">The type of the control's data. Supports only enum types currently.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
@@ -432,7 +506,7 @@
         </member>
         <member name="T:Atata.CheckBox`1">
             <summary>
-            Represents the checkbox control (&lt;input type="checkbox"&gt;).
+            Represents the checkbox control (&lt;input type="checkbox"&gt;). Default search is performed by the label.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
@@ -455,50 +529,50 @@
         </member>
         <member name="T:Atata.Content`2">
             <summary>
-            Represents any HTML element containing content. By default is being searched by the label (if is declared in the class inherited from `TableRow`, then by column header).
+            Represents any HTML element containing content. Default search is performed by the label (if is declared in the class inherited from `TableRow`, then by column header).
             </summary>
             <typeparam name="T">The type of the content.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.H1`1">
             <summary>
-            Represents the &lt;h1&gt; heading tag.
+            Represents the &lt;h1&gt; heading tag. Default search finds the first occuring &lt;h1&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.H2`1">
             <summary>
-            Represents the &lt;h2&gt; heading tag.
+            Represents the &lt;h2&gt; heading tag. Default search finds the first occuring &lt;h2&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.H3`1">
             <summary>
-            Represents the &lt;h3&gt; heading tag.
+            Represents the &lt;h3&gt; heading tag. Default search finds the first occuring &lt;h3&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.H4`1">
             <summary>
-            Represents the &lt;h4&gt; heading tag.
+            Represents the &lt;h4&gt; heading tag. Default search finds the first occuring &lt;h4&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.H5`1">
             <summary>
-            Represents the &lt;h5&gt; heading tag.
+            Represents the &lt;h5&gt; heading tag. Default search finds the first occuring &lt;h5&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.H6`1">
             <summary>
-            Represents the &lt;h6&gt; heading tag.
+            Represents the &lt;h6&gt; heading tag. Default search finds the first occuring &lt;h6&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.DateInput`1">
             <summary>
-            Represents the date input control. By default is being searched by the label. The default format is "d" (short date pattern, e.g. 6/15/2009). Handles any input element with type="date", type="text" or without the type attribute defined.
+            Represents the date input control. Default search is performed by the label. The default format is "d" (short date pattern, e.g. 6/15/2009). Handles any input element with type="date", type="text" or without the defined type attribute.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
@@ -511,14 +585,14 @@
         </member>
         <member name="T:Atata.RadioButtonList`2">
             <summary>
-            Represents the radio button list control (a set of &lt;input type="radio"&gt;). By default is being searched by the name. Concrete checkbox items can be found by label or value. By default finds the items by the label. Use <see cref="T:Atata.FindItemByValueAttribute"/> to find the items by the value.
+            Represents the radio button list control (a set of &lt;input type="radio"&gt;). Default search is performed by the name. Specified radio button items can be found by label or value. By default finds the items by the label. Use <see cref="T:Atata.FindItemByValueAttribute"/> to find the items by the value.
             </summary>
             <typeparam name="T">The type of the control's data. Supports string, enum types, numeric types and others.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.RadioButton`1">
             <summary>
-            Represents the radio button control (&lt;input type="radio"&gt;).
+            Represents the radio button control (&lt;input type="radio"&gt;). Default search is performed by the label.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
@@ -535,7 +609,7 @@
         </member>
         <member name="T:Atata.Input`2">
             <summary>
-            Represents the input control.
+            Represents the input control (&lt;input&gt;). Default search is performed by the label.
             </summary>
             <typeparam name="T">The type of the control's data.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
@@ -555,25 +629,25 @@
         </member>
         <member name="T:Atata.TextArea`1">
             <summary>
-            Represents the text area control (&lt;textarea&gt;).
+            Represents the text area control (&lt;textarea&gt;). Default search is performed by the label.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.TimeInput`1">
             <summary>
-            Represents the time input control. By default is being searched by the label. Handles any input element with type="time", type="text" or without the type attribute defined.
+            Represents the time input control. Default search is performed by the label. Handles any input element with type="time", type="text" or without the defined type attribute.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.LinkControl`1">
             <summary>
-            Represents the link control (&lt;a&gt;). By default is being searched by the content.
+            Represents the link control (&lt;a&gt;). Default search is performed by the content.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.LinkControl`2">
             <summary>
-            Represents the link control (&lt;a&gt;). By default is being searched by the content.
+            Represents the link control (&lt;a&gt;). Default search is performed by the content.
             </summary>
             <typeparam name="TNavigateTo">The type of the page object to navigate to.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
@@ -625,15 +699,22 @@
             Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
             </summary>
         </member>
+        <member name="T:Atata.Table`2">
+            <summary>
+            Represents the table control (&lt;table&gt;). Default search finds the first occuring table.
+            </summary>
+            <typeparam name="TRow">The type of the table row control.</typeparam>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
         <member name="T:Atata.Text`1">
             <summary>
-            Represents any element containing text content. By default is being searched by the label (if is declared in the class inherited from `TableRow`, then by column header).
+            Represents any element containing text content. Default search is performed by the label (if is declared in the class inherited from `TableRow`, then by column header).
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.Page`1">
             <summary>
-            Represents the whole HTML page. Uses the body tag as a scope.
+            Represents the whole HTML page and is the main base class to inherit for the pages. Uses the body tag as a scope.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
             <seealso cref="T:Atata.PageObject`1" />
@@ -661,13 +742,13 @@
         </member>
         <member name="T:Atata.ClickableControl`1">
             <summary>
-            Represents any HTML element. By default is being searched by the id attribute.
+            Represents any HTML element. Default search is performed by the id attribute.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.Select`2">
             <summary>
-            Represents the select control (&lt;select&gt;). Property can be marked with <see cref="T:Atata.SelectByValueAttribute"/> or <see cref="T:Atata.SelectByTextAttribute"/>. By default selects by text.
+            Represents the select control (&lt;select&gt;). Property can be marked with <see cref="T:Atata.SelectByValueAttribute"/> or <see cref="T:Atata.SelectByTextAttribute"/>. Default selection is performed by text.
             </summary>
             <typeparam name="T">The type of the data.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
@@ -696,7 +777,7 @@
             <summary>
             Determines whether the component exists.
             </summary>
-            <param name="options">The options. If set to null, uses SearchOptions.Safely().</param>
+            <param name="options">The options. If set to null, then it uses <c>SearchOptions.Safely()</c>.</param>
             <returns>true if the component exists; otherwise, false.</returns>
             <exception cref="T:OpenQA.Selenium.NoSuchElementException">The <paramref name="options"/> has IsSafely property equal to false value and the component doesn't exist.</exception>
         </member>
@@ -704,7 +785,7 @@
             <summary>
             Determines whether the component is missing.
             </summary>
-            <param name="options">The options. If set to null, uses SearchOptions.Safely().</param>
+            <param name="options">The options. If set to null, then it uses <c>SearchOptions.Safely()</c>.</param>
             <returns>true if the component is missing; otherwise, false.</returns>
             <exception cref="T:Atata.NotMissingElementException">The <paramref name="options"/> has IsSafely property equal to false value and the component exists.</exception>
         </member>
@@ -724,9 +805,15 @@
             Gets the verification provider that gives a set of verification extension methods.
             </summary>
         </member>
+        <member name="T:Atata.Table`1">
+            <summary>
+            Represents the table control (&lt;table&gt;). Default search finds the first occuring table.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
         <member name="T:Atata.NumberInput`1">
             <summary>
-            Represents the number input control. By default is being searched by the label. Handles any input element with type="number", type="tel", type="text" or without the type attribute defined.
+            Represents the number input control. Default search is performed by the label. Handles any input element with type="number", type="tel", type="text" or without the defined type attribute.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
@@ -739,7 +826,7 @@
         </member>
         <member name="T:Atata.Select`1">
             <summary>
-            Represents the select control (&lt;select&gt;). Selects an option using string. Property can be marked with <see cref="T:Atata.SelectByValueAttribute"/> or <see cref="T:Atata.SelectByTextAttribute"/>. By default selects by text.
+            Represents the select control (&lt;select&gt;). Selects an option using string. Property can be marked with <see cref="T:Atata.SelectByValueAttribute"/> or <see cref="T:Atata.SelectByTextAttribute"/>. Default selection is performed by text.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
@@ -817,12 +904,12 @@
         </member>
         <member name="F:Atata.TermCase.Inherit">
             <summary>
-            Uses inherited case or none if missing.
+            Uses the inherited case or none if missing.
             </summary>
         </member>
         <member name="F:Atata.TermCase.None">
             <summary>
-            Doesn't apply case.
+            Doesn't apply the case.
             </summary>
         </member>
         <member name="F:Atata.TermCase.Title">
@@ -842,7 +929,7 @@
         </member>
         <member name="F:Atata.TermCase.MidSentence">
             <summary>
-            Uses mid-sentence case where first word not capitalised (e.g. "some term").
+            Uses mid-sentence case where the first word is not capitalised (e.g. "some term").
             </summary>
         </member>
         <member name="F:Atata.TermCase.SentenceWithColon">
@@ -922,7 +1009,7 @@
         </member>
         <member name="T:Atata.TextInput`1">
             <summary>
-            Represents the text input control (&lt;input type="text"&gt;). By default is being searched by the label. Handles any input element with type="text" or without the type attribute defined.
+            Represents the text input control (&lt;input type="text"&gt;). Default search is performed by the label. Handles any input element with type="text" or without the defined type attribute.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
