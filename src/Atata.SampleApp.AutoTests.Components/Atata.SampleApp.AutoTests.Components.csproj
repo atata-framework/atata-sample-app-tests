@@ -67,7 +67,6 @@
     <Compile Include="BS\BSNavbar`1.cs" />
     <Compile Include="BS\BSTabPane`1.cs" />
     <Compile Include="BS\BSTab`1.cs" />
-    <Compile Include="BS\FindByBSTabPaneIdAttribute.cs" />
     <Compile Include="Controls\ValidationMessageList`1.cs" />
     <Compile Include="Controls\ValidationMessage`1.cs" />
     <Compile Include="Extensions\IDataVerificationProviderExtensions.cs" />

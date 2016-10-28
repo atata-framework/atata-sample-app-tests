@@ -4,9 +4,68 @@
         <name>Atata</name>
     </assembly>
     <members>
+        <member name="T:Atata.HoverParentAttribute">
+            <summary>
+            Indicates that the hover on the parent component should occur on the specified event. Be default occurs before any action. Is useful for the drop-down menu item controls.
+            </summary>
+        </member>
+        <member name="P:Atata.WaitForAttribute.Until">
+            <summary>
+            Gets the waiting approach.
+            </summary>
+        </member>
+        <member name="P:Atata.WaitForAttribute.ThrowOnPresenceFailure">
+            <summary>
+            Gets or sets a value indicating whether to throw the exception on the presence (exists or visible) failure. The default value is true.
+            </summary>
+        </member>
+        <member name="P:Atata.WaitForAttribute.ThrowOnAbsenceFailure">
+            <summary>
+            Gets or sets a value indicating whether to throw the exception on the absence (missing or hidden) failure. The default value is true.
+            </summary>
+        </member>
+        <member name="P:Atata.WaitForAttribute.PresenceTimeout">
+            <summary>
+            Gets or sets the presence (exists or visible) timeout in seconds. The default value is taken from <c>RetrySettings.Timeout.TotalSeconds</c>.
+            </summary>
+        </member>
+        <member name="P:Atata.WaitForAttribute.AbsenceTimeout">
+            <summary>
+            Gets or sets the absence (missing or hidden) timeout in seconds. The default value is taken from <c>RetrySettings.Timeout.TotalSeconds</c>.
+            </summary>
+        </member>
+        <member name="P:Atata.WaitForAttribute.RetryInterval">
+            <summary>
+            Gets or sets the retry interval. The default value is taken from <c>RetrySettings.RetryInterval.TotalSeconds</c>.
+            </summary>
+        </member>
+        <member name="T:Atata.DateTime`1">
+            <summary>
+            Represents any element containing date and time content. Default search is performed by the label. The default format is "g" (general date/time pattern (short time), e.g. 6/15/2009 1:45 PM).
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.Time`1">
+            <summary>
+            Represents any element containing time content. Default search is performed by the label.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.Date`1">
+            <summary>
+            Represents any element containing date content. Default search is performed by the label. The default format is "d" (short date pattern, e.g. 6/15/2009).
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.Currency`1">
+            <summary>
+            Represents any element containing currency content. Default search is performed by the label. The default format is "C2" (e.g. $123.45).
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
         <member name="T:Atata.Number`1">
             <summary>
-            Represents any element containing number content. Default search is performed by the label (if is declared in the class inherited from `TableRow`, then by column header).
+            Represents any element containing number content. Default search is performed by the label.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
@@ -272,9 +331,94 @@
             <param name="navigableControl">The navigable control.</param>
             <returns>The instance of <typeparamref name="TNavigateTo"/>.</returns>
         </member>
+        <member name="P:Atata.ITermSettings.Case">
+            <summary>
+            Gets the term case.
+            </summary>
+        </member>
+        <member name="P:Atata.ITermSettings.Match">
+            <summary>
+            Gets the match.
+            </summary>
+        </member>
+        <member name="P:Atata.ITermSettings.Format">
+            <summary>
+            Gets the format.
+            </summary>
+        </member>
         <member name="T:Atata.TermFindSettingsAttribute">
             <summary>
             Defines the settings to apply for the specified finding strategy of control. Applies to the class (inheritor of <see cref="T:Atata.UIComponent`1"/>) and assembly.
+            </summary>
+        </member>
+        <member name="T:Atata.TermFindAttribute">
+            <summary>
+            Represents the base attribute class for the finding attributes that use terms.
+            </summary>
+        </member>
+        <member name="P:Atata.TermFindAttribute.Values">
+            <summary>
+            Gets the term values.
+            </summary>
+        </member>
+        <member name="P:Atata.TermFindAttribute.Case">
+            <summary>
+            Gets the term case.
+            </summary>
+        </member>
+        <member name="P:Atata.TermFindAttribute.Match">
+            <summary>
+            Gets the match.
+            </summary>
+        </member>
+        <member name="P:Atata.TermFindAttribute.Format">
+            <summary>
+            Gets or sets the format.
+            </summary>
+        </member>
+        <member name="P:Atata.TermFindAttribute.CutEnding">
+            <summary>
+            Gets or sets a value indicating whether the name should be cut considering the IgnoreNameEndings property value of <see cref="T:Atata.ControlDefinitionAttribute"/> and <see cref="T:Atata.PageObjectDefinitionAttribute"/>. The default value is true.
+            </summary>
+        </member>
+        <member name="P:Atata.TermFindAttribute.DefaultCase">
+            <summary>
+            Gets the default term case.
+            </summary>
+        </member>
+        <member name="P:Atata.TermFindAttribute.DefaultMatch">
+            <summary>
+            Gets the default match. The default value is Equals.
+            </summary>
+        </member>
+        <member name="T:Atata.TermAttribute">
+            <summary>
+            Specifies the term(s) to use for the control search.
+            </summary>
+        </member>
+        <member name="P:Atata.TermAttribute.Values">
+            <summary>
+            Gets the term values.
+            </summary>
+        </member>
+        <member name="P:Atata.TermAttribute.Match">
+            <summary>
+            Gets the match.
+            </summary>
+        </member>
+        <member name="P:Atata.TermAttribute.Case">
+            <summary>
+            Gets the term case.
+            </summary>
+        </member>
+        <member name="P:Atata.TermAttribute.Format">
+            <summary>
+            Gets or sets the format.
+            </summary>
+        </member>
+        <member name="P:Atata.TermAttribute.CutEnding">
+            <summary>
+            Gets or sets a value indicating whether the name should be cut considering the IgnoreNameEndings property value of <see cref="T:Atata.ControlDefinitionAttribute"/> and <see cref="T:Atata.PageObjectDefinitionAttribute"/>. The default value is true.
             </summary>
         </member>
         <member name="T:Atata.FindByIdAttribute">
@@ -287,6 +431,21 @@
             Gets the default case. The default value is <c>TermCase.Kebab</c>.
             </summary>
         </member>
+        <member name="T:Atata.ClickParentAttribute">
+            <summary>
+            Indicates that the click on the parent component should occur on the specified event. Be default occurs before any action. Is useful for the drop-down button/menu controls.
+            </summary>
+        </member>
+        <member name="T:Atata.CloseAlertBoxAttribute">
+            <summary>
+            Indicates that the alert box should be closed on the specified event. Be default occurs after the click.
+            </summary>
+        </member>
+        <member name="T:Atata.CloseConfirmBoxAttribute">
+            <summary>
+            Indicates that the confirm box should be closed on the specified event. Be default occurs after the click. By default accepts the confirm box.
+            </summary>
+        </member>
         <member name="T:Atata.LogInfoAttribute">
             <summary>
             Defines the information message to be logged on the specified event.
@@ -294,12 +453,57 @@
         </member>
         <member name="T:Atata.PressEnterAttribute">
             <summary>
-            Specifies the information message to be logged on the defined event. By default occurs after the set.
+            Indicates that the Enter key should be pressed on the specified event. By default occurs after the set.
+            </summary>
+        </member>
+        <member name="T:Atata.PressTabAttribute">
+            <summary>
+            Indicates that the Tab key should be pressed on the specified event. By default occurs after the set.
+            </summary>
+        </member>
+        <member name="T:Atata.ScreenshotAttribute">
+            <summary>
+            Indicates that the screenshot should be captured with an optional title. By default occurs before the click.
+            </summary>
+        </member>
+        <member name="T:Atata.ScrollDownAttribute">
+            <summary>
+            Indicates that the scroll down should be performed on the specified event. By default occurs before any action.
+            </summary>
+        </member>
+        <member name="T:Atata.ScrollUpAttribute">
+            <summary>
+            Indicates that the scroll up should be performed on the specified event. By default occurs before any action.
+            </summary>
+        </member>
+        <member name="T:Atata.PressKeysAttribute">
+            <summary>
+            Defines the keys to press on the specified event. By default occurs after the set.
             </summary>
         </member>
         <member name="T:Atata.TermVerificationTriggerAttribute">
             <summary>
             The base trigger attribute class that can be used in the verification process when the page object is initialized.
+            </summary>
+        </member>
+        <member name="T:Atata.TriggerAttribute">
+            <summary>
+            Represents the base attribute class for the triggers.
+            </summary>
+        </member>
+        <member name="P:Atata.TriggerAttribute.On">
+            <summary>
+            Gets or sets the trigger events.
+            </summary>
+        </member>
+        <member name="P:Atata.TriggerAttribute.Priority">
+            <summary>
+            Gets or sets the priority. The default value is Medium.
+            </summary>
+        </member>
+        <member name="P:Atata.TriggerAttribute.AppliesTo">
+            <summary>
+            Gets or sets the scope to apply the trigger to. The default value is Self.
             </summary>
         </member>
         <member name="T:Atata.VerifyContentMatchesAttribute">
@@ -312,39 +516,49 @@
             Specifies the verification of the page content. Verifies whether the component contains the specified content values. By default occurs upon the page object initialization.
             </summary>
         </member>
+        <member name="T:Atata.VerifyExistsAttribute">
+            <summary>
+            Indicates that the component should be verified whether it exists on the specified event. By default occurs upon the page object initialization.
+            </summary>
+        </member>
         <member name="T:Atata.VerifyH1Attribute">
             <summary>
-            Indicates the verification of the content of the &lt;h1&gt; tag when the page object is initialized.
+            Specifies the verification of the &lt;h1&gt; element content. By default occurs upon the page object initialization. If no value is specified, it uses the class name as the expected value with the <c>TermCase.Title</c> casing applied.
             </summary>
         </member>
         <member name="T:Atata.VerifyH2Attribute">
             <summary>
-            Indicates the verification of the content of the &lt;h2&gt; tag when the page object is initialized.
+            Specifies the verification of the &lt;h2&gt; element content. By default occurs upon the page object initialization. If no value is specified, it uses the class name as the expected value with the <c>TermCase.Title</c> casing applied.
             </summary>
         </member>
         <member name="T:Atata.VerifyH3Attribute">
             <summary>
-            Indicates the verification of the content of the &lt;h3&gt; tag when the page object is initialized.
+            Specifies the verification of the &lt;h3&gt; element content. By default occurs upon the page object initialization. If no value is specified, it uses the class name as the expected value with the <c>TermCase.Title</c> casing applied.
             </summary>
         </member>
         <member name="T:Atata.VerifyH4Attribute">
             <summary>
-            Indicates the verification of the content of the &lt;h4&gt; tag when the page object is initialized.
+            Specifies the verification of the &lt;h4&gt; element content. By default occurs upon the page object initialization. If no value is specified, it uses the class name as the expected value with the <c>TermCase.Title</c> casing applied.
             </summary>
         </member>
         <member name="T:Atata.VerifyH5Attribute">
             <summary>
-            Indicates the verification of the content of the &lt;h5&gt; tag when the page object is initialized.
+            Specifies the verification of the &lt;h5&gt; element content. By default occurs upon the page object initialization. If no value is specified, it uses the class name as the expected value with the <c>TermCase.Title</c> casing applied.
             </summary>
         </member>
         <member name="T:Atata.VerifyH6Attribute">
             <summary>
-            Indicates the verification of the content of the &lt;h6&gt; tag when the page object is initialized.
+            Specifies the verification of the &lt;h6&gt; element content. By default occurs upon the page object initialization. If no value is specified, it uses the class name as the expected value with the <c>TermCase.Title</c> casing applied.
             </summary>
         </member>
         <member name="P:Atata.VerifyHeadingTriggerAttribute.Index">
             <summary>
             Gets or sets the index of header. The default value is -1, meaning that the index is not used.
+            </summary>
+        </member>
+        <member name="T:Atata.VerifyMissingAttribute">
+            <summary>
+            Indicates that the component should be verified whether it is missing on the specified event. By default occurs upon the page object initialization.
             </summary>
         </member>
         <member name="T:Atata.VerifyTitleAttribute">
@@ -357,9 +571,54 @@
             Specifies the waiting period in seconds. By default occurs after any action.
             </summary>
         </member>
+        <member name="T:Atata.WaitForElementAttribute">
+            <summary>
+            Specifies the waiting for the element. By default occurs after the click.
+            </summary>
+        </member>
+        <member name="M:Atata.WaitForElementAttribute.#ctor(Atata.WaitBy,System.String,Atata.WaitUntil,Atata.TriggerEvents,Atata.TriggerPriority)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Atata.WaitForElementAttribute" /> class.
+            </summary>
+            <param name="waitBy">The kind of the element selector to wait for.</param>
+            <param name="selector">The selector.</param>
+            <param name="until">The waiting approach.</param>
+            <param name="on">The trigger events.</param>
+            <param name="priority">The priority.</param>
+        </member>
+        <member name="P:Atata.WaitForElementAttribute.WaitBy">
+            <summary>
+            Gets the kind of the element selector to wait for.
+            </summary>
+        </member>
+        <member name="P:Atata.WaitForElementAttribute.Selector">
+            <summary>
+            Gets the selector.
+            </summary>
+        </member>
+        <member name="P:Atata.WaitForElementAttribute.ScopeSource">
+            <summary>
+            Gets or sets the scope source.
+            </summary>
+        </member>
+        <member name="T:Atata.WaitForJQueryAjaxAttribute">
+            <summary>
+            Indicates that the waiting should be performed until the jQuery AJAX is completed. By default occurs after the click.
+            </summary>
+        </member>
+        <member name="T:Atata.FindAttribute">
+            <summary>
+            Represents the base attribute class for the finding attributes.
+            </summary>
+        </member>
         <member name="P:Atata.FindAttribute.Index">
             <summary>
             Gets or sets the index of the control. The default value is -1, meaning that the index is not used.
+            </summary>
+        </member>
+        <member name="P:Atata.FindAttribute.Scope">
+            <summary>
+            Gets or sets the scope source. The default value is Inherit.
             </summary>
         </member>
         <member name="T:Atata.ButtonControl`1">
@@ -387,7 +646,7 @@
         </member>
         <member name="T:Atata.Control`1">
             <summary>
-            Represents the base class for controls.
+            Represents the base class for the controls.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
@@ -529,7 +788,7 @@
         </member>
         <member name="T:Atata.Content`2">
             <summary>
-            Represents any HTML element containing content. Default search is performed by the label (if is declared in the class inherited from `TableRow`, then by column header).
+            Represents any HTML element containing content. Default search is performed by the label.
             </summary>
             <typeparam name="T">The type of the content.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
@@ -699,6 +958,12 @@
             Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
             </summary>
         </member>
+        <member name="T:Atata.TableRow`1">
+            <summary>
+            Represents the table row component (&lt;tr&gt;). Default search is performed by the content. By default every its control of type (or inherited from) <see cref="T:Atata.Content`2" /> is searched by the column header.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
         <member name="T:Atata.Table`2">
             <summary>
             Represents the table control (&lt;table&gt;). Default search finds the first occuring table.
@@ -708,7 +973,7 @@
         </member>
         <member name="T:Atata.Text`1">
             <summary>
-            Represents any element containing text content. Default search is performed by the label (if is declared in the class inherited from `TableRow`, then by column header).
+            Represents any element containing text content. Default search is performed by the label.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
@@ -738,6 +1003,36 @@
         <member name="P:Atata.PopupWindow`1.CanFindByWindowTitle">
             <summary>
             Gets a value indicating whether window can be found by window title.
+            </summary>
+        </member>
+        <member name="T:Atata.ScopeSource">
+            <summary>
+            Specifies the source scope.
+            </summary>
+        </member>
+        <member name="F:Atata.ScopeSource.Inherit">
+            <summary>
+            Uses the inherited value.
+            </summary>
+        </member>
+        <member name="F:Atata.ScopeSource.Parent">
+            <summary>
+            Uses the parent's scope.
+            </summary>
+        </member>
+        <member name="F:Atata.ScopeSource.Grandparent">
+            <summary>
+            Uses the grandparent's (the parent of the parent) scope.
+            </summary>
+        </member>
+        <member name="F:Atata.ScopeSource.PageObject">
+            <summary>
+            Uses the owner page object's scope.
+            </summary>
+        </member>
+        <member name="F:Atata.ScopeSource.Page">
+            <summary>
+            Uses the page's scope (&lt;body&gt; element).
             </summary>
         </member>
         <member name="T:Atata.ClickableControl`1">
@@ -877,14 +1172,119 @@
             Closes the current window.
             </summary>
         </member>
+        <member name="T:Atata.TriggerEvents">
+            <summary>
+            Specifies the trigger events.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.None">
+            <summary>
+            None of the events.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.Init">
+            <summary>
+            Occurs upon the page object initialization.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.DeInit">
+            <summary>
+            Occurs upon the page object de-initialization.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.BeforeGet">
+            <summary>
+            Occurs before the value is taken from the control.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.AfterGet">
+            <summary>
+            Occurs after the value is taken from the control.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.BeforeSet">
+            <summary>
+            Occurs before the value is set to the control.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.AfterSet">
+            <summary>
+            Occurs after the value is set to the control.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.BeforeClick">
+            <summary>
+            Occurs before the click on the control.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.AfterClick">
+            <summary>
+            Occurs after the click on the control.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.BeforeHover">
+            <summary>
+            Occurs before the hover on the control.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.AfterHover">
+            <summary>
+            Occurs after the hover on the control.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.BeforeFocus">
+            <summary>
+            Occurs before the control gets the focus.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerEvents.AfterFocus">
+            <summary>
+            Occurs after the control gets the focus.
+            </summary>
+        </member>
         <member name="T:Atata.TriggerPriority">
             <summary>
-            Specifies the priority of trigger execution.
+            Specifies the priority of the trigger execution.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerPriority.Highest">
+            <summary>
+            The highest priority.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerPriority.Higher">
+            <summary>
+            The higher priority.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerPriority.High">
+            <summary>
+            The high priority.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerPriority.Medium">
+            <summary>
+            The medium priority.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerPriority.Low">
+            <summary>
+            The low priority.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerPriority.Lower">
+            <summary>
+            The lower priority.
+            </summary>
+        </member>
+        <member name="F:Atata.TriggerPriority.Lowest">
+            <summary>
+            The lowest priority.
             </summary>
         </member>
         <member name="T:Atata.TriggerScope">
             <summary>
-            Specifies the scope of trigger application.
+            Specifies the scope of the trigger application.
             </summary>
         </member>
         <member name="F:Atata.TriggerScope.Self">
@@ -1004,7 +1404,27 @@
         </member>
         <member name="F:Atata.TermMatch.Inherit">
             <summary>
-            Uses inherited match or none if missing.
+            Uses the inherited match or the default one.
+            </summary>
+        </member>
+        <member name="F:Atata.TermMatch.Contains">
+            <summary>
+            Checks whether the text contains the specified term.
+            </summary>
+        </member>
+        <member name="F:Atata.TermMatch.Equals">
+            <summary>
+            Checks whether the text equals the specified term.
+            </summary>
+        </member>
+        <member name="F:Atata.TermMatch.StartsWith">
+            <summary>
+            Checks whether the text starts with the specified term.
+            </summary>
+        </member>
+        <member name="F:Atata.TermMatch.EndsWith">
+            <summary>
+            Checks whether the text ends with the specified term.
             </summary>
         </member>
         <member name="T:Atata.TextInput`1">
@@ -1012,6 +1432,86 @@
             Represents the text input control (&lt;input type="text"&gt;). Default search is performed by the label. Handles any input element with type="text" or without the defined type attribute.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="T:Atata.WaitBy">
+            <summary>
+            Specifies the kind of the element selector for the waiting.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitBy.Id">
+            <summary>
+            Uses the id selector kind.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitBy.Name">
+            <summary>
+            Uses the name selector kind.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitBy.Class">
+            <summary>
+            Uses the class selector kind.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitBy.Css">
+            <summary>
+            Uses the CSS selector kind.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitBy.XPath">
+            <summary>
+            Uses the XPath selector kind.
+            </summary>
+        </member>
+        <member name="T:Atata.WaitUntil">
+            <summary>
+            Specifies the waiting approach.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitUntil.Missing">
+            <summary>
+            Waits until the element will be missing.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitUntil.Hidden">
+            <summary>
+            Waits until the element will be hidden.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitUntil.MissingOrHidden">
+            <summary>
+            Waits until the element will be missing or hidden.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitUntil.Visible">
+            <summary>
+            Waits until the element will be visible.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitUntil.Exists">
+            <summary>
+            Waits until the element will exist.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitUntil.VisibleAndHidden">
+            <summary>
+            Waits until the element will be visible and than until it will be hidden.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitUntil.VisibleAndMissing">
+            <summary>
+            Waits until the element will be visible and than until it will be missing.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitUntil.MissingAndVisible">
+            <summary>
+            Waits until the element will be missing and than until it will be visible.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitUntil.HiddenAndVisible">
+            <summary>
+            Waits until the element will be hidden and than until it will be visible.
+            </summary>
         </member>
     </members>
 </doc>

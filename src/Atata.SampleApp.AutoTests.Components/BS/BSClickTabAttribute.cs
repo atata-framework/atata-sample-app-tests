@@ -4,8 +4,8 @@ namespace Atata.SampleApp.AutoTests
 {
     public class BSClickTabAttribute : TriggerAttribute
     {
-        public BSClickTabAttribute(TriggerEvents on = TriggerEvents.BeforeAnyAction, TriggerPriority priority = TriggerPriority.Medium, TriggerScope appliesTo = TriggerScope.Self)
-            : base(on, priority, appliesTo)
+        public BSClickTabAttribute(TriggerEvents on = TriggerEvents.BeforeAnyAction, TriggerPriority priority = TriggerPriority.Medium)
+            : base(on, priority)
         {
         }
 
@@ -16,7 +16,7 @@ namespace Atata.SampleApp.AutoTests
                 throw new InvalidOperationException("Cannot find tab pane.");
 
             string tabPaneId = tabPanelControl.ScopeLocator.GetElement(SearchOptions.OfAnyVisibility()).GetAttribute("id");
-            var findAttribute = new FindByBSTabPaneIdAttribute("#" + tabPaneId.ToString(TermCase.Kebab));
+            var findAttribute = new FindByInnerXPathAttribute($".//a[@href='#{tabPaneId}']");
 
             // TODO: CreateControl in Owner.
             var tab = tabPanelControl.Parent.Controls.Create<BSTab<TOwner>>(context.Component.Parent.ComponentName, findAttribute);
