@@ -7,6 +7,11 @@
     {
         private const string TitleClassName = "modal-title";
 
+        protected BSModal(params string[] windowTitleValues)
+            : base(windowTitleValues)
+        {
+        }
+
         [FindByClass(TitleClassName)]
         public Text<TOwner> ModalTitle { get; private set; }
     }
