@@ -6,7 +6,7 @@ namespace Atata.SampleApp.AutoTests
     [VerifyH1]
     public class UsersPage : AppPage<_>
     {
-        public Button<UserEditWindow, _> New { get; private set; }
+        public ButtonDelegate<UserEditWindow, _> New { get; private set; }
 
         public Table<UserTableRow, _> Users { get; private set; }
 
@@ -20,12 +20,12 @@ namespace Atata.SampleApp.AutoTests
 
             public Content<Office, _> Office { get; private set; }
 
-            public Link<UserDetailsPage, _> View { get; private set; }
+            public LinkDelegate<UserDetailsPage, _> View { get; private set; }
 
-            public Button<UserEditWindow, _> Edit { get; private set; }
+            public ButtonDelegate<UserEditWindow, _> Edit { get; private set; }
 
             [CloseConfirmBox]
-            public Button<_> Delete { get; private set; }
+            public ButtonDelegate<_> Delete { get; private set; }
         }
     }
 }

@@ -6,6 +6,6 @@ namespace Atata.SampleApp.AutoTests
     [VerifyH1(TermMatch.Contains)]
     public class ForbiddenPage : AppPage<_>
     {
-        public Link<SignInPage, _> SignIn { get; private set; }
+        public LinkDelegate<SignInPage, _> SignIn { get; private set; }
     }
 }

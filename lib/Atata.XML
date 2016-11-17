@@ -4,9 +4,49 @@
         <name>Atata</name>
     </assembly>
     <members>
+        <member name="T:Atata.FindLastAttribute">
+            <summary>
+            Indicates that a control should use the last occurring element matching the control's definition.
+            </summary>
+        </member>
+        <member name="T:Atata.FindSettingsAttribute">
+            <summary>
+            Defines the settings to apply for the specified finding strategy of a control.
+            </summary>
+        </member>
+        <member name="P:Atata.FindSettingsAttribute.FindAttributeType">
+            <summary>
+            Gets the type of the attribute to use for the control finding. Type should be inherited from <see cref="T:Atata.FindAttribute"/>.
+            </summary>
+        </member>
+        <member name="P:Atata.FindSettingsAttribute.Index">
+            <summary>
+            Gets or sets the index of the control. The default value is -1, meaning that the index is not used.
+            </summary>
+        </member>
+        <member name="P:Atata.FindSettingsAttribute.ScopeSource">
+            <summary>
+            Gets or sets the scope source. The default value is Inherit.
+            </summary>
+        </member>
+        <member name="P:Atata.FindSettingsAttribute.Strategy">
+            <summary>
+            Gets or sets the strategy type for the control finding. Strategy type should implement <see cref="T:Atata.IComponentScopeLocateStrategy"/>. The default value is null, meaning that the default strategy of the specific <see cref="T:Atata.FindAttribute"/> should be used.
+            </summary>
+        </member>
         <member name="T:Atata.HoverParentAttribute">
             <summary>
             Indicates that the hover on the parent component should occur on the specified event. Be default occurs before any action. Is useful for the drop-down menu item controls.
+            </summary>
+        </member>
+        <member name="T:Atata.InvokeMethodAttribute">
+            <summary>
+            Defines the method to invoke on the specified event.
+            </summary>
+        </member>
+        <member name="P:Atata.InvokeMethodAttribute.MethodName">
+            <summary>
+            Gets the name of the method.
             </summary>
         </member>
         <member name="P:Atata.WaitForAttribute.Until">
@@ -26,17 +66,17 @@
         </member>
         <member name="P:Atata.WaitForAttribute.PresenceTimeout">
             <summary>
-            Gets or sets the presence (exists or visible) timeout in seconds. The default value is taken from <c>RetrySettings.Timeout.TotalSeconds</c>.
+            Gets or sets the presence (exists or visible) timeout in seconds. The default value is taken from <c>AtataContext.Current.RetryTimeout.TotalSeconds</c>.
             </summary>
         </member>
         <member name="P:Atata.WaitForAttribute.AbsenceTimeout">
             <summary>
-            Gets or sets the absence (missing or hidden) timeout in seconds. The default value is taken from <c>RetrySettings.Timeout.TotalSeconds</c>.
+            Gets or sets the absence (missing or hidden) timeout in seconds. The default value is taken from <c>AtataContext.Current.RetryTimeout.TotalSeconds</c>.
             </summary>
         </member>
         <member name="P:Atata.WaitForAttribute.RetryInterval">
             <summary>
-            Gets or sets the retry interval. The default value is taken from <c>RetrySettings.RetryInterval.TotalSeconds</c>.
+            Gets or sets the retry interval. The default value is taken from <c>AtataContext.Current.RetryInterval.TotalSeconds</c>.
             </summary>
         </member>
         <member name="T:Atata.DateTime`1">
@@ -69,29 +109,627 @@
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
-        <member name="T:Atata.UIComponentAttributeProvider">
+        <member name="P:Atata.AtataBuildingContext.TestName">
             <summary>
-            Allows to access the component scope element attribute values.
+            Gets or sets the name of the test.
             </summary>
         </member>
-        <member name="P:Atata.UIComponentAttributeProvider.Item(System.String)">
+        <member name="P:Atata.AtataBuildingContext.BaseUrl">
             <summary>
-            Gets the value of the specified attribute for the control's scope element.
+            Gets or sets the base URL.
+            </summary>
+        </member>
+        <member name="P:Atata.AtataBuildingContext.RetryTimeout">
+            <summary>
+            Gets the retry timeout. The default value is 10 seconds.
+            </summary>
+        </member>
+        <member name="P:Atata.AtataBuildingContext.RetryInterval">
+            <summary>
+            Gets the retry interval. The default value is 500 milliseconds.
+            </summary>
+        </member>
+        <member name="M:Atata.AtataContextBuilder.UseDriver(System.Func{OpenQA.Selenium.Remote.RemoteWebDriver})">
+            <summary>
+            Use custom driver creator function.
+            </summary>
+            <param name="driverCreator">The builder.</param>
+            <returns>The <see cref="T:Atata.FirefoxAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilder.UseLogConsumer``1(``0)">
+            <summary>
+            Adds the log consumer.
+            </summary>
+            <typeparam name="TLogConsumer">The type of the log consumer.</typeparam>
+            <param name="consumer">The log consumer.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder`1"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilder.UseScreenshotConsumer``1(``0)">
+            <summary>
+            Adds the screenshot consumer.
+            </summary>
+            <typeparam name="TScreenshotConsumer">The type of the screenshot consumer.</typeparam>
+            <param name="consumer">The screenshot consumer.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder`1"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilder.UseTestName(System.String)">
+            <summary>
+            Sets the name of the test.
+            </summary>
+            <param name="name">The name of the test.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilder.UseBaseUrl(System.String)">
+            <summary>
+            Sets the base URL.
+            </summary>
+            <param name="baseUrl">The base URL.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilder.UseRetryTimeout(System.TimeSpan)">
+            <summary>
+            Sets the retry timeout for a search of element/control. The default value is 10 seconds.
+            </summary>
+            <param name="timeout">The retry timeout.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilder.UseRetryInterval(System.TimeSpan)">
+            <summary>
+            Sets the retry interval for a search of element/control. The default value is 500 milliseconds.
+            </summary>
+            <param name="interval">The retry interval.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilder.OnCleanUp(System.Action)">
+            <summary>
+            Adds the action to perform on <see cref="T:Atata.AtataContext"/> clean up.
+            </summary>
+            <param name="action">The action.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilder.SetUp">
+            <summary>
+            Sets up the context.
+            </summary>
+        </member>
+        <member name="T:Atata.UIComponentAttributeProvider`1">
+            <summary>
+            Allows to access the component scope element's attribute values.
+            </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="P:Atata.UIComponentAttributeProvider`1.Item(System.String)">
+            <summary>
+            Gets the <see cref="T:Atata.DataProvider`2"/> instance for the value of the specified control's scope element attribute.
+            </summary>
+            <param name="attributeName">The name of the attribute.</param>
+            <returns>The <see cref="T:Atata.DataProvider`2"/> instance for the attribute's current value.</returns>
+        </member>
+        <member name="M:Atata.UIComponentAttributeProvider`1.GetValue(System.String)">
+            <summary>
+            Gets the value of the specified control's scope element attribute.
             </summary>
             <param name="attributeName">The name of the attribute.</param>
             <returns>The attribute's current value. Returns a null if the value is not set.</returns>
         </member>
-        <member name="T:Atata.UIComponentCssProvider">
+        <member name="T:Atata.UIComponentCssProvider`1">
             <summary>
-            Allows to access the component scope element CSS property values.
+            Allows to access the component scope element's CSS property values.
             </summary>
+            <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
-        <member name="P:Atata.UIComponentCssProvider.Item(System.String)">
+        <member name="P:Atata.UIComponentCssProvider`1.Item(System.String)">
             <summary>
-            Gets the value of the specified CSS property for the control's scope element.
+            Gets the <see cref="T:Atata.DataProvider`2"/> instance for the value of the specified control's scope element CSS property.
             </summary>
             <param name="propertyName">The name of the CSS property.</param>
-            <returns>The value of the specified CSS property.</returns>
+            <returns>The <see cref="T:Atata.DataProvider`2"/> instance for the CSS property's current value.</returns>
+        </member>
+        <member name="M:Atata.UIComponentCssProvider`1.GetValue(System.String)">
+            <summary>
+            Gets the value of the specified control's scope element CSS property.
+            </summary>
+            <param name="propertyName">The name of the CSS property.</param>
+            <returns>The CSS property's current value.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseChrome(Atata.AtataContextBuilder)">
+            <summary>
+            Use the <see cref="T:OpenQA.Selenium.Chrome.ChromeDriver"/>.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.ChromeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseFirefox(Atata.AtataContextBuilder)">
+            <summary>
+            Use the <see cref="T:OpenQA.Selenium.Firefox.FirefoxDriver"/>.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.FirefoxAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseInternetExplorer(Atata.AtataContextBuilder)">
+            <summary>
+            Use the <see cref="T:OpenQA.Selenium.IE.InternetExplorerDriver"/>.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.InternetExplorerAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseEdge(Atata.AtataContextBuilder)">
+            <summary>
+            Use the <see cref="T:OpenQA.Selenium.Edge.EdgeDriver"/>.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.EdgeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseOpera(Atata.AtataContextBuilder)">
+            <summary>
+            Use the <see cref="T:OpenQA.Selenium.Opera.OperaDriver"/>.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.OperaAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UsePhantomJS(Atata.AtataContextBuilder)">
+            <summary>
+            Use the <see cref="T:OpenQA.Selenium.PhantomJS.PhantomJSDriver"/>.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.PhantomJSAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseSafari(Atata.AtataContextBuilder)">
+            <summary>
+            Use the <see cref="T:OpenQA.Selenium.Safari.SafariDriver"/>.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.SafariAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.WithArguments(Atata.ChromeAtataContextBuilder,System.String[])">
+            <summary>
+            Adds arguments to be appended to the Chrome.exe command line.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="arguments">The arguments.</param>
+            <returns>The <see cref="T:Atata.ChromeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.WithArguments(Atata.OperaAtataContextBuilder,System.String[])">
+            <summary>
+            Adds arguments to be appended to the Opera.exe command line.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="arguments">The arguments.</param>
+            <returns>The <see cref="T:Atata.OperaAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseNUnitTestName(Atata.AtataContextBuilder)">
+            <summary>
+            Defines that the name of the test should be taken from the NUnit test.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.LogNUnitError(Atata.AtataContextBuilder)">
+            <summary>
+            Defines that an error occured during the NUnit test execution should be added to the log upon the clean up.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseTraceLogging(Atata.AtataContextBuilder)">
+            <summary>
+            Adds the <see cref="T:Atata.TraceLogConsumer"/> instance that uses <see cref="T:System.Diagnostics.Trace"/> class for logging.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder`1"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseDebugLogging(Atata.AtataContextBuilder)">
+            <summary>
+            Adds the <see cref="T:Atata.DebugLogConsumer"/> instance that uses <see cref="T:System.Diagnostics.Debug"/> class for logging.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder`1"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseNUnitTestContextLogging(Atata.AtataContextBuilder)">
+            <summary>
+            Adds the <see cref="T:Atata.NUnitTestContextLogConsumer"/> instance that uses NUnit.Framework.TestContext class for logging.
+            </summary>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder`1"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseNLogLogging(Atata.AtataContextBuilder,System.String)">
+            <summary>
+            Adds the <see cref="T:Atata.NLogConsumer"/> instance that uses NLog.Logger class for logging.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="loggerName">Name of the logger.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder`1"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseScreenshotFileSaving(Atata.AtataContextBuilder,System.String)">
+            <summary>
+            Adds the <see cref="T:Atata.FileScreenshotConsumer"/> instance with the specified folder path.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="folderPath">The folder path.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder`1"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.UseScreenshotFileSaving(Atata.AtataContextBuilder,System.Func{System.String})">
+            <summary>
+            Adds the <see cref="T:Atata.FileScreenshotConsumer"/> instance with the specified folder path creator.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="folderPathCreator">The folder path creator.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder`1"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.With(Atata.AtataContextBuilder{Atata.FileScreenshotConsumer},System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            Specifies the image format of the log consumer.
+            </summary>
+            <param name="builder">The builder.</param>
+            <param name="imageFormat">The image format.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder`1"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.WithoutSectionFinish``1(Atata.AtataContextBuilder{``0})">
+            <summary>
+            Defines that the logging should not use section-like messages (not "Starting: {action}" and "Finished: {action}", but just "{action}").
+            </summary>
+            <typeparam name="TTLogConsumer">The type of the log consumer.</typeparam>
+            <param name="builder">The builder.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder`1"/> instance.</returns>
+        </member>
+        <member name="M:Atata.AtataContextBuilderExtensions.WithMinLevel``1(Atata.AtataContextBuilder{``0},Atata.LogLevel)">
+            <summary>
+            Specifies the minimum level of the log event to write to the log.
+            </summary>
+            <typeparam name="TTLogConsumer">The type of the log consumer.</typeparam>
+            <param name="builder">The builder.</param>
+            <param name="level">The level.</param>
+            <returns>The <see cref="T:Atata.AtataContextBuilder`1"/> instance.</returns>
+        </member>
+        <member name="M:Atata.ChromeAtataContextBuilder.WithOptions(System.Func{OpenQA.Selenium.Chrome.ChromeOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsCreator">The options creator.</param>
+            <returns>The <see cref="T:Atata.ChromeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.ChromeAtataContextBuilder.WithOptions(System.Action{OpenQA.Selenium.Chrome.ChromeOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsInitializer">The options initializer.</param>
+            <returns>The <see cref="T:Atata.ChromeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.ChromeAtataContextBuilder.WithCapability(System.String,System.Object)">
+            <summary>
+            Adds additional capability to the driver options.
+            </summary>
+            <param name="capabilityName">The name of the capability to add.</param>
+            <param name="capabilityValue">The value of the capability to add</param>
+            <returns>The <see cref="T:Atata.ChromeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.ChromeAtataContextBuilder.WithDriverService(System.Func{OpenQA.Selenium.Chrome.ChromeDriverService})">
+            <summary>
+            Specifies the creator function of the <see cref="T:OpenQA.Selenium.Chrome.ChromeDriverService"/>.
+            </summary>
+            <param name="driverServiceCreator">The driver service creator function.</param>
+            <returns>The <see cref="T:Atata.ChromeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.ChromeAtataContextBuilder.WithDriverPath(System.String)">
+            <summary>
+            Specifies the directory containing the driver executable file.
+            </summary>
+            <param name="driverPath">The driver path.</param>
+            <returns>The <see cref="T:Atata.ChromeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.ChromeAtataContextBuilder.WithDriverExecutableFileName(System.String)">
+            <summary>
+            Specifies the name of the driver executable file.
+            </summary>
+            <param name="driverExecutableFileName">The driver executable file name.</param>
+            <returns>The <see cref="T:Atata.ChromeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.ChromeAtataContextBuilder.WithCommandTimeout(System.TimeSpan)">
+            <summary>
+            Specifies the command timeout (the maximum amount of time to wait for each command).
+            </summary>
+            <param name="commandTimeout">The command timeout.</param>
+            <returns>The <see cref="T:Atata.ChromeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.EdgeAtataContextBuilder.WithOptions(System.Func{OpenQA.Selenium.Edge.EdgeOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsCreator">The options creator.</param>
+            <returns>The <see cref="T:Atata.EdgeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.EdgeAtataContextBuilder.WithOptions(System.Action{OpenQA.Selenium.Edge.EdgeOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsInitializer">The options initializer.</param>
+            <returns>The <see cref="T:Atata.EdgeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.EdgeAtataContextBuilder.WithCapability(System.String,System.Object)">
+            <summary>
+            Adds additional capability to the driver options.
+            </summary>
+            <param name="capabilityName">The name of the capability to add.</param>
+            <param name="capabilityValue">The value of the capability to add</param>
+            <returns>The <see cref="T:Atata.EdgeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.EdgeAtataContextBuilder.WithDriverService(System.Func{OpenQA.Selenium.Edge.EdgeDriverService})">
+            <summary>
+            Specifies the creator function of the <see cref="T:OpenQA.Selenium.Edge.EdgeDriverService"/>.
+            </summary>
+            <param name="driverServiceCreator">The driver service creator function.</param>
+            <returns>The <see cref="T:Atata.EdgeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.EdgeAtataContextBuilder.WithDriverPath(System.String)">
+            <summary>
+            Specifies the directory containing the driver executable file.
+            </summary>
+            <param name="driverPath">The driver path.</param>
+            <returns>The <see cref="T:Atata.EdgeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.EdgeAtataContextBuilder.WithDriverExecutableFileName(System.String)">
+            <summary>
+            Specifies the name of the driver executable file.
+            </summary>
+            <param name="driverExecutableFileName">The driver executable file name.</param>
+            <returns>The <see cref="T:Atata.EdgeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.EdgeAtataContextBuilder.WithCommandTimeout(System.TimeSpan)">
+            <summary>
+            Specifies the command timeout (the maximum amount of time to wait for each command).
+            </summary>
+            <param name="commandTimeout">The command timeout.</param>
+            <returns>The <see cref="T:Atata.EdgeAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.FirefoxAtataContextBuilder.WithOptions(System.Func{OpenQA.Selenium.Firefox.FirefoxOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsCreator">The options creator.</param>
+            <returns>The <see cref="T:Atata.FirefoxAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.FirefoxAtataContextBuilder.WithOptions(System.Action{OpenQA.Selenium.Firefox.FirefoxOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsInitializer">The options initializer.</param>
+            <returns>The <see cref="T:Atata.FirefoxAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.FirefoxAtataContextBuilder.WithCapability(System.String,System.Object)">
+            <summary>
+            Adds additional capability to the driver options.
+            </summary>
+            <param name="capabilityName">The name of the capability to add.</param>
+            <param name="capabilityValue">The value of the capability to add</param>
+            <returns>The <see cref="T:Atata.FirefoxAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.FirefoxAtataContextBuilder.WithDriverService(System.Func{OpenQA.Selenium.Firefox.FirefoxDriverService})">
+            <summary>
+            Specifies the creator function of the <see cref="T:OpenQA.Selenium.Firefox.FirefoxDriverService"/>.
+            </summary>
+            <param name="driverServiceCreator">The driver service creator function.</param>
+            <returns>The <see cref="T:Atata.FirefoxAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.FirefoxAtataContextBuilder.WithDriverPath(System.String)">
+            <summary>
+            Specifies the directory containing the driver executable file.
+            </summary>
+            <param name="driverPath">The driver path.</param>
+            <returns>The <see cref="T:Atata.FirefoxAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.FirefoxAtataContextBuilder.WithDriverExecutableFileName(System.String)">
+            <summary>
+            Specifies the name of the driver executable file.
+            </summary>
+            <param name="driverExecutableFileName">The driver executable file name.</param>
+            <returns>The <see cref="T:Atata.FirefoxAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.FirefoxAtataContextBuilder.WithCommandTimeout(System.TimeSpan)">
+            <summary>
+            Specifies the command timeout (the maximum amount of time to wait for each command).
+            </summary>
+            <param name="commandTimeout">The command timeout.</param>
+            <returns>The <see cref="T:Atata.FirefoxAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.InternetExplorerAtataContextBuilder.WithOptions(System.Func{OpenQA.Selenium.IE.InternetExplorerOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsCreator">The options creator.</param>
+            <returns>The <see cref="T:Atata.InternetExplorerAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.InternetExplorerAtataContextBuilder.WithOptions(System.Action{OpenQA.Selenium.IE.InternetExplorerOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsInitializer">The options initializer.</param>
+            <returns>The <see cref="T:Atata.InternetExplorerAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.InternetExplorerAtataContextBuilder.WithCapability(System.String,System.Object)">
+            <summary>
+            Adds additional capability to the driver options.
+            </summary>
+            <param name="capabilityName">The name of the capability to add.</param>
+            <param name="capabilityValue">The value of the capability to add</param>
+            <returns>The <see cref="T:Atata.InternetExplorerAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.InternetExplorerAtataContextBuilder.WithDriverService(System.Func{OpenQA.Selenium.IE.InternetExplorerDriverService})">
+            <summary>
+            Specifies the creator function of the <see cref="T:OpenQA.Selenium.IE.InternetExplorerDriverService"/>.
+            </summary>
+            <param name="driverServiceCreator">The driver service creator function.</param>
+            <returns>The <see cref="T:Atata.InternetExplorerAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.InternetExplorerAtataContextBuilder.WithDriverPath(System.String)">
+            <summary>
+            Specifies the directory containing the driver executable file.
+            </summary>
+            <param name="driverPath">The driver path.</param>
+            <returns>The <see cref="T:Atata.InternetExplorerAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.InternetExplorerAtataContextBuilder.WithDriverExecutableFileName(System.String)">
+            <summary>
+            Specifies the name of the driver executable file.
+            </summary>
+            <param name="driverExecutableFileName">The driver executable file name.</param>
+            <returns>The <see cref="T:Atata.InternetExplorerAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.InternetExplorerAtataContextBuilder.WithCommandTimeout(System.TimeSpan)">
+            <summary>
+            Specifies the command timeout (the maximum amount of time to wait for each command).
+            </summary>
+            <param name="commandTimeout">The command timeout.</param>
+            <returns>The <see cref="T:Atata.InternetExplorerAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.OperaAtataContextBuilder.WithOptions(System.Func{OpenQA.Selenium.Opera.OperaOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsCreator">The options creator.</param>
+            <returns>The <see cref="T:Atata.OperaAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.OperaAtataContextBuilder.WithOptions(System.Action{OpenQA.Selenium.Opera.OperaOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsInitializer">The options initializer.</param>
+            <returns>The <see cref="T:Atata.OperaAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.OperaAtataContextBuilder.WithCapability(System.String,System.Object)">
+            <summary>
+            Adds additional capability to the driver options.
+            </summary>
+            <param name="capabilityName">The name of the capability to add.</param>
+            <param name="capabilityValue">The value of the capability to add</param>
+            <returns>The <see cref="T:Atata.OperaAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.OperaAtataContextBuilder.WithDriverService(System.Func{OpenQA.Selenium.Opera.OperaDriverService})">
+            <summary>
+            Specifies the creator function of the <see cref="T:OpenQA.Selenium.Opera.OperaDriverService"/>.
+            </summary>
+            <param name="driverServiceCreator">The driver service creator function.</param>
+            <returns>The <see cref="T:Atata.OperaAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.OperaAtataContextBuilder.WithDriverPath(System.String)">
+            <summary>
+            Specifies the directory containing the driver executable file.
+            </summary>
+            <param name="driverPath">The driver path.</param>
+            <returns>The <see cref="T:Atata.OperaAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.OperaAtataContextBuilder.WithDriverExecutableFileName(System.String)">
+            <summary>
+            Specifies the name of the driver executable file.
+            </summary>
+            <param name="driverExecutableFileName">The driver executable file name.</param>
+            <returns>The <see cref="T:Atata.OperaAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.OperaAtataContextBuilder.WithCommandTimeout(System.TimeSpan)">
+            <summary>
+            Specifies the command timeout (the maximum amount of time to wait for each command).
+            </summary>
+            <param name="commandTimeout">The command timeout.</param>
+            <returns>The <see cref="T:Atata.OperaAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.PhantomJSAtataContextBuilder.WithOptions(System.Func{OpenQA.Selenium.PhantomJS.PhantomJSOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsCreator">The options creator.</param>
+            <returns>The <see cref="T:Atata.PhantomJSAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.PhantomJSAtataContextBuilder.WithOptions(System.Action{OpenQA.Selenium.PhantomJS.PhantomJSOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsInitializer">The options initializer.</param>
+            <returns>The <see cref="T:Atata.PhantomJSAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.PhantomJSAtataContextBuilder.WithCapability(System.String,System.Object)">
+            <summary>
+            Adds additional capability to the driver options.
+            </summary>
+            <param name="capabilityName">The name of the capability to add.</param>
+            <param name="capabilityValue">The value of the capability to add</param>
+            <returns>The <see cref="T:Atata.PhantomJSAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.PhantomJSAtataContextBuilder.WithDriverService(System.Func{OpenQA.Selenium.PhantomJS.PhantomJSDriverService})">
+            <summary>
+            Specifies the creator function of the <see cref="T:OpenQA.Selenium.PhantomJS.PhantomJSDriverService"/>.
+            </summary>
+            <param name="driverServiceCreator">The driver service creator function.</param>
+            <returns>The <see cref="T:Atata.PhantomJSAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.PhantomJSAtataContextBuilder.WithDriverPath(System.String)">
+            <summary>
+            Specifies the directory containing the driver executable file.
+            </summary>
+            <param name="driverPath">The driver path.</param>
+            <returns>The <see cref="T:Atata.PhantomJSAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.PhantomJSAtataContextBuilder.WithDriverExecutableFileName(System.String)">
+            <summary>
+            Specifies the name of the driver executable file.
+            </summary>
+            <param name="driverExecutableFileName">The driver executable file name.</param>
+            <returns>The <see cref="T:Atata.PhantomJSAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.PhantomJSAtataContextBuilder.WithCommandTimeout(System.TimeSpan)">
+            <summary>
+            Specifies the command timeout (the maximum amount of time to wait for each command).
+            </summary>
+            <param name="commandTimeout">The command timeout.</param>
+            <returns>The <see cref="T:Atata.PhantomJSAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.SafariAtataContextBuilder.WithOptions(System.Func{OpenQA.Selenium.Safari.SafariOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsCreator">The options creator.</param>
+            <returns>The <see cref="T:Atata.SafariAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.SafariAtataContextBuilder.WithOptions(System.Action{OpenQA.Selenium.Safari.SafariOptions})">
+            <summary>
+            Specifies the driver options.
+            </summary>
+            <param name="optionsInitializer">The options initializer.</param>
+            <returns>The <see cref="T:Atata.SafariAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.SafariAtataContextBuilder.WithCapability(System.String,System.Object)">
+            <summary>
+            Adds additional capability to the driver options.
+            </summary>
+            <param name="capabilityName">The name of the capability to add.</param>
+            <param name="capabilityValue">The value of the capability to add</param>
+            <returns>The <see cref="T:Atata.SafariAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.SafariAtataContextBuilder.WithDriverService(System.Func{OpenQA.Selenium.Safari.SafariDriverService})">
+            <summary>
+            Specifies the creator function of the <see cref="T:OpenQA.Selenium.Safari.SafariDriverService"/>.
+            </summary>
+            <param name="driverServiceCreator">The driver service creator function.</param>
+            <returns>The <see cref="T:Atata.SafariAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.SafariAtataContextBuilder.WithDriverPath(System.String)">
+            <summary>
+            Specifies the directory containing the driver executable file.
+            </summary>
+            <param name="driverPath">The driver path.</param>
+            <returns>The <see cref="T:Atata.SafariAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.SafariAtataContextBuilder.WithDriverExecutableFileName(System.String)">
+            <summary>
+            Specifies the name of the driver executable file.
+            </summary>
+            <param name="driverExecutableFileName">The driver executable file name.</param>
+            <returns>The <see cref="T:Atata.SafariAtataContextBuilder"/> instance.</returns>
+        </member>
+        <member name="M:Atata.SafariAtataContextBuilder.WithCommandTimeout(System.TimeSpan)">
+            <summary>
+            Specifies the command timeout (the maximum amount of time to wait for each command).
+            </summary>
+            <param name="commandTimeout">The command timeout.</param>
+            <returns>The <see cref="T:Atata.SafariAtataContextBuilder"/> instance.</returns>
         </member>
         <member name="T:Atata.FileScreenshotConsumer">
             <summary>
@@ -256,14 +894,139 @@
             Ends the latest log section.
             </summary>
         </member>
+        <member name="T:Atata.ControlFindingAttribute">
+            <summary>
+            Specifies the default finding strategy of a control. Can be applied to the control class and assembly.
+            </summary>
+        </member>
+        <member name="P:Atata.ControlFindingAttribute.FindAttributeType">
+            <summary>
+            Gets the type of the attribute to use for the control finding. Type should be inherited from <see cref="T:Atata.FindAttribute"/>.
+            </summary>
+        </member>
+        <member name="P:Atata.ControlFindingAttribute.ControlType">
+            <summary>
+            Gets or sets the type of the control (e.g.: typeof(LinkControl&lt;&gt;), typeof(EditableField&lt;,&gt;)).
+            </summary>
+        </member>
+        <member name="P:Atata.ControlFindingAttribute.ParentComponentType">
+            <summary>
+            Gets or sets the type of the parent component.
+            </summary>
+        </member>
+        <member name="T:Atata.CultureAttribute">
+            <summary>
+            Specifies the culture of a component.
+            </summary>
+        </member>
+        <member name="P:Atata.CultureAttribute.Value">
+            <summary>
+            Gets the culture value.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByAttributeAttribute">
+            <summary>
+            Specifies that a control should be found by the specified attribute. Finds the control that has the specified attribute matching the specified term(s). Uses <c>Title</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByChildContentAttribute">
+            <summary>
+            Specifies that a control should be found by the child content text. Finds the control having the child with the specified content. Uses <c>Title</c> as the default term case.
+            </summary>
+        </member>
+        <member name="P:Atata.FindByChildContentAttribute.ChildIndex">
+            <summary>
+            Gets or sets the index of the child element. The default value is 0.
+            </summary>
+        </member>
         <member name="T:Atata.FindByClassAttribute">
             <summary>
             Specifies that a control should be found by class attribute. Finds the descendant or self control in the scope of the element having the specified class. Uses <c>Kebab</c> as the default term case.
             </summary>
         </member>
+        <member name="T:Atata.FindByColumnHeaderAttribute">
+            <summary>
+            Specifies that a control should be found within the table column (&lt;td&gt;) that has the header (&lt;th&gt;) matching the specified term(s). Uses <c>Title</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByColumnIndexAttribute">
+            <summary>
+            Specifies that a control should be found within the table column (&lt;td&gt;) that has the nth index.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByContentOrValueAttribute">
+            <summary>
+            Specifies that a control should be found by the content text or value attribute. Finds the control that has the content or value attribute matching the specified term(s). Uses <c>Title</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByCssAttribute">
+            <summary>
+            Specifies that a control should be found by CSS selector. Finds the descendant or self control in the scope of the element found by the specified CSS selector.
+            </summary>
+        </member>
+        <member name="P:Atata.FindByCssAttribute.Values">
+            <summary>
+            Gets the CSS selector values.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByDescriptionTermAttribute">
+            <summary>
+            Specifies that a control should be found by the description list term element. Finds the descendant control of the &lt;dd&gt; element in the scope of the &lt;dl&gt; element that has the &lt;dt&gt; element matching the specified term(s). Uses <c>Title</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByFieldSetAttribute">
+            <summary>
+            Specifies that a control should be found by the parent fieldset element. Finds the descendant control in the scope of the &lt;fieldset&gt; element that has the &lt;legend&gt; element matching the specified term(s). Uses <c>Title</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByIndexAttribute">
+            <summary>
+            Specifies that a control should use the nth occurring element matching the control's definition.
+            </summary>
+        </member>
         <member name="T:Atata.FindByNameAttribute">
             <summary>
             Specifies that a control should be found by name attribute. Finds the descendant or self control in the scope of the element having the specified name. Uses <c>Kebab</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByPlaceholderAttribute">
+            <summary>
+            Specifies that a control should be found by the placeholder attribute. Finds the control that has the placeholder attribute matching the specified term(s). Uses <c>Title</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByTitleAttribute">
+            <summary>
+            Specifies that a control should be found by the title attribute. Finds the control that has the title attribute matching the specified term(s). Uses <c>Title</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByValueAttribute">
+            <summary>
+            Specifies that a control should be found by the value attribute. Finds the control that has the value attribute matching the specified term(s). Uses <c>Title</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByXPathAttribute">
+            <summary>
+            Specifies that a control should be found by XPath. Finds the descendant or self control in the scope of the element found by the specified XPath.
+            </summary>
+        </member>
+        <member name="P:Atata.FindByXPathAttribute.Values">
+            <summary>
+            Gets the XPath values.
+            </summary>
+        </member>
+        <member name="T:Atata.FindFirstAttribute">
+            <summary>
+            Indicates that a control should use the first occurring element matching the control's definition.
+            </summary>
+        </member>
+        <member name="T:Atata.FormatAttribute">
+            <summary>
+            Specifies the format of a control.
+            </summary>
+        </member>
+        <member name="P:Atata.FormatAttribute.Value">
+            <summary>
+            Gets the format value.
             </summary>
         </member>
         <member name="T:Atata.ItemsControl`2">
@@ -286,7 +1049,7 @@
         </member>
         <member name="T:Atata.Table`3">
             <summary>
-            Represents the table control (&lt;table&gt;). Default search finds the first occuring table.
+            Represents the table control (&lt;table&gt;). Default search finds the first occurring table.
             </summary>
             <typeparam name="THeader">The type of the table header control.</typeparam>
             <typeparam name="TRow">The type of the table row control.</typeparam>
@@ -348,7 +1111,22 @@
         </member>
         <member name="T:Atata.TermFindSettingsAttribute">
             <summary>
-            Defines the settings to apply for the specified finding strategy of control. Applies to the class (inheritor of <see cref="T:Atata.UIComponent`1"/>) and assembly.
+            Defines the term settings to apply for the specified finding strategy of a control.
+            </summary>
+        </member>
+        <member name="P:Atata.TermFindSettingsAttribute.Case">
+            <summary>
+            Gets or sets the term case.
+            </summary>
+        </member>
+        <member name="P:Atata.TermFindSettingsAttribute.Match">
+            <summary>
+            Gets or sets the match.
+            </summary>
+        </member>
+        <member name="P:Atata.TermFindSettingsAttribute.Format">
+            <summary>
+            Gets or sets the format.
             </summary>
         </member>
         <member name="T:Atata.TermFindAttribute">
@@ -428,7 +1206,7 @@
         </member>
         <member name="P:Atata.FindByIdAttribute.DefaultCase">
             <summary>
-            Gets the default case. The default value is <c>TermCase.Kebab</c>.
+            Gets the default term case. The default value is <c>TermCase.Kebab</c>.
             </summary>
         </member>
         <member name="T:Atata.ClickParentAttribute">
@@ -506,6 +1284,11 @@
             Gets or sets the scope to apply the trigger to. The default value is Self.
             </summary>
         </member>
+        <member name="P:Atata.TriggerAttribute.IsDefinedAtComponentLevel">
+            <summary>
+            Gets a value indicating whether this trigger is defined at the component level.
+            </summary>
+        </member>
         <member name="T:Atata.VerifyContentMatchesAttribute">
             <summary>
             Specifies the verification of the page content. Verifies whether the component content matches any of the specified values. By default occurs upon the page object initialization.
@@ -566,6 +1349,11 @@
             Specifies the verification of the page title. By default occurs upon the page object initialization. If no value is specified, it uses the class name as the expected value with the <c>TermCase.Title</c> casing applied.
             </summary>
         </member>
+        <member name="T:Atata.VerifyTitleSettingsAttribute">
+            <summary>
+            Defines the settings to apply for the <see cref="T:Atata.VerifyTitleAttribute"/> trigger.
+            </summary>
+        </member>
         <member name="T:Atata.WaitAttribute">
             <summary>
             Specifies the waiting period in seconds. By default occurs after any action.
@@ -616,33 +1404,67 @@
             Gets or sets the index of the control. The default value is -1, meaning that the index is not used.
             </summary>
         </member>
-        <member name="P:Atata.FindAttribute.Scope">
+        <member name="P:Atata.FindAttribute.ScopeSource">
             <summary>
             Gets or sets the scope source. The default value is Inherit.
             </summary>
         </member>
-        <member name="T:Atata.ButtonControl`1">
+        <member name="P:Atata.FindAttribute.Strategy">
+            <summary>
+            Gets or sets the strategy type for the control search. Strategy type should implement <see cref="T:Atata.IComponentScopeLocateStrategy"/>. The default value is null, meaning that the default strategy of the specific <see cref="T:Atata.FindAttribute"/> should be used.
+            </summary>
+        </member>
+        <member name="P:Atata.FindAttribute.DefaultStrategy">
+            <summary>
+            Gets the default strategy type for the control search. Strategy type should implement <see cref="T:Atata.IComponentScopeLocateStrategy"/>.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByContentAttribute">
+            <summary>
+            Specifies that a control should be found by the content text. Finds the control having the specified content. Uses <c>Title</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FindByLabelAttribute">
+            <summary>
+            Specifies that a control should be found by the label element. Finds the &lt;label&gt; element by the specified term(s), then finds the bound control (for example, by label's "for" attribute referencing the element of the control by id). Uses <c>Title</c> as the default term case.
+            </summary>
+        </member>
+        <member name="T:Atata.FormatSettingsAttribute">
+            <summary>
+            Defines the format to apply for the specified control.
+            </summary>
+        </member>
+        <member name="P:Atata.FormatSettingsAttribute.ControlType">
+            <summary>
+            Gets or sets the type of the control (e.g.: typeof(DateInput&lt;&gt;), typeof(TimeInput&lt;&gt;)).
+            </summary>
+        </member>
+        <member name="P:Atata.FormatSettingsAttribute.Value">
+            <summary>
+            Gets the format value.
+            </summary>
+        </member>
+        <member name="T:Atata.Button`1">
             <summary>
             Represents the button control. Default search is performed by the content and value (button by content text and input by value attribute). Handles any input element with type="button", type="submit", type="reset" or button element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
-        <member name="T:Atata.ButtonControl`2">
+        <member name="T:Atata.Button`2">
             <summary>
             Represents the button control. Default search is performed by the content and value (button by content text and input by value attribute). Handles any input element with type="button", type="submit", type="reset" or button element.
             </summary>
             <typeparam name="TNavigateTo">The type of the page object to navigate to.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
-            <seealso cref="T:Atata.ButtonControl`1" />
+            <seealso cref="T:Atata.Button`1" />
             <seealso cref="T:Atata.INavigable`2" />
         </member>
-        <member name="T:Atata.ClickableControl`2">
+        <member name="T:Atata.Clickable`2">
             <summary>
             Represents any HTML element. Default search is performed by the id attribute.
             </summary>
             <typeparam name="TNavigateTo">The type of the page object to navigate to.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
-            <seealso cref="T:Atata.ClickableControl`1" />
         </member>
         <member name="T:Atata.Control`1">
             <summary>
@@ -685,7 +1507,7 @@
             </summary>
             <returns>The instance of the owner page object.</returns>
         </member>
-        <member name="T:Atata.Clickable`1">
+        <member name="T:Atata.ClickableDelegate`1">
             <summary>
             Represents the <see cref="T:Atata.Clickable`1"/> delegate.
             </summary>
@@ -693,7 +1515,7 @@
             <returns>The instance of the owner page object.</returns>
             <seealso cref="T:Atata.Clickable`1" />
         </member>
-        <member name="T:Atata.Clickable`2">
+        <member name="T:Atata.ClickableDelegate`2">
             <summary>
             Represents the <see cref="T:Atata.Clickable`2"/> delegate.
             </summary>
@@ -702,39 +1524,39 @@
             <returns>The instance of the owner page object.</returns>
             <seealso cref="T:Atata.Clickable`2" />
         </member>
-        <member name="T:Atata.Link`1">
+        <member name="T:Atata.LinkDelegate`1">
             <summary>
-            Represents the <see cref="T:Atata.LinkControl`1"/> delegate.
+            Represents the <see cref="T:Atata.Link`1"/> delegate.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
             <returns>The instance of the owner page object.</returns>
-            <seealso cref="T:Atata.LinkControl`1" />
+            <seealso cref="T:Atata.Link`1" />
         </member>
-        <member name="T:Atata.Link`2">
+        <member name="T:Atata.LinkDelegate`2">
             <summary>
-            Represents the <see cref="T:Atata.LinkControl`2"/> delegate.
+            Represents the <see cref="T:Atata.Link`2"/> delegate.
             </summary>
             <typeparam name="TNavigateTo">The type of the page object to navigate to.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
             <returns>The instance of the owner page object.</returns>
-            <seealso cref="T:Atata.LinkControl`2" />
+            <seealso cref="T:Atata.Link`2" />
         </member>
-        <member name="T:Atata.Button`1">
+        <member name="T:Atata.ButtonDelegate`1">
             <summary>
-            Represents the <see cref="T:Atata.ButtonControl`1"/> delegate.
+            Represents the <see cref="T:Atata.Button`1"/> delegate.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
             <returns>The instance of the owner page object.</returns>
-            <seealso cref="T:Atata.ButtonControl`1" />
+            <seealso cref="T:Atata.Button`1" />
         </member>
-        <member name="T:Atata.Button`2">
+        <member name="T:Atata.ButtonDelegate`2">
             <summary>
-            Represents the <see cref="T:Atata.ButtonControl`2"/> delegate.
+            Represents the <see cref="T:Atata.Button`2"/> delegate.
             </summary>
             <typeparam name="TNavigateTo">The type of the page object to navigate to.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
             <returns>The instance of the <typeparamref name="TNavigateTo"/> page object.</returns>
-            <seealso cref="T:Atata.ButtonControl`2" />
+            <seealso cref="T:Atata.Button`2" />
         </member>
         <member name="T:Atata.CheckBoxList`2">
             <summary>
@@ -795,37 +1617,37 @@
         </member>
         <member name="T:Atata.H1`1">
             <summary>
-            Represents the &lt;h1&gt; heading tag. Default search finds the first occuring &lt;h1&gt; element.
+            Represents the &lt;h1&gt; heading tag. Default search finds the first occurring &lt;h1&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.H2`1">
             <summary>
-            Represents the &lt;h2&gt; heading tag. Default search finds the first occuring &lt;h2&gt; element.
+            Represents the &lt;h2&gt; heading tag. Default search finds the first occurring &lt;h2&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.H3`1">
             <summary>
-            Represents the &lt;h3&gt; heading tag. Default search finds the first occuring &lt;h3&gt; element.
+            Represents the &lt;h3&gt; heading tag. Default search finds the first occurring &lt;h3&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.H4`1">
             <summary>
-            Represents the &lt;h4&gt; heading tag. Default search finds the first occuring &lt;h4&gt; element.
+            Represents the &lt;h4&gt; heading tag. Default search finds the first occurring &lt;h4&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.H5`1">
             <summary>
-            Represents the &lt;h5&gt; heading tag. Default search finds the first occuring &lt;h5&gt; element.
+            Represents the &lt;h5&gt; heading tag. Default search finds the first occurring &lt;h5&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
         <member name="T:Atata.H6`1">
             <summary>
-            Represents the &lt;h6&gt; heading tag. Default search finds the first occuring &lt;h6&gt; element.
+            Represents the &lt;h6&gt; heading tag. Default search finds the first occurring &lt;h6&gt; element.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
@@ -892,25 +1714,38 @@
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
+        <member name="M:Atata.TextArea`1.Append(System.String)">
+            <summary>
+            Appends the specified value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>The owner page object.</returns>
+        </member>
+        <member name="M:Atata.TextArea`1.Clear">
+            <summary>
+            Clears the value.
+            </summary>
+            <returns>The owner page object.</returns>
+        </member>
         <member name="T:Atata.TimeInput`1">
             <summary>
             Represents the time input control. Default search is performed by the label. Handles any input element with type="time", type="text" or without the defined type attribute.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
-        <member name="T:Atata.LinkControl`1">
+        <member name="T:Atata.Link`1">
             <summary>
             Represents the link control (&lt;a&gt;). Default search is performed by the content.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
-        <member name="T:Atata.LinkControl`2">
+        <member name="T:Atata.Link`2">
             <summary>
             Represents the link control (&lt;a&gt;). Default search is performed by the content.
             </summary>
             <typeparam name="TNavigateTo">The type of the page object to navigate to.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
-            <seealso cref="T:Atata.LinkControl`1" />
+            <seealso cref="T:Atata.Link`1" />
         </member>
         <member name="T:Atata.AtataContext">
             <summary>
@@ -947,6 +1782,21 @@
             Gets the test start date and time.
             </summary>
         </member>
+        <member name="P:Atata.AtataContext.BaseUrl">
+            <summary>
+            Gets the base URL.
+            </summary>
+        </member>
+        <member name="P:Atata.AtataContext.RetryTimeout">
+            <summary>
+            Gets the retry timeout. The default value is 10 seconds.
+            </summary>
+        </member>
+        <member name="P:Atata.AtataContext.RetryInterval">
+            <summary>
+            Gets the retry interval. The default value is 500 milliseconds.
+            </summary>
+        </member>
         <member name="M:Atata.AtataContext.CleanUp(System.Boolean)">
             <summary>
             Cleans up the test context.
@@ -966,7 +1816,7 @@
         </member>
         <member name="T:Atata.Table`2">
             <summary>
-            Represents the table control (&lt;table&gt;). Default search finds the first occuring table.
+            Represents the table control (&lt;table&gt;). Default search finds the first occurring table.
             </summary>
             <typeparam name="TRow">The type of the table row control.</typeparam>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
@@ -976,6 +1826,60 @@
             Represents any element containing text content. Default search is performed by the label.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
+        </member>
+        <member name="M:Atata.Go.To``1(``0,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Navigates to the specified page object.
+            </summary>
+            <typeparam name="T">The type of the page object.</typeparam>
+            <param name="pageObject">The page object. If set to <c>null</c> creates an instance using the default constructor.</param>
+            <param name="url">The URL.</param>
+            <param name="navigate">If set to <c>true</c> executes page object navigation functionality.</param>
+            <param name="temporarily">If set to <c>true</c> navigates temporarily preserving current page object state.</param>
+            <returns>The page object.</returns>
+        </member>
+        <member name="M:Atata.Go.ToWindow``1(``0,System.String,System.Boolean)">
+            <summary>
+            Navigates to the window with the specified page object by name.
+            </summary>
+            <typeparam name="T">The type of the page object.</typeparam>
+            <param name="pageObject">The page object. If set to <c>null</c> creates an instance using the default constructor.</param>
+            <param name="windowName">Name of the browser window.</param>
+            <param name="temporarily">If set to <c>true</c> navigates temporarily preserving current page object state.</param>
+            <returns>The page object.</returns>
+        </member>
+        <member name="M:Atata.Go.ToWindow``1(System.String,System.Boolean)">
+            <summary>
+            Navigates to the window by name.
+            </summary>
+            <typeparam name="T">The type of the page object.</typeparam>
+            <param name="windowName">Name of the browser window.</param>
+            <param name="temporarily">If set to <c>true</c> navigates temporarily preserving current page object state.</param>
+            <returns>The page object.</returns>
+        </member>
+        <member name="M:Atata.Go.ToNextWindow``1(``0,System.Boolean)">
+            <summary>
+            Navigates to the next window with the specified page object.
+            </summary>
+            <typeparam name="T">The type of the page object.</typeparam>
+            <param name="pageObject">The page object. If set to <c>null</c> creates an instance using the default constructor.</param>
+            <param name="temporarily">If set to <c>true</c> navigates temporarily preserving current page object state.</param>
+            <returns>The page object.</returns>
+        </member>
+        <member name="M:Atata.Go.ToPreviousWindow``1(``0,System.Boolean)">
+            <summary>
+            Navigates to the previous window with the specified page object.
+            </summary>
+            <typeparam name="T">The type of the page object.</typeparam>
+            <param name="pageObject">The page object. If set to <c>null</c> creates an instance using the default constructor.</param>
+            <param name="temporarily">If set to <c>true</c> navigates temporarily preserving current page object state.</param>
+            <returns>The page object.</returns>
+        </member>
+        <member name="M:Atata.Go.ToUrl(System.String)">
+            <summary>
+            Navigates to the specified URL.
+            </summary>
+            <param name="url">The URL.</param>
         </member>
         <member name="T:Atata.Page`1">
             <summary>
@@ -1035,7 +1939,7 @@
             Uses the page's scope (&lt;body&gt; element).
             </summary>
         </member>
-        <member name="T:Atata.ClickableControl`1">
+        <member name="T:Atata.Clickable`1">
             <summary>
             Represents any HTML element. Default search is performed by the id attribute.
             </summary>
@@ -1056,16 +1960,6 @@
         <member name="P:Atata.UIComponent.Parent">
             <summary>
             Gets the parent component.
-            </summary>
-        </member>
-        <member name="P:Atata.UIComponent.Attributes">
-            <summary>
-            Gets the scope element's attributes.
-            </summary>
-        </member>
-        <member name="P:Atata.UIComponent.Css">
-            <summary>
-            Gets the scope element's CSS properties.
             </summary>
         </member>
         <member name="M:Atata.UIComponent.Exists(Atata.SearchOptions)">
@@ -1100,9 +1994,19 @@
             Gets the verification provider that gives a set of verification extension methods.
             </summary>
         </member>
+        <member name="P:Atata.UIComponent`1.Attributes">
+            <summary>
+            Gets the <see cref="T:Atata.UIComponentAttributeProvider`1"/> instance that provides an access to the scope element's attributes.
+            </summary>
+        </member>
+        <member name="P:Atata.UIComponent`1.Css">
+            <summary>
+            Gets the <see cref="T:Atata.UIComponentCssProvider`1"/> instance that provides an access to the scope element's CSS properties.
+            </summary>
+        </member>
         <member name="T:Atata.Table`1">
             <summary>
-            Represents the table control (&lt;table&gt;). Default search finds the first occuring table.
+            Represents the table control (&lt;table&gt;). Default search finds the first occurring table.
             </summary>
             <typeparam name="TOwner">The type of the owner page object.</typeparam>
         </member>
@@ -1153,9 +2057,7 @@
             </summary>
             <typeparam name="TOther">The type of the page object that represents the previous page.</typeparam>
             <param name="previousPageObject">The instance of the previous page object. If equals null, creates an instance of <typeparamref name="TOther"/> using the default constructor.</param>
-            <returns>
-            The instance of the previous page object.
-            </returns>
+            <returns>The instance of the previous page object.</returns>
         </member>
         <member name="M:Atata.PageObject`1.GoForward``1(``0)">
             <summary>
@@ -1163,14 +2065,26 @@
             </summary>
             <typeparam name="TOther">The type of the page object that represents the next page.</typeparam>
             <param name="nextPageObject">The instance of the next page object. If equals null, creates an instance of <typeparamref name="TOther"/> using the default constructor.</param>
-            <returns>
-            The instance of the next page object.
-            </returns>
+            <returns>The instance of the next page object.</returns>
         </member>
         <member name="M:Atata.PageObject`1.CloseWindow">
             <summary>
             Closes the current window.
             </summary>
+        </member>
+        <member name="M:Atata.PageObject`1.Wait(System.TimeSpan)">
+            <summary>
+            Waits the specified time.
+            </summary>
+            <param name="time">The time to wait.</param>
+            <returns>The instance of this page object.</returns>
+        </member>
+        <member name="M:Atata.PageObject`1.Wait(System.Double)">
+            <summary>
+            Waits the specified time in seconds.
+            </summary>
+            <param name="seconds">The time to wait in seconds.</param>
+            <returns>The instance of this page object.</returns>
         </member>
         <member name="T:Atata.TriggerEvents">
             <summary>
@@ -1317,11 +2231,6 @@
             Uses title case (e.g. "Some Term").
             </summary>
         </member>
-        <member name="F:Atata.TermCase.TitleWithColon">
-            <summary>
-            Uses title case with colon (':') ending (e.g. "Some Term:").
-            </summary>
-        </member>
         <member name="F:Atata.TermCase.Sentence">
             <summary>
             Uses sentence case (e.g. "Some term").
@@ -1330,11 +2239,6 @@
         <member name="F:Atata.TermCase.MidSentence">
             <summary>
             Uses mid-sentence case where the first word is not capitalised (e.g. "some term").
-            </summary>
-        </member>
-        <member name="F:Atata.TermCase.SentenceWithColon">
-            <summary>
-            Uses sentence case with colon (':') ending (e.g. "Some term:").
             </summary>
         </member>
         <member name="F:Atata.TermCase.Lower">
@@ -1385,11 +2289,6 @@
         <member name="F:Atata.TermCase.PascalHyphenKebab">
             <summary>
             Uses hyphen ('‐') and pascal case (e.g. "Some‐Term").
-            </summary>
-        </member>
-        <member name="F:Atata.TermCase.XKebab">
-            <summary>
-            Uses dash ('-'), lower case and "x-" prefix (e.g. "x-some-term").
             </summary>
         </member>
         <member name="F:Atata.TermCase.Snake">

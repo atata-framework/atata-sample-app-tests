@@ -72,10 +72,10 @@
         </member>
         <member name="P:Atata.RetrySettings.Timeout">
             <summary>
-            Gets the timeout. The default value is 10 seconds.
+            Gets the retry timeout. The default value is 10 seconds.
             </summary>
         </member>
-        <member name="P:Atata.RetrySettings.RetryInterval">
+        <member name="P:Atata.RetrySettings.Interval">
             <summary>
             Gets the retry interval. The default value is 500 milliseconds.
             </summary>

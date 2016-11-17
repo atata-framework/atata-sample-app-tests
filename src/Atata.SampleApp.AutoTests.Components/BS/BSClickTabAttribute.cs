@@ -9,7 +9,7 @@ namespace Atata.SampleApp.AutoTests
         {
         }
 
-        public override void Execute<TOwner>(TriggerContext<TOwner> context)
+        protected override void Execute<TOwner>(TriggerContext<TOwner> context)
         {
             var tabPanelControl = GetAncestorOrSelf<TOwner, BSTabPane<TOwner>>(context.Component);
             if (tabPanelControl == null)

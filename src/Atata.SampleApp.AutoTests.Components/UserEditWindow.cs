@@ -11,7 +11,7 @@ namespace Atata.SampleApp.AutoTests
         public AdditionalTabPane Additional { get; private set; }
 
         [Term("Save", "Create")]
-        public Button<UsersPage, _> Save { get; private set; }
+        public ButtonDelegate<UsersPage, _> Save { get; private set; }
 
         public ValidationMessageList<_> ValidationMessages { get; private set; }
 
