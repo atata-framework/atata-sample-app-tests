@@ -4,22 +4,22 @@
         <name>Atata.WebDriverExtras</name>
     </assembly>
     <members>
-        <member name="T:Atata.ElementVisibility">
+        <member name="T:Atata.Visibility">
             <summary>
             Specifies the visibility of the element.
             </summary>
         </member>
-        <member name="F:Atata.ElementVisibility.Visible">
+        <member name="F:Atata.Visibility.Visible">
             <summary>
             Finds only the visible elements.
             </summary>
         </member>
-        <member name="F:Atata.ElementVisibility.Invisible">
+        <member name="F:Atata.Visibility.Hidden">
             <summary>
-            Finds only the invisible elements.
+            Finds only the hidden elements.
             </summary>
         </member>
-        <member name="F:Atata.ElementVisibility.Any">
+        <member name="F:Atata.Visibility.Any">
             <summary>
             Finds the elements with any visibility.
             </summary>

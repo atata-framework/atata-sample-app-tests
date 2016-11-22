@@ -11,30 +11,18 @@ namespace Atata.SampleApp.AutoTests
 
         protected override void Execute<TOwner>(TriggerContext<TOwner> context)
         {
-            var tabPanelControl = GetAncestorOrSelf<TOwner, BSTabPane<TOwner>>(context.Component);
+            var tabPanelControl = context.Component.GetAncestorOrSelf<BSTabPane<TOwner>>();
             if (tabPanelControl == null)
                 throw new InvalidOperationException("Cannot find tab pane.");
 
-            string tabPaneId = tabPanelControl.ScopeLocator.GetElement(SearchOptions.OfAnyVisibility()).GetAttribute("id");
+            string tabPaneId = tabPanelControl.Attributes.GetValue("id");
             var findAttribute = new FindByInnerXPathAttribute($".//a[@href='#{tabPaneId}']");
 
             // TODO: CreateControl in Owner.
-            var tab = tabPanelControl.Parent.Controls.Create<BSTab<TOwner>>(context.Component.Parent.ComponentName, findAttribute);
+            var tab = ((IUIComponent<TOwner>)tabPanelControl).Parent.Controls.Create<BSTab<TOwner>>(context.Component.Parent.ComponentName, findAttribute);
 
             if (!tab.IsActive)
                 tab.Click();
-        }
-
-        // TODO: Move to TriggerContext.
-        private IUIComponent<TOwner> GetAncestorOrSelf<TOwner, TComponentToFind>(IUIComponent<TOwner> component)
-            where TOwner : PageObject<TOwner>
-            where TComponentToFind : IUIComponent<TOwner>
-        {
-            return component is TComponentToFind ?
-                (TComponentToFind)component :
-                component.Parent != null ?
-                    GetAncestorOrSelf<TOwner, TComponentToFind>(component.Parent) :
-                    null;
         }
     }
 }

@@ -26,12 +26,17 @@
         </member>
         <member name="P:Atata.FindSettingsAttribute.ScopeSource">
             <summary>
-            Gets or sets the scope source. The default value is Inherit.
+            Gets or sets the scope source. The default value is Parent.
             </summary>
         </member>
         <member name="P:Atata.FindSettingsAttribute.Strategy">
             <summary>
-            Gets or sets the strategy type for the control finding. Strategy type should implement <see cref="T:Atata.IComponentScopeLocateStrategy"/>. The default value is null, meaning that the default strategy of the specific <see cref="T:Atata.FindAttribute"/> should be used.
+            Gets or sets the strategy type for the control search. Strategy type should implement <see cref="T:Atata.IComponentScopeLocateStrategy"/>. The default value is null, meaning that the default strategy of the specific <see cref="T:Atata.FindAttribute"/> should be used.
+            </summary>
+        </member>
+        <member name="P:Atata.FindSettingsAttribute.Visibility">
+            <summary>
+            Gets or sets the visibility. The default value is Visible.
             </summary>
         </member>
         <member name="T:Atata.HoverParentAttribute">
@@ -906,7 +911,7 @@
         </member>
         <member name="P:Atata.ControlFindingAttribute.ControlType">
             <summary>
-            Gets or sets the type of the control (e.g.: typeof(LinkControl&lt;&gt;), typeof(EditableField&lt;,&gt;)).
+            Gets or sets the type of the control (e.g.: typeof(Link&lt;&gt;), typeof(EditableField&lt;,&gt;)).
             </summary>
         </member>
         <member name="P:Atata.ControlFindingAttribute.ParentComponentType">
@@ -1129,6 +1134,11 @@
             Gets or sets the format.
             </summary>
         </member>
+        <member name="P:Atata.TermFindSettingsAttribute.CutEnding">
+            <summary>
+            Gets or sets a value indicating whether the name should be cut considering the IgnoreNameEndings property value of <see cref="T:Atata.ControlDefinitionAttribute"/> and <see cref="T:Atata.PageObjectDefinitionAttribute"/>. The default value is true.
+            </summary>
+        </member>
         <member name="T:Atata.TermFindAttribute">
             <summary>
             Represents the base attribute class for the finding attributes that use terms.
@@ -1179,21 +1189,6 @@
             Gets the term values.
             </summary>
         </member>
-        <member name="P:Atata.TermAttribute.Match">
-            <summary>
-            Gets the match.
-            </summary>
-        </member>
-        <member name="P:Atata.TermAttribute.Case">
-            <summary>
-            Gets the term case.
-            </summary>
-        </member>
-        <member name="P:Atata.TermAttribute.Format">
-            <summary>
-            Gets or sets the format.
-            </summary>
-        </member>
         <member name="P:Atata.TermAttribute.CutEnding">
             <summary>
             Gets or sets a value indicating whether the name should be cut considering the IgnoreNameEndings property value of <see cref="T:Atata.ControlDefinitionAttribute"/> and <see cref="T:Atata.PageObjectDefinitionAttribute"/>. The default value is true.
@@ -1207,6 +1202,21 @@
         <member name="P:Atata.FindByIdAttribute.DefaultCase">
             <summary>
             Gets the default term case. The default value is <c>TermCase.Kebab</c>.
+            </summary>
+        </member>
+        <member name="P:Atata.TermSettingsAttribute.Match">
+            <summary>
+            Gets the match.
+            </summary>
+        </member>
+        <member name="P:Atata.TermSettingsAttribute.Case">
+            <summary>
+            Gets the term case.
+            </summary>
+        </member>
+        <member name="P:Atata.TermSettingsAttribute.Format">
+            <summary>
+            Gets or sets the format.
             </summary>
         </member>
         <member name="T:Atata.ClickParentAttribute">
@@ -1394,6 +1404,11 @@
             Indicates that the waiting should be performed until the jQuery AJAX is completed. By default occurs after the click.
             </summary>
         </member>
+        <member name="P:Atata.ControlDefinitionAttribute.Visibility">
+            <summary>
+            Gets or sets the visibility. The default value is Visible.
+            </summary>
+        </member>
         <member name="T:Atata.FindAttribute">
             <summary>
             Represents the base attribute class for the finding attributes.
@@ -1404,9 +1419,14 @@
             Gets or sets the index of the control. The default value is -1, meaning that the index is not used.
             </summary>
         </member>
+        <member name="P:Atata.FindAttribute.Visibility">
+            <summary>
+            Gets or sets the visibility. The default value is Visible.
+            </summary>
+        </member>
         <member name="P:Atata.FindAttribute.ScopeSource">
             <summary>
-            Gets or sets the scope source. The default value is Inherit.
+            Gets or sets the scope source. The default value is Parent.
             </summary>
         </member>
         <member name="P:Atata.FindAttribute.Strategy">
@@ -1914,11 +1934,6 @@
             Specifies the source scope.
             </summary>
         </member>
-        <member name="F:Atata.ScopeSource.Inherit">
-            <summary>
-            Uses the inherited value.
-            </summary>
-        </member>
         <member name="F:Atata.ScopeSource.Parent">
             <summary>
             Uses the parent's scope.
@@ -2086,6 +2101,21 @@
             <param name="seconds">The time to wait in seconds.</param>
             <returns>The instance of this page object.</returns>
         </member>
+        <member name="P:Atata.TermOptions.Match">
+            <summary>
+            Gets or sets the match.
+            </summary>
+        </member>
+        <member name="P:Atata.TermOptions.Case">
+            <summary>
+            Gets or sets the term case.
+            </summary>
+        </member>
+        <member name="P:Atata.TermOptions.Format">
+            <summary>
+            Gets or sets the format.
+            </summary>
+        </member>
         <member name="T:Atata.TriggerEvents">
             <summary>
             Specifies the trigger events.
@@ -2216,11 +2246,6 @@
             Specifies the term case.
             </summary>
         </member>
-        <member name="F:Atata.TermCase.Inherit">
-            <summary>
-            Uses the inherited case or none if missing.
-            </summary>
-        </member>
         <member name="F:Atata.TermCase.None">
             <summary>
             Doesn't apply the case.
@@ -2301,19 +2326,14 @@
             Specifies the match approach for the term finding.
             </summary>
         </member>
-        <member name="F:Atata.TermMatch.Inherit">
+        <member name="F:Atata.TermMatch.Equals">
             <summary>
-            Uses the inherited match or the default one.
+            Checks whether the text equals the specified term.
             </summary>
         </member>
         <member name="F:Atata.TermMatch.Contains">
             <summary>
             Checks whether the text contains the specified term.
-            </summary>
-        </member>
-        <member name="F:Atata.TermMatch.Equals">
-            <summary>
-            Checks whether the text equals the specified term.
             </summary>
         </member>
         <member name="F:Atata.TermMatch.StartsWith">
@@ -2387,29 +2407,39 @@
             Waits until the element will be visible.
             </summary>
         </member>
-        <member name="F:Atata.WaitUntil.Exists">
+        <member name="F:Atata.WaitUntil.VisibleOrHidden">
             <summary>
-            Waits until the element will exist.
+            Waits until the element will be visible or hidden.
             </summary>
         </member>
-        <member name="F:Atata.WaitUntil.VisibleAndHidden">
+        <member name="F:Atata.WaitUntil.VisibleThenHidden">
             <summary>
-            Waits until the element will be visible and than until it will be hidden.
+            Waits until the element will be visible and then until it will be hidden.
             </summary>
         </member>
-        <member name="F:Atata.WaitUntil.VisibleAndMissing">
+        <member name="F:Atata.WaitUntil.VisibleThenMissing">
             <summary>
-            Waits until the element will be visible and than until it will be missing.
+            Waits until the element will be visible and then until it will be missing.
             </summary>
         </member>
-        <member name="F:Atata.WaitUntil.MissingAndVisible">
+        <member name="F:Atata.WaitUntil.VisibleThenMissingOrHidden">
             <summary>
-            Waits until the element will be missing and than until it will be visible.
+            Waits until the element will be visible and then until it will be missing or hidden.
             </summary>
         </member>
-        <member name="F:Atata.WaitUntil.HiddenAndVisible">
+        <member name="F:Atata.WaitUntil.MissingThenVisible">
             <summary>
-            Waits until the element will be hidden and than until it will be visible.
+            Waits until the element will be missing and then until it will be visible.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitUntil.HiddenThenVisible">
+            <summary>
+            Waits until the element will be hidden and then until it will be visible.
+            </summary>
+        </member>
+        <member name="F:Atata.WaitUntil.MissingOrHiddenThenVisible">
+            <summary>
+            Waits until the element will be missing or hidden and then until it will be visible.
             </summary>
         </member>
     </members>
