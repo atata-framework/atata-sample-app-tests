@@ -11,7 +11,7 @@ namespace Atata.SampleApp.AutoTests
         {
             string firstName, lastName, email;
             Office office = Office.NewYork;
-            Gender sex = Gender.Male;
+            Gender gender = Gender.Male;
 
             Login().
                 New().
@@ -20,13 +20,13 @@ namespace Atata.SampleApp.AutoTests
                     General.LastName.SetRandom(out lastName).
                     General.Email.SetRandom(out email).
                     General.Office.Set(office).
-                    General.Gender.Set(sex).
+                    General.Gender.Set(gender).
                     Save().
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].View().
                     Header.Should.Equal($"{firstName} {lastName}").
                     Email.Should.Equal(email).
                     Office.Should.Equal(office).
-                    Gender.Should.Equal(sex).
+                    Gender.Should.Equal(gender).
                     Birthday.Should.Not.Exist().
                     Notes.Should.Not.Exist();
         }
@@ -36,7 +36,7 @@ namespace Atata.SampleApp.AutoTests
         {
             string firstName, lastName, email, notes;
             Office office = Office.NewYork;
-            Gender sex = Gender.Male;
+            Gender gender = Gender.Male;
             DateTime birthday = new DateTime(1980, 4, 4);
 
             Login().
@@ -45,12 +45,12 @@ namespace Atata.SampleApp.AutoTests
                     General.LastName.SetRandom(out lastName).
                     General.Email.SetRandom(out email).
                     General.Office.Set(office).
-                    General.Gender.Set(sex).
+                    General.Gender.Set(gender).
                     Save().
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].Edit().
                     ModalTitle.Should.Equal($"{firstName} {lastName}").
                     General.Office.Set(office = Office.Tokio).
-                    General.Gender.Set(sex = Gender.Female).
+                    General.Gender.Set(gender = Gender.Female).
                     Additional.Birthday.Set(birthday).
                     Additional.Notes.SetRandom(out notes).
                     Save().
@@ -59,7 +59,7 @@ namespace Atata.SampleApp.AutoTests
                     Header.Should.Equal($"{firstName} {lastName}").
                     Email.Should.Equal(email).
                     Office.Should.Equal(office).
-                    Gender.Should.Equal(sex).
+                    Gender.Should.Equal(gender).
                     Birthday.Should.Equal(birthday).
                     Notes.Should.Equal(notes);
         }
@@ -69,7 +69,7 @@ namespace Atata.SampleApp.AutoTests
         {
             string firstName, lastName, email;
             Office office = Office.NewYork;
-            Gender sex = Gender.Male;
+            Gender gender = Gender.Male;
 
             Login().
                 New().
@@ -77,7 +77,7 @@ namespace Atata.SampleApp.AutoTests
                     General.LastName.SetRandom(out lastName).
                     General.Email.SetRandom(out email).
                     General.Office.Set(office).
-                    General.Gender.Set(sex).
+                    General.Gender.Set(gender).
                     Save().
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].Delete().
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].Should.Not.Exist();

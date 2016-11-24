@@ -18,7 +18,6 @@ namespace Atata.SampleApp.AutoTests
             string tabPaneId = tabPanelControl.Attributes.GetValue("id");
             var findAttribute = new FindByInnerXPathAttribute($".//a[@href='#{tabPaneId}']");
 
-            // TODO: CreateControl in Owner.
             var tab = ((IUIComponent<TOwner>)tabPanelControl).Parent.Controls.Create<BSTab<TOwner>>(context.Component.Parent.ComponentName, findAttribute);
 
             if (!tab.IsActive)
