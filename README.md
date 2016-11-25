@@ -11,3 +11,32 @@ Automation tests C#/.NET application based on [Atata Framework](https://github.c
 * Interaction with pop-ups (Bootstrap modal) and alerts
 * Work with tables
 * Logging
+
+## Sample Test
+
+```C#
+[Test]
+public void User_Create()
+{
+    string firstName, lastName, email;
+    Office office = Office.NewYork;
+    Gender gender = Gender.Male;
+
+    Login().
+        New().
+            ModalTitle.Should.Equal("New User").
+            General.FirstName.SetRandom(out firstName).
+            General.LastName.SetRandom(out lastName).
+            General.Email.SetRandom(out email).
+            General.Office.Set(office).
+            General.Gender.Set(gender).
+            Save().
+        Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].View().
+            Header.Should.Equal($"{firstName} {lastName}").
+            Email.Should.Equal(email).
+            Office.Should.Equal(office).
+            Gender.Should.Equal(gender).
+            Birthday.Should.Not.Exist().
+            Notes.Should.Not.Exist();
+}
+```
