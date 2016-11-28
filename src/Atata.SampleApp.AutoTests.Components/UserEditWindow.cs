@@ -1,4 +1,5 @@
-﻿using _ = Atata.SampleApp.AutoTests.UserEditWindow;
+﻿using Atata.Bootstrap;
+using _ = Atata.SampleApp.AutoTests.UserEditWindow;
 
 namespace Atata.SampleApp.AutoTests
 {

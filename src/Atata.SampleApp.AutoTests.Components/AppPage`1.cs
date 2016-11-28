@@ -1,4 +1,6 @@
-﻿namespace Atata.SampleApp.AutoTests
+﻿using Atata.Bootstrap;
+
+namespace Atata.SampleApp.AutoTests
 {
     public class AppPage<_> : Page<_>
         where _ : AppPage<_>

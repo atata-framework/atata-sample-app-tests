@@ -38,6 +38,10 @@
       <HintPath>..\packages\Atata.0.11.0\lib\net40\Atata.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Atata.Bootstrap, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Atata.Bootstrap.0.3.0\lib\net40\Atata.Bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Atata.WebDriverExtras, Version=0.11.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Atata.WebDriverExtras.0.11.0\lib\net40\Atata.WebDriverExtras.dll</HintPath>
       <Private>True</Private>
