@@ -13,11 +13,11 @@ namespace Atata.SampleApp.AutoTests
                     WithArguments("disable-extensions", "no-sandbox", "start-maximized").
                 UseBaseUrl(Config.Url).
                 UseNUnitTestName().
-                UseNUnitTestContextLogging().
+                AddNUnitTestContextLogging().
                     WithMinLevel(LogLevel.Info).
                     WithoutSectionFinish().
-                UseNLogLogging().
-                UseScreenshotFileSaving(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
+                AddNLogLogging().
+                AddScreenshotFileSaving(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
                 SetUp();
 
             OnSetUp();
