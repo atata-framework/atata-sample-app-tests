@@ -5,10 +5,10 @@ namespace Atata.SampleApp.AutoTests
 {
     public class UserEditWindow : BSModal<_>
     {
-        [FindById(TermCase.Lower)]
+        [FindById]
         public GeneralTabPane General { get; private set; }
 
-        [FindById(TermCase.Lower)]
+        [FindById]
         public AdditionalTabPane Additional { get; private set; }
 
         [Term("Save", "Create")]
