@@ -3,7 +3,6 @@ using NUnit.Framework;
 
 namespace Atata.SampleApp.AutoTests
 {
-    [TestFixture]
     public class UserTest : AutoTest
     {
         [Test]

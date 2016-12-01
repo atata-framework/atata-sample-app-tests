@@ -2,7 +2,6 @@
 
 namespace Atata.SampleApp.AutoTests
 {
-    [TestFixture]
     public class SignInTest : AutoTest
     {
         [Test]

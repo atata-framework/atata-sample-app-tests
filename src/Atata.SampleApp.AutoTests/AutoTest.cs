@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using NUnit.Framework.Interfaces;
 
 namespace Atata.SampleApp.AutoTests
 {
+    [TestFixture]
     public class AutoTest
     {
         [SetUp]
@@ -18,6 +18,7 @@ namespace Atata.SampleApp.AutoTests
                     WithoutSectionFinish().
                 AddNLogLogging().
                 AddScreenshotFileSaving(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
+                LogNUnitError().
                 SetUp();
 
             OnSetUp();
@@ -31,12 +32,6 @@ namespace Atata.SampleApp.AutoTests
         public void TearDown()
         {
             AtataContext.Current.Log.Screenshot();
-
-            var testResult = TestContext.CurrentContext.Result;
-
-            if (testResult.Outcome.Status == TestStatus.Failed)
-                AtataContext.Current.Log.Error(testResult.Message, testResult.StackTrace);
-
             AtataContext.Current.CleanUp();
         }
 
