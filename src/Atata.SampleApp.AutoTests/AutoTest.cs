@@ -17,8 +17,10 @@ namespace Atata.SampleApp.AutoTests
                     WithMinLevel(LogLevel.Info).
                     WithoutSectionFinish().
                 AddNLogLogging().
-                AddScreenshotFileSaving(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
+                AddScreenshotFileSaving().
+                    WithFolderPath(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
                 LogNUnitError().
+                TakeScreenshotOnNUnitError().
                 SetUp();
 
             OnSetUp();
@@ -31,7 +33,6 @@ namespace Atata.SampleApp.AutoTests
         [TearDown]
         public void TearDown()
         {
-            AtataContext.Current.Log.Screenshot();
             AtataContext.Current.CleanUp();
         }
 
