@@ -72,7 +72,7 @@
     <Compile Include="Extensions\IDataVerificationProviderExtensions.cs" />
     <Compile Include="ForbiddenPage.cs" />
     <Compile Include="NotFoundPage.cs" />
-    <Compile Include="Properties\AtataSettings.cs" />
+    <Compile Include="AtataSettings.cs" />
     <Compile Include="Data\Office.cs" />
     <Compile Include="Data\Gender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
