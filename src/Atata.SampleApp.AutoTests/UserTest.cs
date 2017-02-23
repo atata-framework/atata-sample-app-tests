@@ -48,6 +48,7 @@ namespace Atata.SampleApp.AutoTests
                     Save().
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].Edit().
                     ModalTitle.Should.Equal($"{firstName} {lastName}").
+                    General.Email.Should.BeReadOnly().
                     General.Office.Set(office = Office.Tokio).
                     General.Gender.Set(gender = Gender.Female).
                     Additional.Birthday.Set(birthday).
