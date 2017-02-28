@@ -140,5 +140,12 @@ namespace Atata.SampleApp.AutoTests
                     General.Gender.Set(Gender.Female).
                     Save();
         }
+
+        [Test]
+        public void User_Settings()
+        {
+            Login().
+                Menu.Account.Settings();
+        }
     }
 }
