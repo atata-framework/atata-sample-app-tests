@@ -5,7 +5,7 @@ namespace Atata.SampleApp.AutoTests
     [VerifyTitle]
     [VerifyH1]
     [Url("plans")]
-    [VerifyContent("The provided information is just for testing purposes")]
+    [VerifyContent("Please choose your payment plan")]
     public class PlansPage : AppPage<_>
     {
         public ControlList<PlanItem, _> PlanItems { get; private set; }
