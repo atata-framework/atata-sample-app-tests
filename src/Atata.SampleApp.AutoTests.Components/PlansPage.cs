@@ -20,6 +20,13 @@ namespace Atata.SampleApp.AutoTests
 
             [FindByClass("projects-num")]
             public Number<_> NumberOfProjects { get; private set; }
+
+            public ControlList<FeatureItem, _> Features { get; private set; }
+
+            [ControlDefinition("li", ComponentTypeName = "feature")]
+            public class FeatureItem : Text<_>
+            {
+            }
         }
     }
 }
