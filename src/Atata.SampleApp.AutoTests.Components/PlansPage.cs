@@ -2,9 +2,9 @@
 
 namespace Atata.SampleApp.AutoTests
 {
+    [Url("plans")]
     [VerifyTitle]
     [VerifyH1]
-    [Url("plans")]
     [VerifyContent("Please choose your payment plan")]
     public class PlansPage : AppPage<_>
     {
@@ -16,7 +16,7 @@ namespace Atata.SampleApp.AutoTests
             public H3<_> Title { get; private set; }
 
             [FindByClass]
-            public PlanPrice<_> Price { get; private set; }
+            public Currency<_> Price { get; private set; }
 
             [FindByClass("projects-num")]
             public Number<_> NumberOfProjects { get; private set; }
