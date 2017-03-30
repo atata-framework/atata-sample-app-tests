@@ -1,6 +1,6 @@
 ﻿namespace Atata.SampleApp.AutoTests
 {
-    public static class IDataVerificationProviderExtensions
+    public static class IValidationMessageVerificationProviderExtensions
     {
         public static TOwner BeRequired<TOwner>(this IFieldVerificationProvider<string, ValidationMessage<TOwner>, TOwner> should)
             where TOwner : PageObject<TOwner>
