@@ -2,9 +2,9 @@
 
 namespace Atata.SampleApp.AutoTests
 {
+    [Url("signup")]
     [VerifyTitle]
     [VerifyH1]
-    [Url("signup")]
     public class SignUpPage : AppPage<_>
     {
         public TextInput<_> FirstName { get; private set; }
@@ -21,7 +21,7 @@ namespace Atata.SampleApp.AutoTests
         [FindByName]
         public RadioButtonList<Gender?, _> Gender { get; private set; }
 
-        [FindByLabel(TermMatch.StartsWith, "I agree to")]
+        [FindByLabel("I agree to terms of service and privacy policy")]
         public CheckBox<_> Agreement { get; private set; }
 
         public ButtonDelegate<UserDetailsPage, _> SignUp { get; private set; }

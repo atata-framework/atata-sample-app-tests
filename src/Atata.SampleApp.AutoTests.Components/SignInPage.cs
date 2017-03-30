@@ -2,9 +2,9 @@
 
 namespace Atata.SampleApp.AutoTests
 {
+    [Url("signin")]
     [VerifyTitle]
     [VerifyH1]
-    [Url("signin")]
     public class SignInPage : AppPage<_>
     {
         public TextInput<_> Email { get; private set; }
