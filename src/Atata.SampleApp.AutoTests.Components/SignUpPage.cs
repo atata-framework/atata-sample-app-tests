@@ -16,11 +16,6 @@ namespace Atata.SampleApp.AutoTests
 
         public PasswordInput<_> Password { get; private set; }
 
-        public Select<Office?, _> Office { get; private set; }
-
-        [FindByName]
-        public RadioButtonList<Gender?, _> Gender { get; private set; }
-
         [FindByLabel("I agree to terms of service and privacy policy")]
         public CheckBox<_> Agreement { get; private set; }
 

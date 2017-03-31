@@ -8,23 +8,19 @@ namespace Atata.SampleApp.AutoTests
         public void SignUp()
         {
             string firstName, lastName, email;
-            Office office = Office.Rome;
-            Gender gender = Gender.Female;
 
             Go.To<SignUpPage>().
                 FirstName.SetRandom(out firstName).
                 LastName.SetRandom(out lastName).
                 Email.SetRandom(out email).
                 Password.SetRandom().
-                Office.Set(office).
-                Gender.Set(gender).
                 Agreement.Check().
                 SignUp().
                     Menu.Account.SignOut.Should().Exist().
                     Header.Should.Equal($"{firstName} {lastName}").
                     Email.Should.Equal(email).
-                    Office.Should.Equal(office).
-                    Gender.Should.Equal(gender).
+                    Office.Should.Not.Exist().
+                    Gender.Should.Not.Exist().
                     Birthday.Should.Not.Exist().
                     Notes.Should.Not.Exist();
         }
@@ -38,10 +34,8 @@ namespace Atata.SampleApp.AutoTests
                 ValidationMessages[x => x.LastName].Should.BeRequired().
                 ValidationMessages[x => x.Email].Should.BeRequired().
                 ValidationMessages[x => x.Password].Should.BeRequired().
-                ValidationMessages[x => x.Office].Should.BeRequired().
-                ValidationMessages[x => x.Gender].Should.BeRequired().
                 ValidationMessages[x => x.Agreement].Should.BeRequired().
-                ValidationMessages.Should.HaveCount(7);
+                ValidationMessages.Should.HaveCount(5);
         }
 
         [Test]
@@ -81,8 +75,6 @@ namespace Atata.SampleApp.AutoTests
                 LastName.SetRandom().
                 Email.SetRandom(out email).
                 Password.SetRandom().
-                Office.Set(office).
-                Gender.Set(gender).
                 Agreement.Check().
                 SignUp().
                     Menu.Account.SignOut().
