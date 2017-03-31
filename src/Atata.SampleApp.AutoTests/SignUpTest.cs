@@ -67,8 +67,6 @@ namespace Atata.SampleApp.AutoTests
         public void SignUp_Validation_UniqueEmail()
         {
             string email;
-            Office office = Office.Washington;
-            Gender gender = Gender.Male;
 
             Go.To<SignUpPage>().
                 FirstName.SetRandom().
