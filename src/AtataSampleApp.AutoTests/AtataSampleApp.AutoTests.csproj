@@ -90,9 +90,9 @@
     <Compile Include="UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Atata.SampleApp.AutoTests.Components\Atata.SampleApp.AutoTests.Components.csproj">
+    <ProjectReference Include="..\AtataSampleApp.AutoTests.Components\AtataSampleApp.AutoTests.Components.csproj">
       <Project>{2517eb55-60c7-47d0-90c8-cea2fd713bb9}</Project>
-      <Name>Atata.SampleApp.AutoTests.Components</Name>
+      <Name>AtataSampleApp.AutoTests.Components</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

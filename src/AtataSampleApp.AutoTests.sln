@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atata.SampleApp.AutoTests", "Atata.SampleApp.AutoTests\Atata.SampleApp.AutoTests.csproj", "{EBADB914-9630-4F25-BD16-C0CA760F57BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtataSampleApp.AutoTests", "AtataSampleApp.AutoTests\AtataSampleApp.AutoTests.csproj", "{EBADB914-9630-4F25-BD16-C0CA760F57BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atata.SampleApp.AutoTests.Components", "Atata.SampleApp.AutoTests.Components\Atata.SampleApp.AutoTests.Components.csproj", "{2517EB55-60C7-47D0-90C8-CEA2FD713BB9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtataSampleApp.AutoTests.Components", "AtataSampleApp.AutoTests.Components\AtataSampleApp.AutoTests.Components.csproj", "{2517EB55-60C7-47D0-90C8-CEA2FD713BB9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{830B125C-28FA-4C70-A1D3-3D21B71A4DE2}"
 	ProjectSection(SolutionItems) = preProject
