@@ -1,7 +1,8 @@
-﻿using Atata.Bootstrap;
-using _ = Atata.SampleApp.AutoTests.UserEditWindow;
+﻿using Atata;
+using Atata.Bootstrap;
+using _ = AtataSampleApp.AutoTests.UserEditWindow;
 
-namespace Atata.SampleApp.AutoTests
+namespace AtataSampleApp.AutoTests
 {
     public class UserEditWindow : BSModal<_>
     {

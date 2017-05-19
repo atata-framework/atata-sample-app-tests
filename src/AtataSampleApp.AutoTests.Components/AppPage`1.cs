@@ -1,6 +1,7 @@
-﻿using Atata.Bootstrap;
+﻿using Atata;
+using Atata.Bootstrap;
 
-namespace Atata.SampleApp.AutoTests
+namespace AtataSampleApp.AutoTests
 {
     public abstract class AppPage<TOwner> : Page<TOwner>
         where TOwner : AppPage<TOwner>

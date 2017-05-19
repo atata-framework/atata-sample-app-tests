@@ -1,4 +1,6 @@
-﻿namespace Atata.SampleApp.AutoTests
+﻿using Atata;
+
+namespace AtataSampleApp.AutoTests
 {
     [ControlDefinition("div[contains(concat(' ', normalize-space(@class), ' '), ' has-error ')]//span[contains(concat(' ', normalize-space(@class), ' '), ' help-block ')]")]
     public class ValidationMessage<TOwner> : Text<TOwner>

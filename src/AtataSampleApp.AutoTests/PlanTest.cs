@@ -1,6 +1,7 @@
-﻿using NUnit.Framework;
+﻿using Atata;
+using NUnit.Framework;
 
-namespace Atata.SampleApp.AutoTests
+namespace AtataSampleApp.AutoTests
 {
     public class PlanTest : AutoTest
     {

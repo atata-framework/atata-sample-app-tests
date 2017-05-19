@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Atata.SampleApp.AutoTests
+namespace AtataSampleApp.AutoTests
 {
     public static class Config
     {

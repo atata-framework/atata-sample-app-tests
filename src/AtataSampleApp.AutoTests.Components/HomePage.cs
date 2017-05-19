@@ -1,6 +1,7 @@
-﻿using _ = Atata.SampleApp.AutoTests.HomePage;
+﻿using Atata;
+using _ = AtataSampleApp.AutoTests.HomePage;
 
-namespace Atata.SampleApp.AutoTests
+namespace AtataSampleApp.AutoTests
 {
     [VerifyTitle(Title, Format = null)]
     [VerifyH1(Title)]

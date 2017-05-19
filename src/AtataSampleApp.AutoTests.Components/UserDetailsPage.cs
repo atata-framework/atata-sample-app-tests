@@ -1,7 +1,8 @@
 ﻿using System;
-using _ = Atata.SampleApp.AutoTests.UserDetailsPage;
+using Atata;
+using _ = AtataSampleApp.AutoTests.UserDetailsPage;
 
-namespace Atata.SampleApp.AutoTests
+namespace AtataSampleApp.AutoTests
 {
     public class UserDetailsPage : AppPage<_>
     {

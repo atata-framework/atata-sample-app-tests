@@ -1,4 +1,4 @@
-﻿namespace Atata.SampleApp.AutoTests
+﻿namespace AtataSampleApp.AutoTests
 {
     public enum Gender
     {

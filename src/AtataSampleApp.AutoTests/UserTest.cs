@@ -1,7 +1,8 @@
 ﻿using System;
+using Atata;
 using NUnit.Framework;
 
-namespace Atata.SampleApp.AutoTests
+namespace AtataSampleApp.AutoTests
 {
     public class UserTest : AutoTest
     {

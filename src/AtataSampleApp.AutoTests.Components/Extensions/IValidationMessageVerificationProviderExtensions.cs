@@ -1,4 +1,6 @@
-﻿namespace Atata.SampleApp.AutoTests
+﻿using Atata;
+
+namespace AtataSampleApp.AutoTests
 {
     public static class IValidationMessageVerificationProviderExtensions
     {

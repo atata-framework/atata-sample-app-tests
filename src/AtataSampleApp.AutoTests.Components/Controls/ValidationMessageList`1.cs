@@ -1,7 +1,8 @@
 ﻿using System;
+using Atata;
 using OpenQA.Selenium;
 
-namespace Atata.SampleApp.AutoTests
+namespace AtataSampleApp.AutoTests
 {
     public class ValidationMessageList<TOwner> : ControlList<ValidationMessage<TOwner>, TOwner>
         where TOwner : PageObject<TOwner>

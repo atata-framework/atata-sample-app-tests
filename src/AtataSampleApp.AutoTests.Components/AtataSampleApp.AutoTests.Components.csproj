@@ -7,8 +7,8 @@
     <ProjectGuid>{2517EB55-60C7-47D0-90C8-CEA2FD713BB9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Atata.SampleApp.AutoTests</RootNamespace>
-    <AssemblyName>Atata.SampleApp.AutoTests.Components</AssemblyName>
+    <RootNamespace>AtataSampleApp.AutoTests</RootNamespace>
+    <AssemblyName>AtataSampleApp.AutoTests.Components</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
