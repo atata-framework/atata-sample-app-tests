@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace AtataSampleApp.AutoTests
 {
     [TestFixture]
-    public class AutoTest
+    public class UITestFixture
     {
         [SetUp]
         public void SetUp()

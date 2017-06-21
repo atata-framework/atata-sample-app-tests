@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace AtataSampleApp.AutoTests
 {
-    public class PlanTest : AutoTest
+    public class PlanTests : UITestFixture
     {
         private const string Feature1 = "Feature 1";
         private const string Feature2 = "Feature 2";

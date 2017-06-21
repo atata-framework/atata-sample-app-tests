@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace AtataSampleApp.AutoTests
 {
-    public class PageTest : AutoTest
+    public class PageTests : UITestFixture
     {
         [Test]
         public void Page_NotFound()

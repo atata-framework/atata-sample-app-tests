@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace AtataSampleApp.AutoTests
 {
-    public class SignInTest : AutoTest
+    public class SignInTests : UITestFixture
     {
         [Test]
         public void SignIn()

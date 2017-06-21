@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace AtataSampleApp.AutoTests
 {
-    public class UserTest : AutoTest
+    public class UserTests : UITestFixture
     {
         [Test]
         public void User_Create()

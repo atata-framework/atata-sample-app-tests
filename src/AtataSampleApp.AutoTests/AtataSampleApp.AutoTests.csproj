@@ -78,16 +78,16 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Config.cs" />
-    <Compile Include="HomeTest.cs" />
-    <Compile Include="PlanTest.cs" />
+    <Compile Include="HomeTests.cs" />
+    <Compile Include="PlanTests.cs" />
     <Compile Include="Properties\NUnitSettings.cs" />
     <Compile Include="Properties\GlobalSuppressions.cs" />
-    <Compile Include="PageTest.cs" />
+    <Compile Include="PageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SignInTest.cs" />
-    <Compile Include="AutoTest.cs" />
-    <Compile Include="SignUpTest.cs" />
-    <Compile Include="UserTest.cs" />
+    <Compile Include="SignInTests.cs" />
+    <Compile Include="UITestFixture.cs" />
+    <Compile Include="SignUpTests.cs" />
+    <Compile Include="UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AtataSampleApp.AutoTests.Components\AtataSampleApp.AutoTests.Components.csproj">
