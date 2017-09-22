@@ -9,7 +9,7 @@ namespace AtataSampleApp.AutoTests
         [SetUp]
         public void SetUp()
         {
-            AtataContext.Build().
+            AtataContext.Configure().
                 UseChrome().
                     WithArguments("disable-extensions", "no-sandbox", "start-maximized").
                 UseBaseUrl(Config.Url).
@@ -22,7 +22,7 @@ namespace AtataSampleApp.AutoTests
                     WithFolderPath(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
                 LogNUnitError().
                 TakeScreenshotOnNUnitError().
-                SetUp();
+                Build();
 
             OnSetUp();
         }

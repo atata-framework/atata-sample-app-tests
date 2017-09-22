@@ -34,9 +34,8 @@
     <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Atata, Version=0.13.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atata.0.13.0\lib\net40\Atata.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Atata, Version=0.14.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Atata.0.14.0\lib\net40\Atata.dll</HintPath>
     </Reference>
     <Reference Include="Atata.Bootstrap, Version=0.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Atata.Bootstrap.0.4.1\lib\net40\Atata.Bootstrap.dll</HintPath>
