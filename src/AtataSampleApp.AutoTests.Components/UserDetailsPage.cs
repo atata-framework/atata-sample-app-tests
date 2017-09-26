@@ -1,9 +1,10 @@
 ﻿using System;
 using Atata;
-using _ = AtataSampleApp.AutoTests.UserDetailsPage;
 
 namespace AtataSampleApp.AutoTests
 {
+    using _ = UserDetailsPage;
+
     public class UserDetailsPage : AppPage<_>
     {
         [FindFirst]

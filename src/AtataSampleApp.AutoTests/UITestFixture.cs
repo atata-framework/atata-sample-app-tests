@@ -23,12 +23,6 @@ namespace AtataSampleApp.AutoTests
                 LogNUnitError().
                 TakeScreenshotOnNUnitError().
                 Build();
-
-            OnSetUp();
-        }
-
-        protected virtual void OnSetUp()
-        {
         }
 
         [TearDown]

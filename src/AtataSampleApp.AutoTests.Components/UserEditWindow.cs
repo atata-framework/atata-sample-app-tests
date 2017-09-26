@@ -1,9 +1,10 @@
 ﻿using Atata;
 using Atata.Bootstrap;
-using _ = AtataSampleApp.AutoTests.UserEditWindow;
 
 namespace AtataSampleApp.AutoTests
 {
+    using _ = UserEditWindow;
+
     public class UserEditWindow : BSModal<_>
     {
         public GeneralTabPane General { get; private set; }

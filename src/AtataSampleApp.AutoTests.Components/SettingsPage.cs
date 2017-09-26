@@ -1,8 +1,9 @@
 ﻿using Atata;
-using _ = AtataSampleApp.AutoTests.SettingsPage;
 
 namespace AtataSampleApp.AutoTests
 {
+    using _ = SettingsPage;
+
     [VerifyTitle]
     [VerifyContent("Should contain some settings")]
     public class SettingsPage : AppPage<_>

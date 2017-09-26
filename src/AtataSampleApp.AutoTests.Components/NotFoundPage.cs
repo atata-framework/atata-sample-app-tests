@@ -1,8 +1,9 @@
 ﻿using Atata;
-using _ = AtataSampleApp.AutoTests.NotFoundPage;
 
 namespace AtataSampleApp.AutoTests
 {
+    using _ = NotFoundPage;
+
     [Name("Page Not Found")]
     [VerifyTitle]
     [VerifyH1(TermMatch.Contains)]

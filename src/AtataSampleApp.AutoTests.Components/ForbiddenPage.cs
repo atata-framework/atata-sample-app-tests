@@ -1,8 +1,9 @@
 ﻿using Atata;
-using _ = AtataSampleApp.AutoTests.ForbiddenPage;
 
 namespace AtataSampleApp.AutoTests
 {
+    using _ = ForbiddenPage;
+
     [VerifyTitle]
     [VerifyH1(TermMatch.Contains)]
     public class ForbiddenPage : AppPage<_>

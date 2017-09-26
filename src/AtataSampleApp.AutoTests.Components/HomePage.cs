@@ -1,8 +1,9 @@
 ﻿using Atata;
-using _ = AtataSampleApp.AutoTests.HomePage;
 
 namespace AtataSampleApp.AutoTests
 {
+    using _ = HomePage;
+
     [VerifyTitle(Title, Format = null)]
     [VerifyH1(Title)]
     [VerifyContent("Lorem ipsum")]

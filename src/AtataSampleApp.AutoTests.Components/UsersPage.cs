@@ -1,8 +1,9 @@
 ﻿using Atata;
-using _ = AtataSampleApp.AutoTests.UsersPage;
 
 namespace AtataSampleApp.AutoTests
 {
+    using _ = UsersPage;
+
     [VerifyTitle]
     [VerifyH1]
     public class UsersPage : AppPage<_>
