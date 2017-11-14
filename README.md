@@ -1,8 +1,15 @@
 # Atata Sample App Tests
-Automation tests C#/.NET application based on [Atata Framework](https://github.com/atata-framework/atata). It uses [Atata Sample App](https://atata-framework.github.io/atata-sample-app/#!/) ([repository](https://github.com/atata-framework/atata-sample-app)) as a testing website and NUnit 3 as a test engine. Tests application demonstates different testing approaches and features of the Atata framework.
+
+[![Docs](https://img.shields.io/badge/docs-Atata_Framework-orange.svg)](https://atata-framework.github.io/)
+[![Twitter](https://img.shields.io/badge/follow-@AtataFramework-blue.svg)](https://twitter.com/AtataFramework)
+
+Automated UI tests C#/.NET application based on [Atata Framework](https://github.com/atata-framework/atata).
+It uses [Atata Sample App](https://atata-framework.github.io/atata-sample-app/#!/) ([repository](https://github.com/atata-framework/atata-sample-app)) as a testing website and NUnit 3 as a test engine.
+Tests application demonstates different testing approaches and features of the Atata framework.
 
 ## Features
-* Atata test initialization and settings set-up
+
+* Atata configuation and settings set-up
 * Page navigation
 * Controls finding
 * Data input and verification
@@ -14,7 +21,7 @@ Automation tests C#/.NET application based on [Atata Framework](https://github.c
 
 ## Sample Test
 
-```C#
+```cs
 [Test]
 public void User_Create()
 {
@@ -40,3 +47,7 @@ public void User_Create()
             Notes.Should.Not.Exist();
 }
 ```
+
+## License
+
+Atata is an open source software, licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
