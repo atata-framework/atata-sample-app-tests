@@ -5,7 +5,7 @@
 
 Automated UI tests C#/.NET application based on [Atata Framework](https://github.com/atata-framework/atata).
 It uses [Atata Sample App](https://atata-framework.github.io/atata-sample-app/#!/) ([repository](https://github.com/atata-framework/atata-sample-app)) as a testing website and NUnit 3 as a test engine.
-Tests application demonstates different testing approaches and features of the Atata framework.
+Tests application demonstrates different testing approaches and features of Atata Framework.
 
 ## Features
 
