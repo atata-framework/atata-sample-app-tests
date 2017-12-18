@@ -93,7 +93,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="..\packages\WebDriver.ChromeDriver.win32.2.33.0.0\content\chromedriver.exe">
+    <Content Include="..\packages\WebDriver.ChromeDriver.win32.2.34.0\content\chromedriver.exe">
       <Link>chromedriver.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
