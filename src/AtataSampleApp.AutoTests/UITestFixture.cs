@@ -11,7 +11,7 @@ namespace AtataSampleApp.AutoTests
         {
             AtataContext.Configure().
                 UseChrome().
-                    WithArguments("disable-extensions", "no-sandbox", "start-maximized").
+                    WithArguments("disable-extensions", "start-maximized", "disable-infobars").
                 UseBaseUrl(Config.Url).
                 UseNUnitTestName().
                 AddNUnitTestContextLogging().
