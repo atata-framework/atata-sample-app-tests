@@ -1,16 +1,18 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-pool:
-  vmImage: 'Ubuntu 16.04'
-
+queue:
+  name: Hosted VS2017
+  demands: vstest
+  
+variables:
+  buildConfiguration: 'Debug'
+  
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: DotNetCoreCLI@2
+  inputs:
+    projects: '**\*.sln'
+    arguments: '-c $(buildConfiguration) /p:RunCodeAnalysis=true /warnaserror'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: VSTest@2
+  inputs:
+    testAssemblyVer2: |
+      **\*.Tests*.dll
+      !**\obj\**
