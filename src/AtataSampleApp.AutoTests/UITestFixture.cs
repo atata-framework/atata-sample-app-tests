@@ -28,7 +28,8 @@ namespace AtataSampleApp.AutoTests
         [TearDown]
         public void TearDown()
         {
-            AtataContext.Current.CleanUp();
+            if (AtataContext.Current != null)
+                AtataContext.Current.CleanUp();
         }
 
         protected UsersPage Login()
