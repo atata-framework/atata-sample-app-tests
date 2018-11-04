@@ -76,7 +76,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="HomeTests.cs" />
     <Compile Include="PlanTests.cs" />
-    <Compile Include="Properties\NUnitSettings.cs" />
+    <Compile Include="NUnitSettings.cs" />
     <Compile Include="Properties\GlobalSuppressions.cs" />
     <Compile Include="PageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
