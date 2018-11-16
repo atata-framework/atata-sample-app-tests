@@ -19,7 +19,10 @@ namespace AtataSampleApp.AutoTests
                     WithoutSectionFinish().
                 AddNLogLogging().
                 AddScreenshotFileSaving().
-                    WithFolderPath(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
+                // Below are possible ways to specify folder path to store screenshots for individual tests.
+                // Both examples build the same path which is used by default.
+                //WithFolderPath(@"Logs\{build-start}\{test-name}").
+                //WithFolderPath(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
                 LogNUnitError().
                 TakeScreenshotOnNUnitError().
                 Build();
