@@ -1,5 +1,6 @@
 # Atata Sample App Tests
 
+[![Build Status](https://dev.azure.com/atata-framework/atata-sample-app-tests/_apis/build/status/atata-sample-app-tests-ci)](https://dev.azure.com/atata-framework/atata-sample-app-tests/_build/latest?definitionId=26)
 [![Docs](https://img.shields.io/badge/docs-Atata_Framework-orange.svg)](https://atata-framework.github.io/)
 [![Twitter](https://img.shields.io/badge/follow-@AtataFramework-blue.svg)](https://twitter.com/AtataFramework)
 
