@@ -2,4 +2,6 @@
 
 [assembly: Culture("en-us")]
 [assembly: VerifyTitleSettings(Format = "{0} - Atata Sample App")]
-[assembly: Screenshot(On = TriggerEvents.BeforeClick, AppliesTo = TriggerScope.Children)]
+
+// You can, for example, configure trigger to take screenshots before any click.
+//[assembly: Screenshot(On = TriggerEvents.BeforeClick, AppliesTo = TriggerScope.Children)]
