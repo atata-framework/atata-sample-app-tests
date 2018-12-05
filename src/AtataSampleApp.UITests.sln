@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{830B125C-28FA-4C70-A1D3-3D21B71A4DE2}"
 	ProjectSection(SolutionItems) = preProject
 		Atata.ruleset = Atata.ruleset
+		..\azure-pipelines.yml = ..\azure-pipelines.yml
 		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
 		..\README.md = ..\README.md
 	EndProjectSection
