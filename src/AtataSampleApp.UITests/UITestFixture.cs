@@ -13,16 +13,18 @@ namespace AtataSampleApp.UITests
                 UseChrome().
                     WithArguments("disable-extensions", "start-maximized", "disable-infobars").
                 UseBaseUrl(Config.Url).
+                UseCulture("en-US").
                 UseNUnitTestName().
                 AddNUnitTestContextLogging().
-                    WithMinLevel(LogLevel.Info).
-                    WithoutSectionFinish().
+                // Configure logging:
+                //    WithMinLevel(LogLevel.Info).
+                //    WithoutSectionFinish().
                 AddNLogLogging().
                 AddScreenshotFileSaving().
                 // Below are possible ways to specify folder path to store screenshots for individual tests.
                 // Both examples build the same path which is used by default.
-                //WithFolderPath(@"Logs\{build-start}\{test-name}").
-                //WithFolderPath(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
+                //    WithFolderPath(@"Logs\{build-start}\{test-name}").
+                //    WithFolderPath(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
                 LogNUnitError().
                 TakeScreenshotOnNUnitError().
                 Build();
