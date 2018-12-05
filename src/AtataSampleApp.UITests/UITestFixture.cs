@@ -27,6 +27,7 @@ namespace AtataSampleApp.UITests
                 //    WithMinLevel(LogLevel.Info).
                 //    WithoutSectionFinish().
                 AddNLogLogging(). // Actual NLog configuration is located in NLog.config file.
+                                  // Logs can be found in "{repo folder}\src\AtataSampleApp.UITests\bin\Debug\Logs\"
                 AddScreenshotFileSaving().
                 // Below are possible ways to specify folder path to store screenshots for individual tests.
                 // Both examples build the same path which is used by default.
