@@ -1,0 +1,26 @@
+{
+  // Basic Atata configuration sample (commented for purposes of example as it is duplicated in UITestFixture.cs):
+  // Find out complete documentation on Atata JSON configuration on https://github.com/atata-framework/atata-configuration-json.
+  //"driver": {
+  //  "type": "chrome",
+  //  "options": {
+  //    "arguments": [ "start-maximized", "disable-infobars", "disable-extensions" ]
+  //  }
+  //},
+  //"useNUnitTestName": true,
+  //"logNUnitError": true,
+  //"takeScreenshotOnNUnitError": true,
+  //"logConsumers": [
+  //  {
+  //    "type": "nunit",
+  //    "minLevel": "Trace"
+  //  }
+  //],
+  "baseUrl": "https://atata-framework.github.io/atata-sample-app/#!/",
+
+  // Custom settings:
+  "account": {
+    "email": "admin@mail.com",
+    "password": "abc123"
+  }
+}

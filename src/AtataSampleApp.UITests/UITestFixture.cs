@@ -6,20 +6,27 @@ namespace AtataSampleApp.UITests
     [TestFixture]
     public class UITestFixture
     {
+        public AtataConfig Config
+        {
+            get { return AtataConfig.Current; }
+        }
+
         [SetUp]
         public void SetUp()
         {
             AtataContext.Configure().
+                ApplyJsonConfig<AtataConfig>().
                 UseChrome().
-                    WithArguments("disable-extensions", "start-maximized", "disable-infobars").
-                UseBaseUrl(Config.Url).
+                    WithArguments("start-maximized", "disable-infobars", "disable-extensions").
+                // Base URL can be set here, but in this sample it is defined in Atata.json config file.
+                //UseBaseUrl("https://atata-framework.github.io/atata-sample-app/#!/").
                 UseCulture("en-US").
                 UseNUnitTestName().
                 AddNUnitTestContextLogging().
                 // Configure logging:
                 //    WithMinLevel(LogLevel.Info).
                 //    WithoutSectionFinish().
-                AddNLogLogging().
+                AddNLogLogging(). // Actual NLog configuration is located in NLog.config file.
                 AddScreenshotFileSaving().
                 // Below are possible ways to specify folder path to store screenshots for individual tests.
                 // Both examples build the same path which is used by default.
