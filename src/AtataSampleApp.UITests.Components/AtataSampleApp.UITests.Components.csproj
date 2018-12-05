@@ -58,6 +58,7 @@
       <Link>Properties\CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AppPage`1.cs" />
+    <Compile Include="Controls\MainMenu`1.cs" />
     <Compile Include="Controls\ValidationMessageList`1.cs" />
     <Compile Include="Controls\ValidationMessage`1.cs" />
     <Compile Include="Extensions\IValidationMessageVerificationProviderExtensions.cs" />
