@@ -5,6 +5,7 @@ namespace AtataSampleApp.UITests
 {
     using _ = UserEditWindow;
 
+    [InvokeMethod(nameof(WaitUntilHidden), TriggerEvents.DeInit)]
     public class UserEditWindow : BSModal<_>
     {
         public GeneralTabPane General { get; private set; }
@@ -41,6 +42,11 @@ namespace AtataSampleApp.UITests
             public DateInput<_> Birthday { get; private set; }
 
             public TextArea<_> Notes { get; private set; }
+        }
+
+        private void WaitUntilHidden()
+        {
+            Wait(Until.MissingOrHidden);
         }
     }
 }

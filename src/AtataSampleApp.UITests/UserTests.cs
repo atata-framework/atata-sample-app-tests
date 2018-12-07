@@ -34,30 +34,28 @@ namespace AtataSampleApp.UITests
         [Test]
         public void User_Create_OneAndThenCancelSecond()
         {
-            string firstName, lastName, email;
-            Office office;
-            Gender gender;
             int userCount;
 
             Login().
                 Users.Rows.Count.Get(out userCount). // Store initial count of users.
                 New().
-                    General.FirstName.SetRandom(out firstName).
-                    General.LastName.SetRandom(out lastName).
-                    General.Email.SetRandom(out email).
-                    General.Office.SetRandom(out office).
-                    General.Gender.SetRandom(out gender).
+                    Do(SetRequiredFieldsWithRandomValues).
                     Save().
-                Users.Rows.Should.Contain(x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office).
                 Users.Rows.Count.Should.Equal(++userCount). // Verify that count is incremented.
                 New().
-                    General.FirstName.SetRandom().
-                    General.LastName.SetRandom().
-                    General.Email.SetRandom().
-                    General.Office.SetRandom().
-                    General.Gender.SetRandom().
+                    Do(SetRequiredFieldsWithRandomValues).
                     Cancel().
                 Users.Rows.Count.Should.Equal(userCount); // Verify that count is not changed.
+        }
+
+        private UserEditWindow SetRequiredFieldsWithRandomValues(UserEditWindow window)
+        {
+            return window.
+                General.FirstName.SetRandom().
+                General.LastName.SetRandom().
+                General.Email.SetRandom().
+                General.Office.SetRandom().
+                General.Gender.SetRandom();
         }
 
         [Test]
