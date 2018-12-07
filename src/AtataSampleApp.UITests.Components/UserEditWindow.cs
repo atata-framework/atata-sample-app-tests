@@ -14,6 +14,11 @@ namespace AtataSampleApp.UITests
         [Term("Save", "Create")]
         public ButtonDelegate<UsersPage, _> Save { get; private set; }
 
+        public ButtonDelegate<UsersPage, _> Cancel { get; private set; }
+
+        [FindByClass]
+        public ButtonDelegate<UsersPage, _> Close { get; private set; }
+
         public ValidationMessageList<_> ValidationMessages { get; private set; }
 
         public class GeneralTabPane : BSTabPane<_>
