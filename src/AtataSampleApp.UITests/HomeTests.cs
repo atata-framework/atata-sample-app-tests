@@ -9,7 +9,7 @@ namespace AtataSampleApp.UITests
         public void Home()
         {
             Go.To<HomePage>().
-                PageUrl.Should.EndWith("/#!/");
+                PageUrl.Should.Equal(Config.BaseUrl);
         }
 
         [Test]

@@ -19,7 +19,7 @@ namespace AtataSampleApp.UITests
                 UseChrome().
                     WithArguments("start-maximized", "disable-infobars", "disable-extensions").
                 // Base URL can be set here, but in this sample it is defined in Atata.json config file.
-                //UseBaseUrl("https://atata-framework.github.io/atata-sample-app/#!/").
+                //UseBaseUrl("https://demo.atata.io/").
                 UseCulture("en-US").
                 UseNUnitTestName().
                 AddNUnitTestContextLogging().
