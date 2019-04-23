@@ -1,26 +1,26 @@
-queue:
-  name: Hosted VS2017
-  demands: 
-  - msbuild
-  - visualstudio
-  - vstest
-
 variables:
   buildConfiguration: 'Debug'
 
-steps:
-- task: NuGetCommand@2
-  displayName: 'NuGet restore'
+jobs:
+- job: 'Build_Tests'
+  pool:
+    name: Hosted VS2017
+  steps:
+  - task: DotNetCoreInstaller@0
+    displayName: 'Install .NET Core sdk 2.2'
+    inputs:
+      version: 2.2.100
 
-- task: VSBuild@1
-  displayName: 'Build solution **\*.sln'
-  inputs:
-    msbuildArgs: '/p:RunCodeAnalysis=true /warnaserror'
-    configuration: $(buildConfiguration)
+  - task: DotNetCoreCLI@2
+    displayName: 'Build projects'
+    inputs:
+      command: build
+      arguments: '--configuration $(buildConfiguration)'
+      projects: '**/*.csproj'
 
-- task: VSTest@2
-  displayName: 'Run tests'
-  inputs:
-    testAssemblyVer2: |
-     **\*Tests.dll
-     !**\obj\**
+  - task: DotNetCoreCLI@2
+    displayName: 'Run tests'
+    inputs:
+      command: test
+      projects: '**/*Tests.csproj'
+      arguments: '--no-build'
