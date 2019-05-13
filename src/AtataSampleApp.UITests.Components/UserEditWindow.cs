@@ -22,6 +22,11 @@ namespace AtataSampleApp.UITests
 
         public ValidationMessageList<_> ValidationMessages { get; private set; }
 
+        private void WaitUntilHidden()
+        {
+            Wait(Until.MissingOrHidden);
+        }
+
         public class GeneralTabPane : BSTabPane<_>
         {
             public TextInput<_> FirstName { get; private set; }
@@ -42,11 +47,6 @@ namespace AtataSampleApp.UITests
             public DateInput<_> Birthday { get; private set; }
 
             public TextArea<_> Notes { get; private set; }
-        }
-
-        private void WaitUntilHidden()
-        {
-            Wait(Until.MissingOrHidden);
         }
     }
 }

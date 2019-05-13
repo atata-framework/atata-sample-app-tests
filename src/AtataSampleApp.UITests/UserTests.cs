@@ -37,11 +37,11 @@ namespace AtataSampleApp.UITests
             int userCount;
 
             Login().
-                Users.Rows.Count.Get(out userCount). // Store initial count of users.
+                Users.Rows.Count.Get(out userCount).// Store initial count of users.
                 New().
                     Do(SetRequiredFieldsWithRandomValues).
                     Save().
-                Users.Rows.Count.Should.Equal(++userCount). // Verify that count is incremented.
+                Users.Rows.Count.Should.Equal(++userCount).// Verify that count is incremented.
                 New().
                     Do(SetRequiredFieldsWithRandomValues).
                     Cancel().
