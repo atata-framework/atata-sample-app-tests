@@ -5,7 +5,7 @@ namespace AtataSampleApp.UITests
 {
     using _ = UserEditWindow;
 
-    [InvokeMethod(nameof(WaitUntilHidden), TriggerEvents.DeInit)]
+    [WaitFor(Until.MissingOrHidden, TriggerEvents.DeInit)]
     public class UserEditWindow : BSModal<_>
     {
         public GeneralTabPane General { get; private set; }
@@ -21,11 +21,6 @@ namespace AtataSampleApp.UITests
         public ButtonDelegate<UsersPage, _> Close { get; private set; }
 
         public ValidationMessageList<_> ValidationMessages { get; private set; }
-
-        private void WaitUntilHidden()
-        {
-            Wait(Until.MissingOrHidden);
-        }
 
         public class GeneralTabPane : BSTabPane<_>
         {
