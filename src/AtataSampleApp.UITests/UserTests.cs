@@ -23,12 +23,13 @@ namespace AtataSampleApp.UITests
                     General.Gender.Set(gender).
                     Save().
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].View().
-                    Header.Should.Equal($"{firstName} {lastName}").
-                    Email.Should.Equal(email).
-                    Office.Should.Equal(office).
-                    Gender.Should.Equal(gender).
-                    Birthday.Should.Not.Exist().
-                    Notes.Should.Not.Exist();
+                    AggregateAssert(x => x.
+                        Header.Should.Equal($"{firstName} {lastName}").
+                        Email.Should.Equal(email).
+                        Office.Should.Equal(office).
+                        Gender.Should.Equal(gender).
+                        Birthday.Should.Not.Exist().
+                        Notes.Should.Not.Exist());
         }
 
         [Test]
@@ -83,13 +84,14 @@ namespace AtataSampleApp.UITests
                     Additional.Notes.SetRandom(out notes).
                     Save().
                 Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].View().
-                    PageTitle.Should.StartWith($"{firstName} {lastName}").
-                    Header.Should.Equal($"{firstName} {lastName}").
-                    Email.Should.Equal(email).
-                    Office.Should.Equal(office).
-                    Gender.Should.Equal(gender).
-                    Birthday.Should.Equal(birthday).
-                    Notes.Should.Equal(notes);
+                    AggregateAssert(x => x.
+                        PageTitle.Should.StartWith($"{firstName} {lastName}").
+                        Header.Should.Equal($"{firstName} {lastName}").
+                        Email.Should.Equal(email).
+                        Office.Should.Equal(office).
+                        Gender.Should.Equal(gender).
+                        Birthday.Should.Equal(birthday).
+                        Notes.Should.Equal(notes));
         }
 
         [Test]
