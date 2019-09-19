@@ -22,7 +22,7 @@ namespace AtataSampleApp.UITests
                     General.Office.Set(office).
                     General.Gender.Set(gender).
                     Save().
-                Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].View().
+                Users.Rows[x => x.Email == email].View().
                     AggregateAssert(x => x.
                         Header.Should.Equal($"{firstName} {lastName}").
                         Email.Should.Equal(email).

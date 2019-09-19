@@ -41,13 +41,14 @@ public void User_Create()
             General.Office.Set(office).
             General.Gender.Set(gender).
             Save().
-        Users.Rows[x => x.FirstName == firstName && x.LastName == lastName && x.Email == email && x.Office == office].View().
-            Header.Should.Equal($"{firstName} {lastName}").
-            Email.Should.Equal(email).
-            Office.Should.Equal(office).
-            Gender.Should.Equal(gender).
-            Birthday.Should.Not.Exist().
-            Notes.Should.Not.Exist();
+        Users.Rows[x => x.Email == email].View().
+            AggregateAssert(x => x.
+                Header.Should.Equal($"{firstName} {lastName}").
+                Email.Should.Equal(email).
+                Office.Should.Equal(office).
+                Gender.Should.Equal(gender).
+                Birthday.Should.Not.Exist().
+                Notes.Should.Not.Exist());
 }
 ```
 
