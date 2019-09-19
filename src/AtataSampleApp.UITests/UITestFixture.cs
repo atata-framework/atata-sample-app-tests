@@ -35,6 +35,8 @@ namespace AtataSampleApp.UITests
                 //    WithFolderPath(() => $@"Logs\{AtataContext.BuildStart:yyyy-MM-dd HH_mm_ss}\{AtataContext.Current.TestName}").
                 LogNUnitError().
                 TakeScreenshotOnNUnitError().
+                UseAssertionExceptionType<NUnit.Framework.AssertionException>().
+                UseNUnitAggregateAssertionStrategy().
                 Build();
         }
 
