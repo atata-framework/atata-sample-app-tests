@@ -1,26 +1,22 @@
-queue:
-  name: Hosted VS2017
-  demands: 
-  - msbuild
-  - visualstudio
-  - vstest
-
 variables:
   buildConfiguration: 'Debug'
 
-steps:
-- task: NuGetCommand@2
-  displayName: 'NuGet restore'
-
-- task: VSBuild@1
-  displayName: 'Build solution **\*.sln'
-  inputs:
-    msbuildArgs: '/p:RunCodeAnalysis=true /warnaserror'
-    configuration: $(buildConfiguration)
-
-- task: VSTest@2
-  displayName: 'Run tests'
-  inputs:
-    testAssemblyVer2: |
-     **\*Tests.dll
-     !**\obj\**
+jobs:
+- job: BuildAndRunTests
+  displayName: Build with code analysis and run tests
+  pool:
+    vmImage: vs2017-win2016
+  steps:
+  - task: NuGetCommand@2
+    displayName: Restore NuGet packages
+  - task: VSBuild@1
+    displayName: Build solution
+    inputs:
+      msbuildArgs: '/p:RunCodeAnalysis=true /warnaserror'
+      configuration: $(buildConfiguration)
+  - task: VSTest@2
+    displayName: Run tests
+    inputs:
+      testAssemblyVer2: |
+       **\*Tests.dll
+       !**\obj\**
