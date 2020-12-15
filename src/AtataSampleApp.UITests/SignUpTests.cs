@@ -59,7 +59,7 @@ namespace AtataSampleApp.UITests
                 Email.Set("some@email").
                 SignUp.Click().
                 ValidationMessages[x => x.Email].Should.HaveIncorrectFormat().
-                Email.Append(".com").
+                Email.Type(".com").
                 SignUp.Click().
                 ValidationMessages[x => x.Email].Should.Not.Exist();
         }

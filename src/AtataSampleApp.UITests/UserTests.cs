@@ -157,10 +157,10 @@ namespace AtataSampleApp.UITests
                     ValidationMessages[x => x.General.FirstName].Should.HaveMinLength(2).
                     ValidationMessages[x => x.General.LastName].Should.HaveMinLength(2).
 
-                    General.FirstName.Append("b").
+                    General.FirstName.Type("b").
                     General.LastName.Focus().
                     ValidationMessages[x => x.General.FirstName].Should.Not.Exist().
-                    General.LastName.Append("b").
+                    General.LastName.Type("b").
                     General.FirstName.Focus().
                     ValidationMessages[x => x.General.LastName].Should.Not.Exist().
                     ValidationMessages.Should.BeEmpty().
