@@ -38,8 +38,8 @@
     <Reference Include="Atata, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Atata.1.10.0\lib\net45\Atata.dll</HintPath>
     </Reference>
-    <Reference Include="Atata.Bootstrap, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atata.Bootstrap.1.0.0\lib\net45\Atata.Bootstrap.dll</HintPath>
+    <Reference Include="Atata.Bootstrap, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Atata.Bootstrap.1.1.0\lib\net45\Atata.Bootstrap.dll</HintPath>
     </Reference>
     <Reference Include="Atata.Configuration.Json, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Atata.Configuration.Json.1.5.0\lib\net45\Atata.Configuration.Json.dll</HintPath>
