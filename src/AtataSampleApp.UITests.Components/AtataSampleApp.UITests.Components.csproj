@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AtataSampleApp.UITests</RootNamespace>
     <AssemblyName>AtataSampleApp.UITests.Components</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <CodeAnalysisRuleSet>..\Atata.ruleset</CodeAnalysisRuleSet>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,13 +33,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Atata, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atata.1.10.0\lib\net45\Atata.dll</HintPath>
+      <HintPath>..\packages\Atata.1.10.0\lib\net46\Atata.dll</HintPath>
     </Reference>
     <Reference Include="Atata.Bootstrap, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atata.Bootstrap.1.1.0\lib\net45\Atata.Bootstrap.dll</HintPath>
+      <HintPath>..\packages\Atata.Bootstrap.1.1.0\lib\net46\Atata.Bootstrap.dll</HintPath>
     </Reference>
     <Reference Include="Atata.WebDriverExtras, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atata.WebDriverExtras.1.5.0\lib\net45\Atata.WebDriverExtras.dll</HintPath>
+      <HintPath>..\packages\Atata.WebDriverExtras.1.5.0\lib\net46\Atata.WebDriverExtras.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
