@@ -48,8 +48,8 @@
     <Reference Include="Atata.WebDriverExtras, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Atata.WebDriverExtras.1.5.0\lib\net46\Atata.WebDriverExtras.dll</HintPath>
     </Reference>
-    <Reference Include="Atata.WebDriverSetup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Atata.WebDriverSetup.1.0.0\lib\netstandard2.0\Atata.WebDriverSetup.dll</HintPath>
+    <Reference Include="Atata.WebDriverSetup, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Atata.WebDriverSetup.1.1.0\lib\netstandard2.0\Atata.WebDriverSetup.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
