@@ -2,21 +2,39 @@ variables:
   buildConfiguration: 'Debug'
 
 jobs:
-- job: BuildAndRunTests
-  displayName: Build with code analysis and run tests
+- job: BuildAndRunCodeAnalysis
+  displayName: Build and run code analysis
   pool:
-    vmImage: vs2017-win2016
+    vmImage: windows-latest
   steps:
-  - task: NuGetCommand@2
-    displayName: Restore NuGet packages
-  - task: VSBuild@1
+  - task: DotNetCoreCLI@2
+    displayName: Build solution with code analysis
+    inputs:
+      command: build
+      projects: '*.sln'
+      arguments: -c $(buildConfiguration) -warnaserror
+
+- job: RunTests
+  displayName: Run tests
+  pool:
+    vmImage: windows-latest
+  steps:
+  - task: DotNetCoreCLI@2
     displayName: Build solution
     inputs:
-      msbuildArgs: '/p:RunCodeAnalysis=true /warnaserror'
-      configuration: $(buildConfiguration)
-  - task: VSTest@2
-    displayName: Run tests
+      command: build
+      projects: '*.sln'
+      arguments: -c $(buildConfiguration) -p:RunCodeAnalysis=false
+  - task: DotNetCoreCLI@2
+    displayName: 'Run tests'
+    timeoutInMinutes: 30
     inputs:
-      testAssemblyVer2: |
-       **\*Tests.dll
-       !**\obj\**
+      command: test
+      projects: 'test/*/*Tests.csproj'
+      arguments: -c $(buildConfiguration) -s "azure-pipelines.runsettings" --no-build
+  - task: PublishPipelineArtifact@1
+    displayName: Publish test results
+    condition: succeededOrFailed()
+    inputs:
+      artifactName: Test results
+      targetPath: src/AtataSampleApp.UITests/bin/$(buildConfiguration)/netcoreapp3.1/Logs
