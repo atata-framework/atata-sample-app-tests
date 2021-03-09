@@ -12,6 +12,9 @@ namespace AtataSampleApp.UITests
 
         public Table<UserTableRow, _> Users { get; private set; }
 
+        public UserTableRow GetUserRow(string email) =>
+            Users.Rows[x => x.Email == email];
+
         public class UserTableRow : TableRow<_>
         {
             public Text<_> FirstName { get; private set; }
