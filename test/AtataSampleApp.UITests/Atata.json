@@ -1,24 +1,39 @@
 {
-  // Basic Atata configuration sample (commented for purposes of example as it is duplicated in UITestFixture.cs):
   // Find out complete documentation on Atata JSON configuration on https://github.com/atata-framework/atata-configuration-json.
-  //"driver": {
-  //  "type": "chrome",
-  //  "options": {
-  //    "arguments": [ "start-maximized", "disable-infobars", "disable-extensions" ]
-  //  }
-  //},
-  //"useNUnitTestName": true,
-  //"logNUnitError": true,
-  //"takeScreenshotOnNUnitError": true,
-  //"assertionExceptionType": "NUnit.Framework.AssertionException, nunit.framework",
-  //"useNUnitAggregateAssertionStrategy": true,
-  //"logConsumers": [
-  //  {
-  //    "type": "nunit",
-  //    "minLevel": "Trace"
-  //  }
-  //],
+  "drivers": [
+    {
+      "type": "chrome",
+      "options": {
+        "arguments": [ "start-maximized" ]
+      }
+    }
+  ],
   "baseUrl": "https://demo.atata.io/",
+  "culture": "en-US",
+  "useAllNUnitFeatures": true,
+  "logConsumers": [
+    {
+      "type": "nlog"
+      // Actual NLog configuration is located in NLog.config file.
+      // Logs can be found in "test\AtataSampleApp.UITests\bin\Debug\netcoreapp3.1\Logs\"
+    }
+  ],
+  "screenshotConsumers": [
+    {
+      "type": "file"
+      // Specify the "folderPath" property to set the folder path template where to store screenshots.
+      // The default path is:
+      // "folderPath": "Logs\\{build-start}\\{test-name}"
+    }
+  ],
+  "attributes": {
+    "global": [
+      {
+        "type": "VerifyTitleSettings",
+        "format": "{0} - Atata Sample App"
+      }
+    ]
+  },
 
   // Custom settings:
   "account": {
