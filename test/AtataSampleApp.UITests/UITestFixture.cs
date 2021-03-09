@@ -4,6 +4,7 @@ using NUnit.Framework;
 namespace AtataSampleApp.UITests
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.Self)]
     public abstract class UITestFixture
     {
         public static AtataConfig Config =>
