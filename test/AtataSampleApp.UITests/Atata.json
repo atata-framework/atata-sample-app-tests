@@ -13,17 +13,16 @@
   "useAllNUnitFeatures": true,
   "logConsumers": [
     {
-      "type": "nlog"
-      // Actual NLog configuration is located in NLog.config file.
-      // Logs can be found in "test\AtataSampleApp.UITests\bin\Debug\netcoreapp3.1\Logs\"
+      "type": "nlog-file",
+      "folderPath": "{artifacts}"
+      // Logs can be found in "test\AtataSampleApp.UITests\bin\Debug\netcoreapp3.1\artifacts\" directory.
     }
   ],
   "screenshotConsumers": [
     {
-      "type": "file"
-      // Specify the "folderPath" property to set the folder path template where to store screenshots.
-      // The default path is:
-      // "folderPath": "Logs\\{build-start}\\{test-name}"
+      "type": "file",
+      "folderPath": "{artifacts}"
+      // Screenshots can be found in "test\AtataSampleApp.UITests\bin\Debug\netcoreapp3.1\artifacts\" directory.
     }
   ],
   "attributes": {
