@@ -11,6 +11,8 @@ namespace AtataSampleApp.UITests
         {
             AtataContext.GlobalConfiguration
                 .ApplyJsonConfig<AtataConfig>()
+                .UseDefaultArtifactsPathIncludingBuildStart(
+                    TestContext.Parameters.Get("UseDefaultArtifactsPathIncludingBuildStart", true))
                 .AutoSetUpDriverToUse();
         }
     }

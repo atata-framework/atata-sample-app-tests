@@ -26,7 +26,7 @@ jobs:
       projects: '*.sln'
       arguments: -c $(buildConfiguration) -p:RunCodeAnalysis=false
   - task: DotNetCoreCLI@2
-    displayName: 'Run tests'
+    displayName: Run tests
     timeoutInMinutes: 30
     continueOnError: true
     inputs:
@@ -34,7 +34,7 @@ jobs:
       projects: 'test/*/*Tests.csproj'
       arguments: -c $(buildConfiguration) -s "azure-pipelines.runsettings" --no-build
   - task: PublishPipelineArtifact@1
-    displayName: Publish test results
+    displayName: Publish test artifacts
     inputs:
-      artifactName: Test results
-      targetPath: test/AtataSampleApp.UITests/bin/$(buildConfiguration)/netcoreapp3.1/Logs
+      artifactName: Test artifacts
+      targetPath: test/AtataSampleApp.UITests/bin/$(buildConfiguration)/netcoreapp3.1/artifacts
