@@ -12,15 +12,16 @@ Tests application demonstrates different testing approaches and features of Atat
 
 ## Features
 
-* Atata configuation and settings set-up
-* Page navigation
-* Controls finding
-* Data input and verification
-* Validation messages verification
-* Usage of triggers
-* Interaction with pop-ups (Bootstrap modal) and alerts
-* Work with tables
-* Logging
+* Atata configuation and settings set-up.
+* Page navigation.
+* Controls finding.
+* Data input and verification.
+* Validation messages verification.
+* Usage of triggers.
+* Interaction with pop-ups (Bootstrap modal) and alerts.
+* Work with tables.
+* Logging and screenshots.
+* Page HTML validation.
 
 ## Sample Test
 

@@ -6,5 +6,8 @@ namespace AtataSampleApp.UITests
         where TOwner : AppPage<TOwner>
     {
         public MainMenu<TOwner> Menu { get; private set; }
+
+        [FindFirst]
+        public H1<TOwner> Header { get; private set; }
     }
 }
