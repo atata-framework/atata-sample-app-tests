@@ -7,6 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Atata" Version="1.11.2" />
     <PackageReference Include="Atata.Configuration.Json" Version="1.6.0" />
+    <PackageReference Include="Atata.HtmlValidation" Version="1.0.0" />
     <PackageReference Include="Atata.WebDriverExtras" Version="1.5.0" />
     <PackageReference Include="Atata.WebDriverSetup" Version="1.1.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
@@ -21,6 +22,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update=".htmlvalidate.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Atata.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
