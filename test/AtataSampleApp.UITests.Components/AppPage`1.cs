@@ -2,6 +2,7 @@
 
 namespace AtataSampleApp.UITests
 {
+    [WaitForDocumentReadyState(Priority = TriggerPriority.Highest)]
     public abstract class AppPage<TOwner> : Page<TOwner>
         where TOwner : AppPage<TOwner>
     {

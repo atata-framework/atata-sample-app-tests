@@ -12,7 +12,6 @@ namespace AtataSampleApp.UITests
         public void Validate(string url)
         {
             Go.To<AppPage>(url: url)
-                .Header.WaitTo.BeVisible()
                 .ValidateHtml();
         }
     }
