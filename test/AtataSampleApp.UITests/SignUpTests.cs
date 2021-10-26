@@ -17,8 +17,8 @@ namespace AtataSampleApp.UITests
                 .SignUp()
                     .AggregateAssert(x => x
                         .Menu.Account.SignOut.Should().Exist()
-                        .Header.Should.Equal($"{firstName} {lastName}")
-                        .Email.Should.Equal(email)
+                        .Header.Should.Be($"{firstName} {lastName}")
+                        .Email.Should.Be(email)
                         .Office.Should.Not.Exist()
                         .Gender.Should.Not.Exist()
                         .Birthday.Should.Not.Exist()
@@ -77,7 +77,7 @@ namespace AtataSampleApp.UITests
                         .Menu.SignUp()
                             .Email.Set(email)
                             .SignUp.Click()
-                            .ValidationMessages[x => x.Email].Should.Equal("is already used by another user");
+                            .ValidationMessages[x => x.Email].Should.Be("is already used by another user");
         }
     }
 }

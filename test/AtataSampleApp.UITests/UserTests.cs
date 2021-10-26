@@ -11,7 +11,7 @@ namespace AtataSampleApp.UITests
         {
             Login()
                 .New()
-                    .ModalTitle.Should.Equal("New User")
+                    .ModalTitle.Should.Be("New User")
                     .General.FirstName.SetRandom(out string firstName)
                     .General.LastName.SetRandom(out string lastName)
                     .General.Email.SetRandom(out string email)
@@ -20,10 +20,10 @@ namespace AtataSampleApp.UITests
                     .Save()
                 .GetUserRow(email).View()
                     .AggregateAssert(x => x
-                        .Header.Should.Equal($"{firstName} {lastName}")
-                        .Email.Should.Equal(email)
-                        .Office.Should.Equal(office)
-                        .Gender.Should.Equal(gender)
+                        .Header.Should.Be($"{firstName} {lastName}")
+                        .Email.Should.Be(email)
+                        .Office.Should.Be(office)
+                        .Gender.Should.Be(gender)
                         .Birthday.Should.Not.Exist()
                         .Notes.Should.Not.Exist());
         }
@@ -36,11 +36,11 @@ namespace AtataSampleApp.UITests
                 .New()
                     .Do(SetRequiredFieldsWithRandomValues)
                     .Save()
-                .Users.Rows.Count.Should.Equal(++userCount) // Verify that count is incremented.
+                .Users.Rows.Count.Should.Be(++userCount) // Verify that count is incremented.
                 .New()
                     .Do(SetRequiredFieldsWithRandomValues)
                     .Cancel()
-                .Users.Rows.Count.Should.Equal(userCount); // Verify that count is not changed.
+                .Users.Rows.Count.Should.Be(userCount); // Verify that count is not changed.
         }
 
         private UserEditWindow SetRequiredFieldsWithRandomValues(UserEditWindow window)
@@ -75,7 +75,7 @@ namespace AtataSampleApp.UITests
             string notes = "Some notes";
 
             editWindow
-                    .ModalTitle.Should.Equal($"{firstName} {lastName}")
+                    .ModalTitle.Should.Be($"{firstName} {lastName}")
                     .General.Email.Should.BeReadOnly()
                     .General.Office.Set(office)
                     .General.Gender.Set(gender)
@@ -85,12 +85,12 @@ namespace AtataSampleApp.UITests
                 .Users.Rows[x => x.Email == email && x.Office == office].View()
                     .AggregateAssert(x => x
                         .PageTitle.Should.StartWith($"{firstName} {lastName}")
-                        .Header.Should.Equal($"{firstName} {lastName}")
-                        .Email.Should.Equal(email)
-                        .Office.Should.Equal(office)
-                        .Gender.Should.Equal(gender)
-                        .Birthday.Should.Equal(birthday)
-                        .Notes.Should.Equal(notes));
+                        .Header.Should.Be($"{firstName} {lastName}")
+                        .Email.Should.Be(email)
+                        .Office.Should.Be(office)
+                        .Gender.Should.Be(gender)
+                        .Birthday.Should.Be(birthday)
+                        .Notes.Should.Be(notes));
         }
 
         [Test]

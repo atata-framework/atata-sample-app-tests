@@ -9,15 +9,15 @@ namespace AtataSampleApp.UITests
         public void Home()
         {
             Go.To<HomePage>()
-                .PageUrl.Should.Equal(Config.BaseUrl);
+                .PageUrl.Should.Be(Config.BaseUrl);
         }
 
         [Test]
         public void SignInAndSignUpLinks()
         {
             Go.To<HomePage>()
-                .SignIn.Content.Should.Equal("Sign In")
-                .SignUp.Content.Should.Equal("Sign Up")
+                .SignIn.Content.Should.Be("Sign In")
+                .SignUp.Content.Should.Be("Sign Up")
                 .SignIn.ClickAndGo()
                     .GoBack<HomePage>()
                 .SignUp.ClickAndGo();

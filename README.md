@@ -35,7 +35,7 @@ public void User_Create()
 
     Login().
         New().
-            ModalTitle.Should.Equal("New User").
+            ModalTitle.Should.Be("New User").
             General.FirstName.SetRandom(out firstName).
             General.LastName.SetRandom(out lastName).
             General.Email.SetRandom(out email).
@@ -44,10 +44,10 @@ public void User_Create()
             Save().
         Users.Rows[x => x.Email == email].View().
             AggregateAssert(x => x.
-                Header.Should.Equal($"{firstName} {lastName}").
-                Email.Should.Equal(email).
-                Office.Should.Equal(office).
-                Gender.Should.Equal(gender).
+                Header.Should.Be($"{firstName} {lastName}").
+                Email.Should.Be(email).
+                Office.Should.Be(office).
+                Gender.Should.Be(gender).
                 Birthday.Should.Not.Exist().
                 Notes.Should.Not.Exist());
 }
