@@ -5,16 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Atata" Version="1.13.1" />
     <PackageReference Include="Atata.Configuration.Json" Version="1.7.0" />
     <PackageReference Include="Atata.HtmlValidation" Version="1.4.0" />
-    <PackageReference Include="Atata.WebDriverExtras" Version="1.5.0" />
     <PackageReference Include="Atata.WebDriverSetup" Version="1.2.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="NLog" Version="4.7.10" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
-    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
   </ItemGroup>
 
   <ItemGroup>
