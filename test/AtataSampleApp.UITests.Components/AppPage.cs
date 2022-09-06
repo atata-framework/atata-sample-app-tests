@@ -1,11 +1,10 @@
 ﻿using Atata;
 
-namespace AtataSampleApp.UITests
-{
-    using _ = AppPage;
+namespace AtataSampleApp.UITests;
 
-    [Name("<app>")]
-    public class AppPage : AppPage<_>
-    {
-    }
+using _ = AppPage;
+
+[Name("<app>")]
+public class AppPage : AppPage<_>
+{
 }

@@ -1,13 +1,12 @@
-﻿namespace AtataSampleApp.UITests
+﻿namespace AtataSampleApp.UITests;
+
+public enum Office
 {
-    public enum Office
-    {
-        Berlin,
-        London,
-        NewYork,
-        Paris,
-        Rome,
-        Tokio,
-        Washington
-    }
+    Berlin,
+    London,
+    NewYork,
+    Paris,
+    Rome,
+    Tokio,
+    Washington
 }

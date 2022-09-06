@@ -1,27 +1,25 @@
-﻿using System;
-using Atata;
+﻿using Atata;
 using OpenQA.Selenium;
 
-namespace AtataSampleApp.UITests
+namespace AtataSampleApp.UITests;
+
+public class ValidationMessageList<TOwner> : ControlList<ValidationMessage<TOwner>, TOwner>
+    where TOwner : PageObject<TOwner>
 {
-    public class ValidationMessageList<TOwner> : ControlList<ValidationMessage<TOwner>, TOwner>
-        where TOwner : PageObject<TOwner>
+    public ValidationMessage<TOwner> this[Func<TOwner, IControl<TOwner>> controlSelector] =>
+        For(controlSelector);
+
+    public ValidationMessage<TOwner> For(Func<TOwner, IControl<TOwner>> controlSelector)
     {
-        public ValidationMessage<TOwner> this[Func<TOwner, IControl<TOwner>> controlSelector] =>
-            For(controlSelector);
+        var validationMessageDefinition = UIComponentResolver.GetControlDefinition(typeof(ValidationMessage<TOwner>));
 
-        public ValidationMessage<TOwner> For(Func<TOwner, IControl<TOwner>> controlSelector)
+        IControl<TOwner> boundControl = controlSelector(Component.Owner);
+
+        PlainScopeLocator scopeLocator = new PlainScopeLocator(By.XPath("ancestor::" + validationMessageDefinition.ScopeXPath))
         {
-            var validationMessageDefinition = UIComponentResolver.GetControlDefinition(typeof(ValidationMessage<TOwner>));
+            SearchContext = boundControl.Scope
+        };
 
-            IControl<TOwner> boundControl = controlSelector(Component.Owner);
-
-            PlainScopeLocator scopeLocator = new PlainScopeLocator(By.XPath("ancestor::" + validationMessageDefinition.ScopeXPath))
-            {
-                SearchContext = boundControl.Scope
-            };
-
-            return Component.Controls.Create<ValidationMessage<TOwner>>(boundControl.ComponentName, scopeLocator);
-        }
+        return Component.Controls.Create<ValidationMessage<TOwner>>(boundControl.ComponentName, scopeLocator);
     }
 }
