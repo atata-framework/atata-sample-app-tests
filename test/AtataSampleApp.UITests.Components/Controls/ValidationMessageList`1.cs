@@ -7,10 +7,8 @@ namespace AtataSampleApp.UITests
     public class ValidationMessageList<TOwner> : ControlList<ValidationMessage<TOwner>, TOwner>
         where TOwner : PageObject<TOwner>
     {
-        public ValidationMessage<TOwner> this[Func<TOwner, IControl<TOwner>> controlSelector]
-        {
-            get { return For(controlSelector); }
-        }
+        public ValidationMessage<TOwner> this[Func<TOwner, IControl<TOwner>> controlSelector] =>
+            For(controlSelector);
 
         public ValidationMessage<TOwner> For(Func<TOwner, IControl<TOwner>> controlSelector)
         {

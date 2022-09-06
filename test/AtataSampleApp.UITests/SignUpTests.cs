@@ -6,8 +6,7 @@ namespace AtataSampleApp.UITests
     public class SignUpTests : UITestFixture
     {
         [Test]
-        public void SignUp()
-        {
+        public void SignUp() =>
             Go.To<SignUpPage>()
                 .FirstName.SetRandom(out string firstName)
                 .LastName.SetRandom(out string lastName)
@@ -23,11 +22,9 @@ namespace AtataSampleApp.UITests
                         .Gender.Should.Not.Exist()
                         .Birthday.Should.Not.Exist()
                         .Notes.Should.Not.Exist());
-        }
 
         [Test]
-        public void Validation_Required()
-        {
+        public void Validation_Required() =>
             Go.To<SignUpPage>()
                 .SignUp.Click()
                 .ValidationMessages[x => x.FirstName].Should.BeRequired()
@@ -36,11 +33,9 @@ namespace AtataSampleApp.UITests
                 .ValidationMessages[x => x.Password].Should.BeRequired()
                 .ValidationMessages[x => x.Agreement].Should.BeRequired()
                 .ValidationMessages.Should.HaveCount(5);
-        }
 
         [Test]
-        public void Validation_MinLength()
-        {
+        public void Validation_MinLength() =>
             Go.To<SignUpPage>()
                 .FirstName.Set("a")
                 .LastName.Set("a")
@@ -49,11 +44,9 @@ namespace AtataSampleApp.UITests
                 .ValidationMessages[x => x.FirstName].Should.HaveMinLength(2)
                 .ValidationMessages[x => x.LastName].Should.HaveMinLength(2)
                 .ValidationMessages[x => x.Password].Should.HaveMinLength(6);
-        }
 
         [Test]
-        public void Validation_IncorrectEmail()
-        {
+        public void Validation_IncorrectEmail() =>
             Go.To<SignUpPage>()
                 .Email.Set("some@email")
                 .SignUp.Click()
@@ -61,11 +54,9 @@ namespace AtataSampleApp.UITests
                 .Email.Type(".com")
                 .SignUp.Click()
                 .ValidationMessages[x => x.Email].Should.Not.Exist();
-        }
 
         [Test]
-        public void Validation_UniqueEmail()
-        {
+        public void Validation_UniqueEmail() =>
             Go.To<SignUpPage>()
                 .FirstName.SetRandom()
                 .LastName.SetRandom()
@@ -78,6 +69,5 @@ namespace AtataSampleApp.UITests
                             .Email.Set(email)
                             .SignUp.Click()
                             .ValidationMessages[x => x.Email].Should.Be("is already used by another user");
-        }
     }
 }

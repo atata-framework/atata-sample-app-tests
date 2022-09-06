@@ -13,8 +13,7 @@ namespace AtataSampleApp.UITests
         private const string Feature6 = "Feature 6";
 
         [Test]
-        public void Plans()
-        {
+        public void Plans() =>
             Go.To<PlansPage>()
                 .AggregateAssert(x => x
                     .PlanItems.Count.Should.Be(3)
@@ -33,6 +32,5 @@ namespace AtataSampleApp.UITests
                     .PlanItems[2].Price.Should.Be(49.99m)
                     .PlanItems[2].NumberOfProjects.Should.Be(10)
                     .PlanItems[2].Features.Should.EqualSequence(Feature1, Feature2, Feature3, Feature4, Feature5, Feature6));
-        }
     }
 }

@@ -6,26 +6,21 @@ namespace AtataSampleApp.UITests
     public class HomeTests : UITestFixture
     {
         [Test]
-        public void Home()
-        {
+        public void Home() =>
             Go.To<HomePage>()
                 .PageUrl.Should.Be(Config.BaseUrl);
-        }
 
         [Test]
-        public void SignInAndSignUpLinks()
-        {
+        public void SignInAndSignUpLinks() =>
             Go.To<HomePage>()
                 .SignIn.Content.Should.Be("Sign In")
                 .SignUp.Content.Should.Be("Sign Up")
                 .SignIn.ClickAndGo()
                     .GoBack<HomePage>()
                 .SignUp.ClickAndGo();
-        }
 
         [Test]
-        public void SignInAndSignUpLinks_Visibility()
-        {
+        public void SignInAndSignUpLinks_Visibility() =>
             Go.To<HomePage>()
                 .SignIn.Should.BeVisibleInViewPort()
                 .SignUp.Should.BeVisibleInViewPort()
@@ -40,6 +35,5 @@ namespace AtataSampleApp.UITests
                     .Menu.Home()
                 .SignIn.Should.Exist()
                 .SignUp.Should.Exist();
-        }
     }
 }

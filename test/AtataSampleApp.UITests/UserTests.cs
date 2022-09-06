@@ -7,8 +7,7 @@ namespace AtataSampleApp.UITests
     public class UserTests : UITestFixture
     {
         [Test]
-        public void Create()
-        {
+        public void Create() =>
             Login()
                 .New()
                     .ModalTitle.Should.Be("New User")
@@ -26,11 +25,9 @@ namespace AtataSampleApp.UITests
                         .Gender.Should.Be(gender)
                         .Birthday.Should.Not.Exist()
                         .Notes.Should.Not.Exist());
-        }
 
         [Test]
-        public void Create_OneAndThenCancelSecond()
-        {
+        public void Create_OneAndThenCancelSecond() =>
             Login()
                 .Users.Rows.Count.Get(out int userCount) // Store initial count of users.
                 .New()
@@ -41,17 +38,14 @@ namespace AtataSampleApp.UITests
                     .Do(SetRequiredFieldsWithRandomValues)
                     .Cancel()
                 .Users.Rows.Count.Should.Be(userCount); // Verify that count is not changed.
-        }
 
-        private UserEditWindow SetRequiredFieldsWithRandomValues(UserEditWindow window)
-        {
-            return window
+        private UserEditWindow SetRequiredFieldsWithRandomValues(UserEditWindow window) =>
+            window
                 .General.FirstName.SetRandom()
                 .General.LastName.SetRandom()
                 .General.Email.SetRandom()
                 .General.Office.SetRandom()
                 .General.Gender.SetRandom();
-        }
 
         [Test]
         public void Edit()
@@ -94,8 +88,7 @@ namespace AtataSampleApp.UITests
         }
 
         [Test]
-        public void Delete()
-        {
+        public void Delete() =>
             Login()
                 .New()
                     .General.FirstName.SetRandom()
@@ -106,11 +99,9 @@ namespace AtataSampleApp.UITests
                     .Save()
                 .GetUserRow(email).Delete()
                 .GetUserRow(email).Should.Not.Exist();
-        }
 
         [Test]
-        public void Create_Validation_Required()
-        {
+        public void Create_Validation_Required() =>
             Login()
                 .New()
                     .Save.Click()
@@ -121,11 +112,9 @@ namespace AtataSampleApp.UITests
                         .ValidationMessages[x => x.General.Office].Should.BeRequired()
                         .ValidationMessages[x => x.General.Gender].Should.BeRequired()
                         .ValidationMessages.Should.HaveCount(5));
-        }
 
         [Test]
-        public void Create_Validation_MinLength()
-        {
+        public void Create_Validation_MinLength() =>
             Login()
                 .New()
                     .General.FirstName.Set("a")
@@ -134,11 +123,9 @@ namespace AtataSampleApp.UITests
                     .AggregateAssert(x => x
                         .ValidationMessages[x => x.General.FirstName].Should.HaveMinLength(2)
                         .ValidationMessages[x => x.General.LastName].Should.HaveMinLength(2));
-        }
 
         [Test]
-        public void Create_Validation_RealTime()
-        {
+        public void Create_Validation_RealTime() =>
             Login()
                 .New()
                     .ValidationMessages.Should.BeEmpty()
@@ -166,13 +153,10 @@ namespace AtataSampleApp.UITests
                     .General.Office.Set(Office.Rome)
                     .General.Gender.Set(Gender.Female)
                     .Save();
-        }
 
         [Test]
-        public void User_Settings()
-        {
+        public void User_Settings() =>
             Login()
                 .Menu.Account.Settings();
-        }
     }
 }

@@ -6,14 +6,11 @@ namespace AtataSampleApp.UITests
     public class SignInTests : UITestFixture
     {
         [Test]
-        public void SignIn()
-        {
+        public void SignIn() =>
             Login();
-        }
 
         [Test]
-        public void Validation_Required()
-        {
+        public void Validation_Required() =>
             Go.To<SignInPage>()
                 .SignIn.Click()
                 .ValidationMessages[x => x.Email].Should.BeRequired()
@@ -21,11 +18,9 @@ namespace AtataSampleApp.UITests
                 .Email.Set(Config.Account.Email)
                 .Password.Set(Config.Account.Password)
                 .SignIn();
-        }
 
         [Test]
-        public void Validation_InvalidPassword()
-        {
+        public void Validation_InvalidPassword() =>
             Go.To<SignInPage>()
                 .Email.Set(Config.Account.Email)
                 .Password.Set(Config.Account.Password + "!")
@@ -33,6 +28,5 @@ namespace AtataSampleApp.UITests
                 .ValidationMessages.Should.Contain(TermMatch.Contains, "invalid")
                 .Password.Set(Config.Account.Password)
                 .SignIn();
-        }
     }
 }
