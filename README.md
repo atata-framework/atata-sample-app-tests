@@ -27,8 +27,7 @@ Tests application demonstrates different testing approaches and features of Atat
 
 ```cs
 [Test]
-public void Create()
-{
+public void Create() =>
     Login()
         .New()
             .ModalTitle.Should.Be("New User")
@@ -44,9 +43,8 @@ public void Create()
                 .Email.Should.Be(email)
                 .Office.Should.Be(office)
                 .Gender.Should.Be(gender)
-                .Birthday.Should.Not.Exist()
-                .Notes.Should.Not.Exist());
-}
+                .Birthday.Should.Not.BeVisible()
+                .Notes.Should.Not.BeVisible());
 ```
 
 ## License

@@ -15,13 +15,13 @@ namespace AtataSampleApp.UITests
                 .Agreement.Check()
                 .SignUp()
                     .AggregateAssert(x => x
-                        .Menu.Account.SignOut.Should().Exist()
+                        .Menu.Account.SignOut.Should().BeVisible()
                         .Header.Should.Be($"{firstName} {lastName}")
                         .Email.Should.Be(email)
-                        .Office.Should.Not.Exist()
-                        .Gender.Should.Not.Exist()
-                        .Birthday.Should.Not.Exist()
-                        .Notes.Should.Not.Exist());
+                        .Office.Should.Not.BeVisible()
+                        .Gender.Should.Not.BeVisible()
+                        .Birthday.Should.Not.BeVisible()
+                        .Notes.Should.Not.BeVisible());
 
         [Test]
         public void Validation_Required() =>
@@ -53,7 +53,7 @@ namespace AtataSampleApp.UITests
                 .ValidationMessages[x => x.Email].Should.HaveIncorrectFormat()
                 .Email.Type(".com")
                 .SignUp.Click()
-                .ValidationMessages[x => x.Email].Should.Not.Exist();
+                .ValidationMessages[x => x.Email].Should.Not.BeVisible();
 
         [Test]
         public void Validation_UniqueEmail() =>

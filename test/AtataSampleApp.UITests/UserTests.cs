@@ -23,8 +23,8 @@ namespace AtataSampleApp.UITests
                         .Email.Should.Be(email)
                         .Office.Should.Be(office)
                         .Gender.Should.Be(gender)
-                        .Birthday.Should.Not.Exist()
-                        .Notes.Should.Not.Exist());
+                        .Birthday.Should.Not.BeVisible()
+                        .Notes.Should.Not.BeVisible());
 
         [Test]
         public void Create_OneAndThenCancelSecond() =>
@@ -98,7 +98,7 @@ namespace AtataSampleApp.UITests
                     .General.Gender.SetRandom()
                     .Save()
                 .GetUserRow(email).Delete()
-                .GetUserRow(email).Should.Not.Exist();
+                .GetUserRow(email).Should.Not.BePresent();
 
         [Test]
         public void Create_Validation_Required() =>
@@ -143,10 +143,10 @@ namespace AtataSampleApp.UITests
 
                     .General.FirstName.Type("b")
                     .General.LastName.Focus()
-                    .ValidationMessages[x => x.General.FirstName].Should.Not.Exist()
+                    .ValidationMessages[x => x.General.FirstName].Should.Not.BeVisible()
                     .General.LastName.Type("b")
                     .General.FirstName.Focus()
-                    .ValidationMessages[x => x.General.LastName].Should.Not.Exist()
+                    .ValidationMessages[x => x.General.LastName].Should.Not.BeVisible()
                     .ValidationMessages.Should.BeEmpty()
 
                     .General.Email.SetRandom()

@@ -29,11 +29,11 @@ namespace AtataSampleApp.UITests
                     .Password.Set(Config.Account.Password)
                     .SignIn()
                         .Menu.Home()
-                .SignIn.Should.Not.Exist()
-                .SignUp.Should.Not.Exist()
+                .SignIn.Should.Not.BeVisible()
+                .SignUp.Should.Not.BeVisible()
                 .Menu.Account.SignOut()
                     .Menu.Home()
-                .SignIn.Should.Exist()
-                .SignUp.Should.Exist();
+                .SignIn.Should.BeVisible()
+                .SignUp.Should.BeVisible();
     }
 }
