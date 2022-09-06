@@ -37,4 +37,4 @@ jobs:
     displayName: Publish test artifacts
     inputs:
       artifactName: Test artifacts
-      targetPath: test/AtataSampleApp.UITests/bin/$(buildConfiguration)/netcoreapp3.1/artifacts
+      targetPath: test/AtataSampleApp.UITests/bin/$(buildConfiguration)/net6.0/artifacts
