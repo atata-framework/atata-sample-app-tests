@@ -23,7 +23,6 @@ public class PlansPage : AppPage<_>
         [FindByClass("projects-num")]
         public Number<_> NumberOfProjects { get; private set; }
 
-        [ControlDefinition("li", ComponentTypeName = "feature")]
-        public ControlList<Text<_>, _> Features { get; private set; }
+        public ControlList<TextListItem<_>, _> Features { get; private set; }
     }
 }
