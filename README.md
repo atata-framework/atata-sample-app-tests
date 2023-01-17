@@ -26,25 +26,30 @@ Tests application demonstrates different testing approaches and features of Atat
 ## Sample Test
 
 ```cs
-[Test]
-public void Create() =>
-    Login()
-        .New()
-            .ModalTitle.Should.Be("New User")
-            .General.FirstName.SetRandom(out string firstName)
-            .General.LastName.SetRandom(out string lastName)
-            .General.Email.SetRandom(out string email)
-            .General.Office.SetRandom(out Office office)
-            .General.Gender.SetRandom(out Gender gender)
-            .Save()
-        .GetUserRow(email).View()
-            .AggregateAssert(x => x
-                .Header.Should.Be($"{firstName} {lastName}")
-                .Email.Should.Be(email)
-                .Office.Should.Be(office)
-                .Gender.Should.Be(gender)
-                .Birthday.Should.Not.BeVisible()
-                .Notes.Should.Not.BeVisible());
+public class UserTests : UITestFixture
+{
+    [Test]
+    public void Create() =>
+        Login()
+            .New()
+                .ModalTitle.Should.Be("New User")
+                .General.FirstName.SetRandom(out string firstName)
+                .General.LastName.SetRandom(out string lastName)
+                .General.Email.SetRandom(out string email)
+                .General.Office.SetRandom(out Office office)
+                .General.Gender.SetRandom(out Gender gender)
+                .Save()
+            .GetUserRow(email).View()
+                .AggregateAssert(x => x
+                    .Header.Should.Be($"{firstName} {lastName}")
+                    .Email.Should.Be(email)
+                    .Office.Should.Be(office)
+                    .Gender.Should.Be(gender)
+                    .Birthday.Should.Not.BeVisible()
+                    .Notes.Should.Not.BeVisible());
+
+    //...
+}
 ```
 
 ## License
