@@ -22,8 +22,8 @@ public class HomeTests : UITestFixture
     [Test]
     public void SignInAndSignUpLinks_Visibility() =>
         Go.To<HomePage>()
-            .SignIn.Should.BeVisibleInViewPort()
-            .SignUp.Should.BeVisibleInViewPort()
+            .SignIn.Should.BeVisibleInViewport()
+            .SignUp.Should.BeVisibleInViewport()
             .SignIn.ClickAndGo()
                 .Email.Set(Config.Account.Email)
                 .Password.Set(Config.Account.Password)
