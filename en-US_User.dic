@@ -2,7 +2,9 @@ app
 Atata
 autocomplete
 CDP
+checkboxes
 clearable
+CLI
 clickable
 combobox
 concat
@@ -18,6 +20,7 @@ formattable
 href
 initializable
 JSON
+Kendo
 labelled
 localhost
 locator
@@ -25,6 +28,11 @@ MCE
 metadata
 Mui
 multicast
+multiline
+mutex
+MVC
+NG
+NPM
 nullable
 polyline
 popup
@@ -33,6 +41,7 @@ screenshot
 screenshots
 serializer
 stringifier
+sudo
 Summernote
 sut
 SVG
@@ -42,8 +51,12 @@ timestamp
 uncheck
 unconfigured
 unescaped
+uninstall
+uninstalls
 unsubscribe
 username
 UTC
 utils
+validator
 viewport
+Vue
