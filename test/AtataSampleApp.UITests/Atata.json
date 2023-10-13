@@ -18,14 +18,12 @@
     {
       "type": "nlog-file",
       "folderPath": "{artifacts}"
-      // Logs can be found in "test\AtataSampleApp.UITests\bin\Debug\netcoreapp3.1\artifacts\" directory.
     }
   ],
   "screenshotConsumers": [
     {
       "type": "file",
       "folderPath": "{artifacts}"
-      // Screenshots can be found in "test\AtataSampleApp.UITests\bin\Debug\netcoreapp3.1\artifacts\" directory.
     }
   ],
   "attributes": {
@@ -37,7 +35,6 @@
     ]
   },
 
-  // Custom settings:
   "account": {
     "email": "admin@mail.com",
     "password": "abc123"
