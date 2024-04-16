@@ -7,10 +7,13 @@ namespace AtataSampleApp.UITests;
 public class SetUpFixture
 {
     [OneTimeSetUp]
-    public void GlobalSetUp() =>
+    public void GlobalSetUp()
+    {
+        AtataContext.GlobalProperties.UseDefaultArtifactsRootPathTemplateIncludingBuildStart(
+            TestContext.Parameters.Get("UseDefaultArtifactsPathIncludingBuildStart", true));
+
         AtataContext.GlobalConfiguration
             .ApplyJsonConfig<AtataConfig>()
-            .UseDefaultArtifactsPathIncludingBuildStart(
-                TestContext.Parameters.Get("UseDefaultArtifactsPathIncludingBuildStart", true))
             .AutoSetUpDriverToUse();
+    }
 }
