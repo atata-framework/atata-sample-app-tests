@@ -6,7 +6,7 @@
       "options": {
         "arguments": [
           "window-size=1200,800",
-          "headless"
+          "headless=new"
         ]
       }
     }
