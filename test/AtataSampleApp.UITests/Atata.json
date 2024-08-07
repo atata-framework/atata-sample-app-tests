@@ -5,6 +5,7 @@
       "type": "chrome",
       "options": {
         "arguments": [
+          "disable-search-engine-choice-screen",
           "window-size=1200,800",
           "headless=new"
         ]
