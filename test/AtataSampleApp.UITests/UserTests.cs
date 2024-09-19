@@ -38,7 +38,7 @@ public class UserTests : UITestFixture
                 .Cancel()
             .Users.Rows.Count.Should.Be(userCount); // Verify that count is not changed.
 
-    private UserEditWindow SetRequiredFieldsWithRandomValues(UserEditWindow window) =>
+    private static UserEditWindow SetRequiredFieldsWithRandomValues(UserEditWindow window) =>
         window
             .General.FirstName.SetRandom()
             .General.LastName.SetRandom()
