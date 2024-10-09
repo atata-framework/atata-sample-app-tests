@@ -4,7 +4,7 @@ using _ = UsersPage;
 
 [VerifyTitle]
 [VerifyH1]
-public class UsersPage : AppPage<_>
+public sealed class UsersPage : AppPage<_>
 {
     public ButtonDelegate<UserEditWindow, _> New { get; private set; }
 
@@ -13,7 +13,7 @@ public class UsersPage : AppPage<_>
     public UserTableRow GetUserRow(string email) =>
         Users.Rows[x => x.Email == email];
 
-    public class UserTableRow : TableRow<_>
+    public sealed class UserTableRow : TableRow<_>
     {
         public Text<_> FirstName { get; private set; }
 

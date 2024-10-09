@@ -2,7 +2,7 @@
 
 using _ = UserDetailsPage;
 
-public class UserDetailsPage : AppPage<_>
+public sealed class UserDetailsPage : AppPage<_>
 {
     [FindByDescriptionTerm]
     public Text<_> Email { get; private set; }

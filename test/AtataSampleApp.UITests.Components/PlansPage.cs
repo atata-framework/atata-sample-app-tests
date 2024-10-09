@@ -6,12 +6,12 @@ using _ = PlansPage;
 [VerifyTitle]
 [VerifyH1]
 [VerifyContent("Please choose your payment plan")]
-public class PlansPage : AppPage<_>
+public sealed class PlansPage : AppPage<_>
 {
     public ControlList<PlanItem, _> PlanItems { get; private set; }
 
     [ControlDefinition("div", ContainingClass = "plan-item", ComponentTypeName = "plan item")]
-    public class PlanItem : Control<_>
+    public sealed class PlanItem : Control<_>
     {
         public H3<_> Title { get; private set; }
 

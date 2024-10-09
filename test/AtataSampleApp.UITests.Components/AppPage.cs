@@ -3,6 +3,6 @@
 using _ = AppPage;
 
 [Name("<app>")]
-public class AppPage : AppPage<_>
+public sealed class AppPage : AppPage<_>
 {
 }

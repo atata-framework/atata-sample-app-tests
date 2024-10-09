@@ -1,6 +1,6 @@
 ﻿namespace AtataSampleApp.UITests;
 
-public class HtmlPageValidationTests : UITestFixture
+public sealed class HtmlPageValidationTests : UITestFixture
 {
     [TestCase("/")]
     [TestCase("signin")]

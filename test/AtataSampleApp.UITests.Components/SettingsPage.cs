@@ -4,6 +4,6 @@ using _ = SettingsPage;
 
 [VerifyTitle]
 [VerifyContent("Should contain some settings")]
-public class SettingsPage : AppPage<_>
+public sealed class SettingsPage : AppPage<_>
 {
 }

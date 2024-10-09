@@ -1,7 +1,7 @@
 ﻿namespace AtataSampleApp.UITests;
 
 [SetUpFixture]
-public class SetUpFixture
+public sealed class SetUpFixture
 {
     [OneTimeSetUp]
     public void GlobalSetUp()

@@ -26,7 +26,7 @@ Tests application demonstrates different testing approaches and features of Atat
 ## Sample Test
 
 ```cs
-public class UserTests : UITestFixture
+public sealed class UserTests : UITestFixture
 {
     [Test]
     public void Create() =>

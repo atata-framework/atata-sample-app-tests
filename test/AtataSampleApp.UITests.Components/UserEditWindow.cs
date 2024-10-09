@@ -3,7 +3,7 @@
 using _ = UserEditWindow;
 
 [WaitFor(Until.MissingOrHidden, TriggerEvents.DeInit)]
-public class UserEditWindow : BSModal<_>
+public sealed class UserEditWindow : BSModal<_>
 {
     public GeneralTabPane General { get; private set; }
 
@@ -19,7 +19,7 @@ public class UserEditWindow : BSModal<_>
 
     public ValidationMessageList<_> ValidationMessages { get; private set; }
 
-    public class GeneralTabPane : BSTabPane<_>
+    public sealed class GeneralTabPane : BSTabPane<_>
     {
         public TextInput<_> FirstName { get; private set; }
 
@@ -34,7 +34,7 @@ public class UserEditWindow : BSModal<_>
         public RadioButtonList<Gender?, _> Gender { get; private set; }
     }
 
-    public class AdditionalTabPane : BSTabPane<_>
+    public sealed class AdditionalTabPane : BSTabPane<_>
     {
         public DateInput<_> Birthday { get; private set; }
 

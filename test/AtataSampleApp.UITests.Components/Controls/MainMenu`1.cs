@@ -1,6 +1,6 @@
 ﻿namespace AtataSampleApp.UITests;
 
-public class MainMenu<TOwner> : BSNavbar<TOwner>
+public sealed class MainMenu<TOwner> : BSNavbar<TOwner>
     where TOwner : PageObject<TOwner>
 {
     [FindByClass("navbar-header")]
@@ -16,7 +16,7 @@ public class MainMenu<TOwner> : BSNavbar<TOwner>
 
     public AccountDropdown Account { get; private set; }
 
-    public class AccountDropdown : BSDropdown<TOwner>
+    public sealed class AccountDropdown : BSDropdown<TOwner>
     {
         public LinkDelegate<SignInPage, TOwner> SignOut { get; private set; }
 

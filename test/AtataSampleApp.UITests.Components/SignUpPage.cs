@@ -5,7 +5,7 @@ using _ = SignUpPage;
 [Url("signup")]
 [VerifyTitle]
 [VerifyH1]
-public class SignUpPage : AppPage<_>
+public sealed class SignUpPage : AppPage<_>
 {
     public TextInput<_> FirstName { get; private set; }
 
