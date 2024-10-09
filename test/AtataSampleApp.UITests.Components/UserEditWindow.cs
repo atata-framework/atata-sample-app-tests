@@ -1,7 +1,4 @@
-﻿using Atata;
-using Atata.Bootstrap;
-
-namespace AtataSampleApp.UITests;
+﻿namespace AtataSampleApp.UITests;
 
 using _ = UserEditWindow;
 

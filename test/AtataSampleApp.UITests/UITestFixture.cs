@@ -1,7 +1,4 @@
-﻿using Atata;
-using NUnit.Framework;
-
-namespace AtataSampleApp.UITests;
+﻿namespace AtataSampleApp.UITests;
 
 [TestFixture]
 [Parallelizable(ParallelScope.Self)]

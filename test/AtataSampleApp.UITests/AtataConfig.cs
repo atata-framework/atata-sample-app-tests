@@ -1,6 +1,4 @@
-﻿using Atata.Configuration.Json;
-
-namespace AtataSampleApp.UITests;
+﻿namespace AtataSampleApp.UITests;
 
 /// <summary>
 /// Represents configuration that is read from "Atata.json".

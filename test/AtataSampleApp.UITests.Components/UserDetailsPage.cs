@@ -1,6 +1,4 @@
-﻿using Atata;
-
-namespace AtataSampleApp.UITests;
+﻿namespace AtataSampleApp.UITests;
 
 using _ = UserDetailsPage;
 
