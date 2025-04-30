@@ -1,7 +1,9 @@
 app
 Atata
 autocomplete
+awaitable
 CDP
+checkbox
 checkboxes
 clearable
 CLI
@@ -36,6 +38,7 @@ multicast
 multiline
 mutex
 MVC
+namespace
 nav
 navbar
 NG
@@ -45,10 +48,13 @@ polyline
 popup
 prepend
 refactor
+Reqnroll
 screenshot
 screenshots
 serializer
 sessionless
+stdout
+stderr
 stringifier
 sudo
 Summernote
@@ -71,3 +77,4 @@ viewport
 Vue
 wildcard
 wildcards
+Xunit
