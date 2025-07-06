@@ -6,12 +6,12 @@
 /// </summary>
 public sealed class AtataConfig : JsonConfig<AtataConfig>
 {
-    public AccountConfiguration Account { get; set; }
+    public AccountConfiguration Account { get; init; } = null!;
 
     public sealed class AccountConfiguration
     {
-        public string Email { get; set; }
+        public required string Email { get; init; }
 
-        public string Password { get; set; }
+        public required string Password { get; init; }
     }
 }
