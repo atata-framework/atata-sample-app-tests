@@ -7,12 +7,12 @@
 [![X](https://img.shields.io/badge/follow-@AtataFramework-blue.svg)](https://x.com/AtataFramework)
 
 Automated UI tests C#/.NET application based on [Atata Framework](https://github.com/atata-framework/atata).
-It uses [Atata Sample App](https://demo.atata.io) ([repository](https://github.com/atata-framework/atata-sample-app)) as a testing website and NUnit 3 as a test engine.
+It uses [Atata Sample App](https://demo.atata.io) ([repository](https://github.com/atata-framework/atata-sample-app)) as a testing website and NUnit 4 as a test engine.
 Tests application demonstrates different testing approaches and features of Atata Framework.
 
 ## Features
 
-- Atata configuration and settings set-up.
+- Configuration through JSON files.
 - Page navigation.
 - Controls finding.
 - Data input and verification.

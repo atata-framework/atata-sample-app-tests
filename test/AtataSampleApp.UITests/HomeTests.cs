@@ -1,6 +1,6 @@
 ﻿namespace AtataSampleApp.UITests;
 
-public sealed class HomeTests : UITestFixture
+public sealed class HomeTests : TestSuite
 {
     [Test]
     public void Home() =>

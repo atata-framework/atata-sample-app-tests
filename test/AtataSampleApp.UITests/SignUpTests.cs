@@ -1,6 +1,6 @@
 ﻿namespace AtataSampleApp.UITests;
 
-public sealed class SignUpTests : UITestFixture
+public sealed class SignUpTests : TestSuite
 {
     [Test]
     public void SignUp() =>

@@ -1,6 +1,6 @@
 ﻿namespace AtataSampleApp.UITests;
 
-public sealed class PlanTests : UITestFixture
+public sealed class PlanTests : TestSuite
 {
     private const string Feature1 = "Feature 1";
     private const string Feature2 = "Feature 2";

@@ -1,6 +1,6 @@
 ﻿namespace AtataSampleApp.UITests;
 
-public sealed class ErrorPageTests : UITestFixture
+public sealed class ErrorPageTests : TestSuite
 {
     [Test]
     public void NotFound()

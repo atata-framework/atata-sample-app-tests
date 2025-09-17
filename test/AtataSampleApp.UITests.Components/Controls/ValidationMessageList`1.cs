@@ -1,22 +1,14 @@
 ﻿namespace AtataSampleApp.UITests;
 
-public sealed class ValidationMessageList<TOwner> : ControlList<ValidationMessage<TOwner>, TOwner>
+public sealed class ValidationMessageList<TOwner> : AssociatedControlList<ValidationMessage<TOwner>, TOwner>
     where TOwner : PageObject<TOwner>
 {
-    public ValidationMessage<TOwner> this[Func<TOwner, IControl<TOwner>> controlSelector] =>
-        For(controlSelector);
-
-    public ValidationMessage<TOwner> For(Func<TOwner, IControl<TOwner>> controlSelector)
+    protected override ValidationMessage<TOwner> CreateAssociatedControl(Control<TOwner> control)
     {
         var validationMessageDefinition = UIComponentResolver.GetControlDefinition(typeof(ValidationMessage<TOwner>));
 
-        IControl<TOwner> boundControl = controlSelector(Component.Owner);
+        PlainScopeLocator scopeLocator = new(control, By.XPath("ancestor::" + validationMessageDefinition.ScopeXPath));
 
-        PlainScopeLocator scopeLocator = new PlainScopeLocator(By.XPath("ancestor::" + validationMessageDefinition.ScopeXPath))
-        {
-            SearchContext = boundControl.Scope
-        };
-
-        return Component.Controls.Create<ValidationMessage<TOwner>>(boundControl.ComponentName, scopeLocator);
+        return Component.Controls.Create<ValidationMessage<TOwner>>(control.ComponentName, scopeLocator);
     }
 }
