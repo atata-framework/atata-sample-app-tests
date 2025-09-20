@@ -1,8 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-[assembly: SetCulture("en-US")]
-[assembly: Parallelizable(ParallelScope.Fixtures)]
-
 namespace AtataSampleApp.UITests;
 
 public sealed class GlobalFixture : AtataGlobalFixture
