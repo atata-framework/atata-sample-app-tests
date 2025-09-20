@@ -1,12 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
-using NUnit.Framework.Internal;
 
 [assembly: SetCulture("en-US")]
 [assembly: Parallelizable(ParallelScope.Fixtures)]
 
 namespace AtataSampleApp.UITests;
 
-[SetUpFixture]
 public sealed class GlobalFixture : AtataGlobalFixture
 {
     private GlobalConfig? _config;
