@@ -6,12 +6,20 @@ public sealed class GlobalFixture : AtataGlobalFixture
 {
     private GlobalConfig? _config;
 
-    protected override void ConfigureAtataContextGlobalProperties(AtataContextGlobalProperties globalProperties)
+    protected override void OnBeforeGlobalSetup()
     {
-        LoadConfiguration();
+        ThreadPool.SetMinThreads(Environment.ProcessorCount * 4, Environment.ProcessorCount);
 
-        AtataContext.GlobalProperties.UseDefaultArtifactsRootPathTemplateExcludingRunStartOnCI();
+        IConfigurationRoot configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .AddInMemoryCollection(TestContext.Parameters.Names.Select(x => KeyValuePair.Create(x, TestContext.Parameters.Get(x))))
+            .Build();
+
+        _config = configuration.Get<GlobalConfig>();
     }
+
+    protected override void ConfigureAtataContextGlobalProperties(AtataContextGlobalProperties globalProperties) =>
+        globalProperties.UseDefaultArtifactsRootPathTemplateExcludingRunStartOnCI();
 
     protected override void ConfigureAtataContextBaseConfiguration(AtataContextBuilder builder)
     {
@@ -34,15 +42,5 @@ public sealed class GlobalFixture : AtataGlobalFixture
         builder.UseState(_config);
 
         builder.EventSubscriptions.Add(SetUpWebDriversForUseEventHandler.Instance);
-    }
-
-    private void LoadConfiguration()
-    {
-        IConfigurationRoot configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json")
-            .AddInMemoryCollection(TestContext.Parameters.Names.Select(x => KeyValuePair.Create(x, TestContext.Parameters.Get(x))))
-            .Build();
-
-        _config = configuration.Get<GlobalConfig>();
     }
 }
