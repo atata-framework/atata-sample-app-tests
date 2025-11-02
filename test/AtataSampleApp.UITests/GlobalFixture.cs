@@ -41,6 +41,6 @@ public sealed class GlobalFixture : AtataGlobalFixture
     {
         builder.UseState(_config);
 
-        builder.EventSubscriptions.Add(SetUpWebDriversForUseEventHandler.Instance);
+        builder.SetUpWebDriversForUse();
     }
 }
