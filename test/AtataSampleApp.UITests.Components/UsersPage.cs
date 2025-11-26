@@ -2,6 +2,7 @@
 
 using _ = UsersPage;
 
+[Url("users")]
 [VerifyTitle]
 [VerifyH1]
 public sealed class UsersPage : AppPage<_>
