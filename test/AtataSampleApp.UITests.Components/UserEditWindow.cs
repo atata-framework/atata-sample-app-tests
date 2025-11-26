@@ -19,6 +19,7 @@ public sealed class UserEditWindow : BSModal<_>
 
     public ValidationMessageList<_> ValidationMessages { get; private set; }
 
+    [TypesTextUsingScript(TargetType = typeof(EditableTextField<,>))]
     public sealed class GeneralTabPane : BSTabPane<_>
     {
         public TextInput<_> FirstName { get; private set; }
