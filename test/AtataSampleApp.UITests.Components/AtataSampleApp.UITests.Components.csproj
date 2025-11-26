@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <NoWarn>$(NoWarn);CS8618</NoWarn>
+    <RootNamespace>AtataSampleApp.UITests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
