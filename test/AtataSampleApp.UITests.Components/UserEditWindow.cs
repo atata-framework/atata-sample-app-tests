@@ -2,7 +2,7 @@
 
 using _ = UserEditWindow;
 
-[WaitFor(Until.MissingOrHidden, TriggerEvents.DeInit)]
+[WaitFor(Until.MissingOrHidden, TriggerEvents.PageObjectTransitionOut)]
 public sealed class UserEditWindow : BSModal<_>
 {
     public GeneralTabPane General { get; private set; }
