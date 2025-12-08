@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="azure-pipelines.runsettings" />
+    <File Path="azure-pipelines.yml" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+    <File Path="en-US_User.dic" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="test/AtataSampleApp.UITests.Components/AtataSampleApp.UITests.Components.csproj" />
+  <Project Path="test/AtataSampleApp.UITests/AtataSampleApp.UITests.csproj" />
+</Solution>
