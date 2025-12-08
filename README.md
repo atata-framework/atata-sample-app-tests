@@ -52,6 +52,24 @@ public sealed class UserTests : UITestFixture
 }
 ```
 
+## Community
+
+- Slack: [https://atata-framework.slack.com](https://join.slack.com/t/atata-framework/shared_invite/zt-5j3lyln7-WD1ZtMDzXBhPm0yXLDBzbA)
+- X: https://x.com/AtataFramework
+- Stack Overflow: https://stackoverflow.com/questions/tagged/atata
+
+## Contact author
+
+Contact me if you need a help in test automation using Atata Framework, or if you are looking for a quality test automation implementation for your project.
+
+- LinkedIn: https://www.linkedin.com/in/yevgeniy-shunevych
+- Email: yevgeniy.shunevych@gmail.com
+- Consulting: https://atata.io/consulting/
+
+## Contributing
+
+Check out [Contributing Guidelines](CONTRIBUTING.md) for details.
+
 ## License
 
 Atata is an open source software, licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
