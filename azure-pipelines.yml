@@ -20,21 +20,21 @@ jobs:
     vmImage: windows-latest
   steps:
   - task: DotNetCoreCLI@2
-    displayName: Build solution
+    displayName: Build test projects
     inputs:
       command: build
-      projects: '*.slnx'
+      projects: 'test/*/*Tests.csproj'
       arguments: -c $(buildConfiguration) -p:RunAnalyzers=false
   - task: DotNetCoreCLI@2
-    displayName: Run tests
+    displayName: Run UI tests
     timeoutInMinutes: 30
-    continueOnError: true
     inputs:
       command: test
-      projects: 'test/*/*Tests.csproj'
+      projects: 'test/*/*UITests.csproj'
       arguments: -c $(buildConfiguration) -s "azure-pipelines.runsettings" --no-build
   - task: PublishPipelineArtifact@1
-    displayName: Publish test artifacts
+    displayName: Publish UI test artifacts
+    condition: succeededOrFailed()
     inputs:
-      artifactName: Test artifacts
+      artifactName: ui_test_artifacts
       targetPath: test/AtataSampleApp.UITests/bin/$(buildConfiguration)/net10.0/artifacts
