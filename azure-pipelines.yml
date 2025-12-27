@@ -40,7 +40,7 @@ jobs:
     inputs:
       command: test
       projects: 'test/*/*UITests.csproj'
-      arguments: -c $(buildConfiguration) -s "azure-pipelines.runsettings" --no-build
+      arguments: -c $(buildConfiguration) -s "azure-pipelines.runsettings" --no-build --report-trx
   - task: PublishPipelineArtifact@1
     displayName: Publish UI test artifacts
     condition: succeededOrFailed()
